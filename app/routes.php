@@ -42,4 +42,7 @@ Route::get('admin/logout','MembersController@logout');
 Route::get('admin/addmember','MembersController@addmember')->before('auth');
 Route::post('admin/save','MembersController@save_admin')->before('auth');
 
+Route::get('test',function(){
+	return 'Test!';
+});
 //Route::get('/admin',function)->before('auth');

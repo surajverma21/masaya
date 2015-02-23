@@ -33,7 +33,7 @@ Route::post('/language', array(
     'uses'      => 'LanguageController@chooser'
 ));*/
 
-Route::get('/','MembersController@index')->before('auth');
+Route::get('/admin', array('as' => 'home', 'uses' => 'MembersController@index'))->before('auth');
 Route::get('admin','MembersController@index')->before('auth');
 Route::get('login','MembersController@index')->before('guest');
 Route::get('admin/index','MembersController@index')->before('auth');

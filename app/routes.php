@@ -45,4 +45,5 @@ Route::post('admin/save','MembersController@save_admin')->before('auth');
 Route::get('test',function(){
 	return 'Test!';
 });
+/*test*/
 //Route::get('/admin',function)->before('auth');

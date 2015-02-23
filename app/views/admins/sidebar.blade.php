@@ -27,7 +27,7 @@
     <a href="index"><i class="fa fa-home"></i> <span class="title"> Dashboard </span><span class="label label-default pull-right ">LABEL</span> </a>
 </li>
 <li class="active open">
-    <a href="addmember"><i class="fa fa-user"></i> <span class="title"> Add User </span></a>
+    <a href="{{ URL::to('/') }}/admin/members"><i class="fa fa-user"></i> <span class="title"> Members </span></a>
 </li>
 <li>
     <a href="javascript:void(0)"><i class="fa fa-desktop"></i> <span class="title"> Layouts </span><i class="icon-arrow"></i> </a>

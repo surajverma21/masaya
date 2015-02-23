@@ -41,6 +41,10 @@ Route::post('admin/auth_admin','MembersController@auth_admin');
 Route::get('admin/logout','MembersController@logout');
 Route::get('admin/addmember','MembersController@addmember')->before('auth');
 Route::post('admin/save','MembersController@save_admin')->before('auth');
+Route::get('admin/members','MembersController@get_members')->before('auth');
+Route::get('admin/edit/{id}','MembersController@edit_member')->before('auth');
+Route::post('admin/update','MembersController@update_member')->before('auth');
+Route::get('admin/delete','MembersController@delete_members')->before('auth');
 
 Route::get('test',function(){
 	return 'Test!';

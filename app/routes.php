@@ -39,6 +39,8 @@ Route::get('login','MembersController@index')->before('guest');
 Route::get('admin/index','MembersController@index')->before('auth');
 Route::post('admin/auth_admin','MembersController@auth_admin');
 Route::get('admin/logout','MembersController@logout');
+
+// Admin Members
 Route::get('admin/addmember','MembersController@addmember')->before('auth');
 Route::post('admin/save','MembersController@save_admin')->before('auth');
 Route::get('admin/members','MembersController@get_members')->before('auth');
@@ -46,6 +48,12 @@ Route::get('admin/edit/{id}','MembersController@edit_member')->before('auth');
 Route::post('admin/update','MembersController@update_member')->before('auth');
 Route::get('admin/delete','MembersController@delete_members')->before('auth');
 
+// Events & Activities
+Route::get('admin/events-activities','EventsController@index')->before('auth');
+Route::post('admin/save-events','EventsController@save')->before('auth');
+Route::resource('admin/events-activities','EventsController');
+
+// Test
 Route::get('test',function(){
 	return 'Test!';
 });

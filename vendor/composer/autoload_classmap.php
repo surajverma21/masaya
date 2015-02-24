@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AddRememberMe' => $baseDir . '/app/database/migrations/2015_02_21_105047_add_remember_me.php',
+    'AddRememberMe' => $baseDir . '/app/database/migrations/2015_02_24_101232_create_bears_table.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -19,6 +19,7 @@ return array(
     'Boris\\ReadlineClient' => $vendorDir . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
     'Boris\\ShallowParser' => $vendorDir . '/d11wtq/boris/lib/Boris/ShallowParser.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
+    'ChangeEventTable' => $baseDir . '/app/database/migrations/2015_02_24_114830_change_event_table.php',
     'ClassPreloader\\Application' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Application.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/ClassList.php',
     'ClassPreloader\\ClassLoader' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/ClassLoader.php',
@@ -42,11 +43,13 @@ return array(
     'Crypt_TripleDES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/TripleDES.php',
     'Crypt_Twofish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Twofish.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
+    'EventsController' => $baseDir . '/app/controllers/EventsController.php',
     'File_ANSI' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ANSI.php',
     'File_ASN1' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ASN1.php',
     'File_ASN1_Element' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ASN1.php',
     'File_X509' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/X509.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
+    'HostelEvent' => $baseDir . '/app/models/HostelEvent.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
     'Illuminate\\Auth\\AuthManager' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/AuthManager.php',
     'Illuminate\\Auth\\AuthServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php',

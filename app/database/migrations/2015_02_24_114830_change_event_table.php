@@ -3,21 +3,22 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRememberMe extends Migration {
+class ChangeEventTable extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::drop('events');
+
         Schema::create('events', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->int('hostel_id');
-            $table->int('month_id');
+            $table->integer('hostel_id');
+            $table->integer('month_id');
             $table->string('event_title');
             $table->string('event_sub_title');
             $table->string('event_text');
@@ -28,26 +29,28 @@ class AddRememberMe extends Migration {
         Schema::create('months', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->int('month_id');
+            $table->integer('month_id');
             $table->string('month');
         });
-	}
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
         Schema::table('events', function(Blueprint $table)
         {
             Schema::drop('events');
         });
+
         Schema::table('months', function(Blueprint $table)
         {
             Schema::drop('months');
         });
-	}
 
+    }
 }

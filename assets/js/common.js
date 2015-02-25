@@ -1,3 +1,4 @@
+// Delete Member
 function delete_member(member_id){
 
     if(!member_id){
@@ -14,6 +15,31 @@ function delete_member(member_id){
           $('#msg').html(result);
             location.reload();
             },
+        'error'     : function(){
+            console.log('Some error occurred');
+        }
+
+    });
+
+}
+
+// Delete Event
+function delete_event(event_id){
+
+    if(!event_id){
+        alert('No event ID found');
+        return false;
+    }
+
+    $.ajax({
+
+        'url'       : 'delete_event',
+        'action'    : 'POST',
+        'data'      : {event_id:event_id},
+        'success'   : function(result){
+            $('#msg').html(result);
+            location.reload();
+        },
         'error'     : function(){
             console.log('Some error occurred');
         }

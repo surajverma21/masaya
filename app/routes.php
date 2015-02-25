@@ -54,6 +54,7 @@ Route::post('admin/save-events','EventsController@save')->before('auth');
 Route::get('admin/events','EventsController@get_events')->before('auth');
 Route::get('admin/edit_event/{id}','EventsController@edit_event')->before('auth');
 Route::post('admin/update_event','EventsController@update_event')->before('auth');
+Route::get('admin/delete_event','EventsController@delete_events')->before('auth');
 Route::resource('admin/events-activities','EventsController');
 
 

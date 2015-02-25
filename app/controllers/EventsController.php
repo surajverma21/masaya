@@ -40,7 +40,7 @@ class EventsController extends \BaseController {
         }
     }
 
-    public function get_events(){
+    public function get_events() {
 
         $events = HostelEvent::All();
         return View::make('admins.list_events')->with('events',$events);
@@ -108,6 +108,22 @@ class EventsController extends \BaseController {
             return View::make('admins.edit_event{id}')->with('message', 'Some error occurred');
         }
 
+
+    }
+
+    public function delete_events(){
+
+
+        $event = Input::get('event_id');
+
+        if(!$event){
+            return 'No event ID provided';
+        }
+        $eventObject = HostelEvent::find($event);
+
+        $eventObject->delete();
+
+        return 'Event removed successfully';
 
     }
 

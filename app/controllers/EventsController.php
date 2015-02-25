@@ -21,8 +21,9 @@ class EventsController extends \BaseController {
 
         if (Input::hasFile('event_image'))
         {
-            $image  = Input::file('event_image');
-            $image->move('../uploads', $image->getClientOriginalName());
+            $image      = Input::file('event_image');
+            $image_name = $this->genUniqueImageName();
+            $image->move('../uploads', $image_name);
         }
 
         $event = new HostelEvent;
@@ -30,7 +31,7 @@ class EventsController extends \BaseController {
         $event->event_title         = $title;
         $event->event_sub_title     = $sub_title;
         $event->event_text          = $text;
-        $event->event_image         = $image->getClientOriginalName();
+        $event->event_image         = $image_name;
         $event->month_id            = $month;
 
         if($event->save()){
@@ -77,8 +78,9 @@ class EventsController extends \BaseController {
         $month      = Input::get('month');
         if (Input::hasFile('event_image'))
         {
-            $image  = Input::file('event_image');
-            $image->move('../uploads', $image->getClientOriginalName());
+            $image      = Input::file('event_image');
+            $image_name = $this->genUniqueImageName();
+            $image->move('../uploads', $image_name);
 
             $event = HostelEvent::find($id);
 
@@ -86,7 +88,7 @@ class EventsController extends \BaseController {
             $event->event_title         = $title;
             $event->event_sub_title     = $sub_title;
             $event->event_text          = $text;
-            $event->event_image         = $image->getClientOriginalName();
+            $event->event_image         = $image_name;
             $event->month_id            = $month;
         } else {
 
@@ -127,18 +129,18 @@ class EventsController extends \BaseController {
 
     }
 
-    private function generateUniqueBarId(){
+    private function genUniqueImageName(){
 
-        $newBar_id = mt_rand(11111111,88888888);
-        $search = DB::table('barowners')->where('bar_id', '=',$newBar_id)->get();
+        $newImage_name = str_random(12);
+        $search = DB::table('events')->where('event_image', '=',$newImage_name)->get();
 
         while($search){
 
-            $newBar_id = mt_rand(11111111,88888888);
-            $search = DB::table('barowners')->where('bar_id', '=',$newBar_id)->get();
+            $newImage_name = str_random(12);
+            $search = DB::table('events')->where('event_image', '=',$newImage_name)->get();
 
         }
-        return $newBar_id;
+        return $newImage_name;
     }
 
     public function isUnique($username){

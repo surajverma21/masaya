@@ -63,14 +63,14 @@
                         <fieldset>
 
                             <div class="form-group">
-                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::text('name', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Hostel Name','required' => 'required']) }}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::text('description', '', $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about place','required' => 'required']) }}
                                 </div>
@@ -78,12 +78,46 @@
 
 
                             <div class="form-group">
-                                {{ Form::label('hostel_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('hostel_image','Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
 
                                 <div class="col-sm-9">
                                     {{ Form::file('hostel_image', '', $attributes = ['class' => 'form-control']) }}
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                {{ Form::label('promotional_artist_text','Promotional Artist description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::textarea('promotional_artist_text', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Promotional artist phrases','required' => 'required']) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ Form::label('hostel_image','Promotional Artist Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
+
+                                <div class="col-sm-9">
+                                    {{ Form::file('promotional_artist_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('city_guide','City guide Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
+
+                                <div class="col-sm-9">
+                                    {{ Form::file('city_guide_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('excursion_image','Excursion Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
+
+                                <div class="col-sm-9">
+                                    {{ Form::file('excursion_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+
+
 
                             <div class="form-actions">
                                 {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}

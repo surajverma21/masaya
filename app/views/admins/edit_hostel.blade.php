@@ -62,6 +62,8 @@
 
                         <fieldset>
 
+                            {{Form::hidden('hostel_id',$hostel->id) }}
+
                             <div class="form-group">
                                 {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-9">
@@ -80,13 +82,58 @@
                             <div class="form-group">
                                 {{ Form::label('hostel_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
 
-                                <div class="col-sm-9">
+                                <div class="col-sm-7">
                                     {{ Form::file('hostel_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                                @if($hostel->image)
+                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/hostels/{{$hostel->image}}" alt=""/></div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('promotional_artist_text','Description :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::text('promotional_artist_text', $hostel->promotional_artist_text, $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about place','required' => 'required']) }}
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                {{ Form::label('promotional_artist_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+
+                                <div class="col-sm-7">
+                                    {{ Form::file('promotional_artist_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                                @if($hostel->promotional_artist_image)
+                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/promotional_artist/{{$hostel->promotional_artist_image}}" alt=""/></div>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('city_guide_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+
+                                <div class="col-sm-7">
+                                    {{ Form::file('city_guide_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                                @if($hostel->city_guide_image)
+                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/city_guide/{{$hostel->city_guide_image}}" alt=""/></div>
+                                @endif
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ Form::label('excursion_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+
+                                <div class="col-sm-7">
+                                    {{ Form::file('excursion_image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                                @if($hostel->excursion_image)
+                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/excursion/{{$hostel->excursion_image}}" alt=""/></div>
+                                @endif
+                            </div>
+
+
                             <div class="form-actions">
-                                {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}
+                                {{ Form::submit('Update', $attributes = ['class' => 'btn btn-green pull-right']) }}
                             </div>
                         </fieldset>
                         {{ Form::close() }}

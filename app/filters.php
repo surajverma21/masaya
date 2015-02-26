@@ -35,9 +35,10 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
+
 	if (Auth::guest())
 	{
-        return View::make('admins.logins.index');
+        return Redirect::to('admin/login');
 //		if (Request::ajax())
 //		{
 //			return Response::make('Unauthorized', 401);
@@ -68,7 +69,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::to('admin/index');
 });
 
 /*

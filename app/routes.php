@@ -38,6 +38,7 @@ Route::resource('admin/events-activities','EventsController');
 
 
 // Test
+//Mehar Singh
 Route::get('test',function(){
 	return 'Test!';
 });

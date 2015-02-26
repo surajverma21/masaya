@@ -42,7 +42,7 @@ Route::get('admin/add_hostel','HostelsController@add_hostel');
 Route::post('admin/save_hostel','HostelsController@save_hostel');
 Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel');
 Route::post('admin/update_hostel','HostelsController@update_hostel');
-Route::post('admin/delete_hostel','HostelsController@delete_hostel');
+Route::get('admin/delete_hostel','HostelsController@delete_hostel');
 
 
 

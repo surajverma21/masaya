@@ -18,12 +18,14 @@ class EventsController extends \BaseController {
         $sub_title      = Input::get('event_sub_title');
         $text           = Input::get('event_text');
         $month          = Input::get('month');
+        $legend         = Input::get('event_legend');
+        $medium         = Input::get('event_medium');
 
         if (Input::hasFile('event_image'))
         {
             $image      = Input::file('event_image');
             $image_name = $this->genUniqueImageName();
-            $image->move('../uploads', $image_name);
+            $image->move('../uploads/events', $image_name);
         }
 
         $event = new HostelEvent;
@@ -33,6 +35,8 @@ class EventsController extends \BaseController {
         $event->event_text          = $text;
         $event->event_image         = $image_name;
         $event->month_id            = $month;
+        $event->event_legend        = $legend;
+        $event->event_medium        = $medium;
 
         if($event->save()){
             return View::make('admins.index');
@@ -76,11 +80,14 @@ class EventsController extends \BaseController {
         $sub_title  = Input::get('sub_title');
         $text       = Input::get('text');
         $month      = Input::get('month');
+        $legend     = Input::get('event_legend');
+        $medium     = Input::get('event_medium');
+
         if (Input::hasFile('event_image'))
         {
             $image      = Input::file('event_image');
             $image_name = $this->genUniqueImageName();
-            $image->move('../uploads', $image_name);
+            $image->move('../uploads/events', $image_name);
 
             $event = HostelEvent::find($id);
 
@@ -90,6 +97,8 @@ class EventsController extends \BaseController {
             $event->event_text          = $text;
             $event->event_image         = $image_name;
             $event->month_id            = $month;
+            $event->event_legend        = $legend;
+            $event->event_medium        = $medium;
         } else {
 
             $event = HostelEvent::find($id);
@@ -100,6 +109,8 @@ class EventsController extends \BaseController {
             $event->event_text          = $text;
 //            $event->event_image         = $image->getClientOriginalName();
             $event->month_id            = $month;
+            $event->event_legend        = $legend;
+            $event->event_medium        = $medium;
         }
 
 

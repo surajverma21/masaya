@@ -80,6 +80,19 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {{ Form::label('event_legend','Legend Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-9">
+                            {{ Form::checkbox('event_legend', 'yes') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('event_medium','Medium Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-9">
+                            {{ Form::checkbox('event_medium', 'yes') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         {{ Form::label('month','Select Month', $attributes = ['class' => 'col-sm-2 control-label']) }}
                         <div class="col-sm-9">
                             {{ Form::selectMonth('month', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}

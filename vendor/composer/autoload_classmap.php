@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumknsToEventsTable' => $baseDir . '/app/database/migrations/2015_02_26_091910_add_columkns_to_events_table.php',
     'AddRememberMe' => $baseDir . '/app/database/migrations/2015_02_21_105047_add_remember_me.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',

@@ -77,9 +77,30 @@
                             <div class="form-group">
                                 {{ Form::label('text','Text :', $attributes = ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::textarea('text', $event->text, $attributes = ['class' => 'form-control', 'placeholder' => '']) }}
+                                    {{ Form::textarea('text', $event->event_text, $attributes = ['class' => 'form-control', 'placeholder' => '']) }}
                                 </div>
                             </div>
+                            <div class="form-group">
+                                {{ Form::label('event_legend','Legend Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                <div class="col-sm-9">
+                                    @if($event->event_legend == 'yes')
+                                        {{ Form::checkbox('event_legend', 'yes', true) }}
+                                    @else
+                                        {{ Form::checkbox('event_legend', 'yes') }}
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('event_medium','Medium Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                <div class="col-sm-9">
+                                    @if($event->event_medium == 'yes')
+                                    {{ Form::checkbox('event_medium', 'yes', true) }}
+                                    @else
+                                    {{ Form::checkbox('event_medium', 'yes') }}
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 {{ Form::label('month','Select Month', $attributes = ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-9">

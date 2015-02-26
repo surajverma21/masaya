@@ -36,6 +36,15 @@ Route::post('admin/update_event','EventsController@update_event')->before('auth'
 Route::get('admin/delete_event','EventsController@delete_events')->before('auth');
 Route::resource('admin/events-activities','EventsController');
 
+//Hostels
+Route::get('admin/hostels','HostelsController@index');
+Route::get('admin/add_hostel','HostelsController@add_hostel');
+Route::post('admin/save_hostel','HostelsController@save_hostel');
+Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel');
+Route::post('admin/update_hostel','HostelsController@update_hostel');
+Route::post('admin/delete_hostel','HostelsController@delete_hostel');
+
+
 
 // Test
 //Mehar Singh

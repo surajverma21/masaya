@@ -1,3 +1,5 @@
+@section('header')
+
 <!-- start: BODY -->
 <body>
 <!-- start: SLIDING BAR (SB) -->
@@ -173,3 +175,4 @@
         <!-- end: TOPBAR CONTAINER -->
     </header>
     <!-- end: TOPBAR -->
+    @stop

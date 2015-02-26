@@ -15,4 +15,26 @@ class BaseController extends Controller {
 		}
 	}
 
+    public function generateRandomStringForImage($tableName,$fieldName){
+
+        $newImage_name = str_random(12);
+
+        $count = DB::table($tableName)->count();
+
+        if($count){
+            $search = DB::table($tableName)->where($fieldName, '=',$newImage_name)->get();
+
+            while($search){
+
+                $newImage_name = str_random(12);
+                $search = DB::table($tableName)->where($fieldName, '=',$newImage_name)->get();
+
+            }
+            return $newImage_name;
+        }
+
+        return $newImage_name;
+
+    }
+
 }

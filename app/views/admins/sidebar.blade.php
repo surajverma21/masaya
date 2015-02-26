@@ -30,6 +30,9 @@
     <a href="{{ URL::to('/') }}/admin/members"><i class="fa fa-user"></i> <span class="title"> Members </span></a>
 </li>
 <li class="active open">
+    <a href="{{ URL::to('/') }}/admin/hostels"><i class="fa fa-user"></i> <span class="title"> Hostels </span></a>
+</li>
+<li class="active open">
     <a href="{{ URL::to('/') }}/admin/events"><i class="fa fa-desktop"></i> <span class="title"> Events & Activities </span></a>
 </li>
 <li>

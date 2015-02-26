@@ -47,3 +47,28 @@ function delete_event(event_id){
     });
 
 }
+
+// Delete Hostel
+function delete_hostel(hostel_id){
+
+    if(!hostel_id){
+        alert('No Hostel ID found');
+        return false;
+    }
+
+    $.ajax({
+
+        'url'       : 'delete_hostel',
+        'action'    : 'POST',
+        'data'      : {id:hostel_id},
+        'success'   : function(result){
+            $('#msg').html(result);
+            location.reload();
+        },
+        'error'     : function(){
+            console.log('Some error occurred');
+        }
+
+    });
+
+}

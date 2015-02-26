@@ -154,16 +154,6 @@ class EventsController extends \BaseController {
         return $newImage_name;
     }
 
-    public function isUnique($username){
-
-        $search = DB::table('barowners')->where('username', '=',$username)->get();
-
-        if(empty($search)){
-            return 'Available';
-        }else{
-            return 'Not Available';
-        }
-    }
 
 
 	/**

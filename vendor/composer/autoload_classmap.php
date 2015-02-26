@@ -33,6 +33,7 @@ return array(
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'CreateActivitiesTable' => $baseDir . '/app/database/migrations/2015_02_25_113521_create_activities_table.php',
     'CreateBearsTable' => $baseDir . '/app/database/migrations/2015_02_21_065604_create_bears_table.php',
+    'CreateTableHostels' => $baseDir . '/app/database/migrations/2015_02_26_050807_create_table_hostels.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
     'Crypt_Blowfish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Blowfish.php',

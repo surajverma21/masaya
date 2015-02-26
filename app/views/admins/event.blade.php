@@ -98,6 +98,12 @@
                             {{ Form::selectMonth('month', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {{ Form::label('hostel_id','Hostel', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-9">
+                            {{ Form::select('hostel_id', $hostels) }}
+                        </div>
+                    </div>
 
 
                     <div class="form-group">

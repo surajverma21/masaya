@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('content')
+
 <!-- start: PAGESLIDE RIGHT -->
 <!--<div id="pageslide-right" class="pageslide slide-fixed inner">
     <div class="right-wrapper">

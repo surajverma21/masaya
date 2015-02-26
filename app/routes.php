@@ -63,4 +63,7 @@ Route::get('test',function(){
 	return 'Test!';
 });
 
+//testkljlklkjn
+//suraj verma
+
 //Route::get('/admin',function)->before('auth');

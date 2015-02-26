@@ -33,7 +33,7 @@
     <a href="{{ URL::to('/') }}/admin/events"><i class="fa fa-desktop"></i> <span class="title"> Events & Activities </span></a>
 </li>
 <li>
-    <a href="javascript:void(0)"><i class="fa fa-cogs"></i> <span class="title"> UI Lab </span><i class="icon-arrow"></i> </a>
+    <a href="javascript:void(0)"><i class="fa fa-cogs"></i> <span class="title"> Events & Activities </span><i class="icon-arrow"></i> </a>
     <ul class="sub-menu">
         <li>
             <a href="ui_elements.html">

@@ -56,6 +56,7 @@
                     <div class="panel panel-white">
                         <div class="panel-heading">
                             <h4 class="panel-title">Hostels <span class="text-bold"></span></h4>
+                            <div id="msg"></div>
                             <div class="panel-tools">
                                 <div class="dropdown">
                                     <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
@@ -73,7 +74,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-
+                   @if(count($hostels))
                             <table class="table table-striped table-hover" id="sample-table-2">
                                 <thead>
                                 <tr>
@@ -93,6 +94,7 @@
                                 <tbody>
 
                                 <?php $count = 1;?>
+
                                 @foreach ($hostels as $hostel)
 
                                 <tr>
@@ -112,7 +114,7 @@
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
                                             <a href="edit_hostel/<?php echo $hostel->id; ?>" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_hostel({{$hostel->id}})"><i class="fa fa-times fa fa-white"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_hostel({{$hostel->id}})"><i class="fa fa-times fa fa-white"></i></a>
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
                                             <div class="btn-group">
@@ -135,8 +137,12 @@
                                         </div></td>
                                 </tr>
                                 @endforeach
+
                                 </tbody>
                             </table>
+                           @else
+                           No Hostels are available...
+                           @endif
                         </div>
                     </div>
                     <!-- end: TABLE WITH IMAGES PANEL -->

@@ -1,12 +1,13 @@
 @extends('master')
-
 @section('content')
 <!-- start: MAIN CONTAINER -->
 <div class="main-container inner">
     <!-- start: PAGE -->
     <div class="main-content">
+
         <!-- end: SPANEL CONFIGURATION MODAL FORM -->
         <div class="container">
+            <!-- start: PAGE HEADER -->
             <!-- start: TOOLBAR -->
             <div class="toolbar row">
                 <div class="col-sm-6 hidden-xs">
@@ -20,10 +21,11 @@
                         <ul class="nav navbar-right">
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
-                                <a href="{{ URL::to('/') }}/admin/events-activities">
-                                    <i class="fa fa-plus"></i> Add Event
+                                <a href="{{ URL::to('/') }}/admin/add_activity">
+                                    <i class="fa fa-plus"></i> Add Activity
                                 </a>
                             </li>
+                        </ul>
                         <!-- end: TOP NAVIGATION MENU -->
                     </div>
                 </div>
@@ -40,7 +42,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            Edit
+                            Activities
                         </li>
                     </ol>
                 </div>
@@ -50,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
-                        {{ Form::open(array('url' => 'admin/update_event','class' => 'form-horizontal', 'files' => true)) }}
+                        {{ Form::open(array('url' => 'admin/save_activity','class' => 'form-horizontal','files' =>true)) }}
 
                         @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -59,55 +61,13 @@
                         @endif
 
                         <fieldset>
-                            {{ Form::hidden('id', $event->id) }}
+
                             <div class="form-group">
                                 {{ Form::label('language_id','Language', $attributes = ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::select('language_id', $languages) }}
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::text('title', $event->event_title, $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('sub_title','Sub Title :', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::text('sub_title', $event->event_sub_title, $attributes = ['class' => 'form-control', 'placeholder' => 'Sub Title']) }}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('text','Text :', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::textarea('text', $event->event_text, $attributes = ['class' => 'form-control', 'placeholder' => '']) }}
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                {{ Form::label('event_legend','Legend Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    @if($event->event_legend == 'yes')
-                                        {{ Form::checkbox('event_legend', 'yes', true) }}
-                                    @else
-                                        {{ Form::checkbox('event_legend', 'yes') }}
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                {{ Form::label('event_medium','Medium Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    @if($event->event_medium == 'yes')
-                                    {{ Form::checkbox('event_medium', 'yes', true) }}
-                                    @else
-                                    {{ Form::checkbox('event_medium', 'yes') }}
-                                    @endif
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 {{ Form::label('hostel_id','Hostel', $attributes = ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-9">
@@ -115,29 +75,43 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group">
-                                {{ Form::label('month','Select Month', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-2 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::selectMonth('month', $event->month_id, $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}
+                                    {{ Form::text('name', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Activity Name','required' => 'required']) }}
                                 </div>
                             </div>
-                            <br/>
-                            <img style="height:15%" src="{{URL::to('/')}}/../uploads/events/{{$event->event_image}}" alt=""/>
-                            <br/>
-                            <br/>
+
                             <div class="form-group">
-                                {{ Form::label('event_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::text('description', '', $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about activity','required' => 'required']) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ Form::label('image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
 
                                 <div class="col-sm-9">
-                                    {{ Form::file('event_image', '', $attributes = ['class' => 'form-control']) }}
+                                    {{ Form::file('image', '', $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+                            <?php $days = array(1=>'Sunday', 2=>'Monday', 3=>'Tuesday', 4=>'Wednesday', 5=>'Thaursday', 6=>'Friday', 7=>'Saturday')?>
+                            <div class="form-group">
+                                {{ Form::label('day','Activity day', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::select('day', $days) }}
                                 </div>
                             </div>
 
                             <div class="form-actions">
-                                {{ Form::submit('Update', $attributes = ['class' => 'btn btn-green pull-right']) }}
+                                {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}
                             </div>
                         </fieldset>
                         {{ Form::close() }}
+
                     </div>
                 </div>
             </div>
@@ -150,6 +124,7 @@
     <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
+
 
 
 <script>

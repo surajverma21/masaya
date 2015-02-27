@@ -50,6 +50,7 @@
     {{ HTML::style('../assets/css/themes/theme-default.css" type="text/css" id="skin_color') }}
     {{ HTML::style('../assets/css/print.css" type="text/css" media="print"') }}
     {{HTML::script('../assets/js/common.js') }}
+
     <!-- end: CORE CSS -->
     <link rel="shortcut icon" href="favicon.ico" />
 </head>

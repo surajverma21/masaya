@@ -44,7 +44,21 @@ Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel');
 Route::post('admin/update_hostel','HostelsController@update_hostel');
 Route::get('admin/delete_hostel','HostelsController@delete_hostel');
 
+//Languages
+Route::get('admin/languages','LanguagesController@index');
+Route::get('admin/add_language','LanguagesController@add_language');
+Route::post('admin/save_language','LanguagesController@save_language');
+Route::get('admin/edit_language/{id}','LanguagesController@edit_language');
+Route::post('admin/update_language','LanguagesController@update_language');
+Route::get('admin/delete_language','LanguagesController@delete_language');
 
+//Activities
+Route::get('admin/activities','ActivitiesController@index');
+Route::get('admin/add_activity','ActivitiesController@add_activity');
+Route::post('admin/save_activity','ActivitiesController@save_activity');
+Route::get('admin/edit_activity/{id}','ActivitiesController@edit_activity');
+Route::post('admin/update_activity','ActivitiesController@update_activity');
+Route::get('admin/delete_activity','ActivitiesController@delete_activity');
 
 // Test
 //Mehar Singh

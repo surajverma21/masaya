@@ -11,7 +11,8 @@ class EventsController extends \BaseController {
 	{
 
         $hostels = Hostel::All()->lists('name' ,'id');
-        return View::make('admins.event', array('hostels' => $hostels ));
+        $languages = Language::All()->lists('name' ,'id');
+        return View::make('admins.event', array('hostels' => $hostels , 'languages' => $languages));
 	}
 
     public function save()
@@ -23,6 +24,7 @@ class EventsController extends \BaseController {
         $legend         = Input::get('event_legend');
         $medium         = Input::get('event_medium');
         $hostel         = Input::get('hostel_id');
+        $language         = Input::get('language_id');
 
         if (Input::hasFile('event_image'))
         {
@@ -41,6 +43,7 @@ class EventsController extends \BaseController {
         $event->event_legend_img    = $legend;
         $event->event_medium_img    = $medium;
         $event->hostel_id           = $hostel;
+        $event->lang_id             = $language;
 
         if($event->save()){
             return View::make('admins.index');
@@ -60,9 +63,11 @@ class EventsController extends \BaseController {
 
         $event_id = Route::input('id');
 
-        $hostels = Hostel::All()->lists('name' ,'id');
+        $hostels    = Hostel::All()->lists('name' ,'id');
+        $languages  = Language::All()->lists('name' ,'id');
+
         $event = HostelEvent::find($event_id);
-        return View::make('admins.edit_event', array('hostels' => $hostels ))->with('event', $event);
+        return View::make('admins.edit_event', array('hostels' => $hostels, 'languages' => $languages  ))->with('event', $event);
         /*if(!$member){
             return 'No member ID provided';
         }
@@ -87,6 +92,7 @@ class EventsController extends \BaseController {
         $legend     = Input::get('event_legend');
         $medium     = Input::get('event_medium');
         $hostel     = Input::get('hostel_id');
+        $language   = Input::get('language_id');
 
 
         if (Input::hasFile('event_image'))
@@ -106,6 +112,7 @@ class EventsController extends \BaseController {
             $event->event_legend_img    = $legend;
             $event->event_medium_img    = $medium;
             $event->hostel_id           = $hostel;
+            $event->lang_id             = $language;
         } else {
 
             $event = HostelEvent::find($id);
@@ -119,6 +126,7 @@ class EventsController extends \BaseController {
             $event->event_legend_img    = $legend;
             $event->event_medium_img    = $medium;
             $event->hostel_id           = $hostel;
+            $event->lang_id             = $language;
         }
 
 

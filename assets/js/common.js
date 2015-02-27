@@ -72,3 +72,29 @@ function delete_hostel(hostel_id){
     });
 
 }
+
+// Delete Lenaguage
+function delete_language(language_id){
+
+    if(!language_id){
+        alert('No language ID found');
+        return false;
+    }
+
+    $.ajax({
+
+        'url'       : 'delete_language',
+        'action'    : 'POST',
+        'data'      : {language_id:language_id},
+        'success'   : function(result){
+            $('#msg').html(result);
+            location.reload();
+        },
+        'error'     : function(){
+            console.log('Some error occurred');
+        }
+
+    });
+
+}
+

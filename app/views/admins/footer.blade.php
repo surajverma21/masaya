@@ -26,7 +26,7 @@
 {{ HTML::script('../assets/plugins/moment/min/moment.min.js') }}
 {{ HTML::script('../assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js') }}
 {{ HTML::script('../assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js') }}
-{{ HTML::script('../assets/plugins/bootbox/bootbox.min.js') }}
+{{ HTML::script('../assets/plugins/bootbox/bootbox.js') }}
 {{ HTML::script('../assets/plugins/jquery.scrollTo/jquery.scrollTo.min.js') }}
 {{ HTML::script('../assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js') }}
 {{ HTML::script('../assets/plugins/jquery.appear/jquery.appear.js') }}

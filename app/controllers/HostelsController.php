@@ -194,6 +194,7 @@ Class HostelsController extends BaseController{
 
     public function delete_hostel(){
 
+
         $hostel_id = Input::get('hostel_id');
 
         $hostel = Hostel::find($hostel_id);
@@ -206,7 +207,7 @@ Class HostelsController extends BaseController{
             @unlink('../uploads/city_guide/'.$hostel->city_guide_image);
             @unlink('../uploads/excursion/'.$hostel->excursion_image);
 
-            return Redirect::to('admin/hostels')->with('msg','Hotel removed successfully');;
+            return Redirect::to('admin/hostels')->with('msg','Hotel removed successfully');
         }
 
     }

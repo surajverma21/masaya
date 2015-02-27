@@ -48,6 +48,7 @@ function delete_event(event_id){
 
 }
 
+
 // Delete Hostel
 function delete_hostel(hostel_id){
 
@@ -55,20 +56,22 @@ function delete_hostel(hostel_id){
         alert('No Hostel ID found');
         return false;
     }
+    confirm = confirm('Are you sure you want to delete hostel!');
 
-    $.ajax({
+    if(confirm){
+            $.ajax({
 
-        'url'       : 'delete_hostel',
-        'action'    : 'POST',
-        'data'      : {id:hostel_id},
-        'success'   : function(result){
-            $('#msg').html(result);
-            location.reload();
-        },
-        'error'     : function(){
-            console.log('Some error occurred');
-        }
+                'url'       : 'delete_hostel',
+                'action'    : 'POST',
+                'data'      : {hostel_id:hostel_id},
+                'success'   : function(result){
 
-    });
+                    location.reload();
+                },
+                'error'     : function(){
+                    console.log('Some error occurred');
+                }
 
+            });
+    }
 }

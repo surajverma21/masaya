@@ -69,16 +69,34 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group">
-                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('email','Email Address :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('description', '', $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about place','required' => 'required']) }}
+                                    {{ Form::text('email', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Enter email address','required' => 'required']) }}
                                 </div>
                             </div>
 
 
                             <div class="form-group">
-                                {{ Form::label('hostel_image','Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::textarea('description', '', $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about hostel','required' => 'required', 'rows' => 3]) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ Form::label('address','Address :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::textarea('address', '', $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about place','required' => 'required','rows' => 4]) }}
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                {{ Form::label('hostel_image','Hostel Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
 
                                 <div class="col-sm-9">
                                     {{ Form::file('hostel_image', '', $attributes = ['class' => 'form-control']) }}

@@ -37,12 +37,12 @@ Route::get('admin/delete_event','EventsController@delete_events')->before('auth'
 Route::resource('admin/events-activities','EventsController');
 
 //Hostels
-Route::get('admin/hostels','HostelsController@index');
-Route::get('admin/add_hostel','HostelsController@add_hostel');
-Route::post('admin/save_hostel','HostelsController@save_hostel');
-Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel');
-Route::post('admin/update_hostel','HostelsController@update_hostel');
-Route::get('admin/delete_hostel','HostelsController@delete_hostel');
+Route::get('admin/hostels','HostelsController@index')->before('auth');
+Route::get('admin/add_hostel','HostelsController@add_hostel')->before('auth');
+Route::post('admin/save_hostel','HostelsController@save_hostel')->before('auth');
+Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel')->before('auth');
+Route::post('admin/update_hostel','HostelsController@update_hostel')->before('auth');
+Route::get('admin/delete_hostel','HostelsController@delete_hostel')->before('auth');
 
 
 

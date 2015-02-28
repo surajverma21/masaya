@@ -54,8 +54,8 @@
     {{ HTML::style('../assets/css/styles.css') }}
     {{ HTML::style('../assets/css/styles-responsive.css') }}
     {{ HTML::style('../assets/css/plugins.css') }}
-    {{ HTML::style('../assets/css/themes/theme-default.css" type="text/css" id="skin_color') }}
-    {{ HTML::style('../assets/css/print.css" type="text/css" media="print"') }}
+    {{ HTML::style("../assets/css/themes/theme-default.css", array("id"=>"skin_color")) }}
+    {{ HTML::style("../assets/css/print.css" ,array("media" => "print")) }}
     {{HTML::script('../assets/js/common.js') }}
 
     <!-- end: CORE CSS -->

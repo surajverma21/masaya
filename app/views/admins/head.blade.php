@@ -19,6 +19,12 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- end: META -->
+
+    <!-- start: MAIN JS -->
+    {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
+    <!-- end: MAIN JS -->
+
+
     <!-- start: MAIN CSS -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
     {{ HTML::style('../assets/plugins/bootstrap/css/bootstrap.min.css') }}

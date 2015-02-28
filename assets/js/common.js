@@ -61,19 +61,18 @@ function delete_hostel(hostel_id){
     if(confirm){
             $.ajax({
 
-                'url'       : 'delete_hostel',
-                'action'    : 'POST',
-                'data'      : {hostel_id:hostel_id},
-                'success'   : function(result){
+                    'url'       : 'delete_hostel',
+                    'action'    : 'POST',
+                    'data'      : {hostel_id:hostel_id},
+                    'success'   : function(result){
 
-                    location.reload();
-                },
-                'error'     : function(){
-                    console.log('Some error occurred');
-                }
-
-<<<<<<< HEAD
-}
+                        location.reload();
+                    },
+                    'error'     : function(){
+                        console.log('Some error occurred');
+                    }
+                });
+    }
 
 // Delete Lenaguage
 function delete_language(language_id){
@@ -99,9 +98,7 @@ function delete_language(language_id){
     });
 
 }
-
-=======
-            });
-    }
 }
->>>>>>> aa8664f3ff2a85a4bb3c1b108752be592b1420fd
+
+
+

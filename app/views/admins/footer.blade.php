@@ -17,7 +17,7 @@
 <script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js') }}
 		<![endif]-->
 <!--[if gte IE 9]><!-->
-{{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
+
 <!--<![endif]-->
 {{ HTML::script('../assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') }}
 {{ HTML::script('../assets/plugins/bootstrap/js/bootstrap.min.js') }}
@@ -68,7 +68,7 @@
 <!-- start: CORE JAVASCRIPTS  -->
 {{ HTML::script('../assets/js/main.js') }}
 <!-- end: CORE JAVASCRIPTS  -->
-
+</script>
 </body>
 <!-- end: BODY -->
 </html>

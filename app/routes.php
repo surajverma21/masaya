@@ -35,6 +35,9 @@ Route::get('admin/edit_event/{id}','EventsController@edit_event')->before('auth'
 Route::post('admin/update_event','EventsController@update_event')->before('auth');
 Route::get('admin/delete_event','EventsController@delete_events')->before('auth');
 Route::resource('admin/events-activities','EventsController');
+Route::get('admin/time-to-touristic','HostelsController@time_to_touristic')->before('auth');
+
+
 
 //Hostels
 Route::get('admin/hostels','HostelsController@index')->before('auth');
@@ -43,6 +46,7 @@ Route::post('admin/save_hostel','HostelsController@save_hostel')->before('auth')
 Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel')->before('auth');
 Route::post('admin/update_hostel','HostelsController@update_hostel')->before('auth');
 Route::get('admin/delete_hostel','HostelsController@delete_hostel')->before('auth');
+//Route::get('admin/');
 
 //Languages
 Route::get('admin/languages','LanguagesController@index');

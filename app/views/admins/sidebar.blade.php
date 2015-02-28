@@ -29,9 +29,28 @@
 <li class="active open">
     <a href="{{ URL::to('/') }}/admin/members"><i class="fa fa-user"></i> <span class="title"> Members </span></a>
 </li>
-<li class="active open">
-    <a href="{{ URL::to('/') }}/admin/hostels"><i class="fa fa-user"></i> <span class="title"> Hostels </span></a>
+
+
+
+<li>
+    <a href="javascript:void(0)"><i class="fa fa-user"></i> <span class="title"> Hostels </span><i class="icon-arrow"></i></a>
+    <ul class="sub-menu">
+        <li>
+            <a href="hostels">
+                <span class="title">Manage Hostels</span>
+            </a>
+        </li>
+        <li>
+            <a href="time-to-touristic">
+                <span class="title">Time To touristic points</span>
+            </a>
+        </li>
+    </ul>
 </li>
+
+
+
+
 <li class="active open">
     <a href="{{ URL::to('/') }}/admin/events"><i class="fa fa-desktop"></i> <span class="title"> Events & Activities </span></a>
 </li>

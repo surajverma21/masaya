@@ -87,7 +87,8 @@
                                     <!--                    <th class="center">Photo</th>-->
 
                                     <th class="hidden-xs">Name</th>
-                                    <th class="hidden-xs">Description</th>
+                                    <th class="hidden-xs">Email</th>
+                                    <th class="hidden-xs">Contact</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -109,7 +110,12 @@
                                     <td>{{ $hostel->name }}</td>
 
                                     <td class="hidden-xs">
-                                        {{ $hostel->description }}
+                                        {{ $hostel->email }}
+                                    </td>
+
+                                    <td>
+                                        {{ $hostel->contact_number1 or '' }}
+                                    </td>
 
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">

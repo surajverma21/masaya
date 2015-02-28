@@ -17,9 +17,20 @@ Class HostelsController extends BaseController{
     public function save_hostel(){
 
 
+        $validation = Validator::make(Input::all(),['name' => 'required','email' =>'required','address' => 'required']);
+
+        if($validation->fails()){
+
+            return Redirect::back()->withInput()->withErrors($validation->messages());
+        }
+
         $name                    = Input::get('name');
-        $description             = Input::get('description');
-        $promotional_artist_text = Input::get('promotional_artist_text');
+        $email                   = Input::get('email');
+        $address                 = Input::get('address');
+
+        $contact_number1         = (empty(Input::get('contact_number1'))) ? Input::get('contact_number1') : '';
+        $contact_number2         = (empty(Input::get('contact_number2'))) ? Input::get('contact_number1') : '';
+        $contact_number3         = (empty(Input::get('contact_number3'))) ? Input::get('contact_number1') : '';
 
 
         $tableName = 'hostels';
@@ -39,56 +50,16 @@ Class HostelsController extends BaseController{
             $hostelFileName = '';
         }
 
-        if(Input::hasFile('promotional_artist_image')){
-
-            $destinationPath = '../uploads/promotional_artist';
-
-            $artistFileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('promotional_artist_image')->move($destinationPath, $artistFileName);
-
-        }else{
-
-            $artistFileName = '';
-        }
-
-
-       if(Input::hasFile('city_guide_image')){
-
-           $destinationPath = '../uploads/city_guide';
-
-           $cityGuidefileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-           Input::file('city_guide_image')->move($destinationPath, $cityGuidefileName);
-
-       }else{
-
-           $cityGuidefileName = '';
-       }
-
-        if(Input::hasFile('excursion_image')){
-
-            $destinationPath = '../uploads/excursion';
-
-            $excursionImageFileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('excursion_image')->move($destinationPath, $excursionImageFileName);
-
-        }else{
-
-            $excursionImageFileName = '';
-        }
 
 
         $hostel                             =   new Hostel;
         $hostel->name                       =   $name;
-        $hostel->description                =   $description;
+        $hostel->email                      =   $email;
+        $hostel->address                    =   $address;
+        $hostel->contact_number1            =   $contact_number1;
+        $hostel->contact_number2            =   $contact_number2;
+        $hostel->contact_number3            =   $contact_number3;
         $hostel->image                      =   $hostelFileName;
-        $hostel->promotional_artist_text    =   $promotional_artist_text;
-        $hostel->promotional_artist_image   =   $artistFileName;
-        $hostel->city_guide_image           =   $cityGuidefileName;
-        $hostel->excursion_image            =   $excursionImageFileName;
-
 
         $hostel->save();
 
@@ -110,13 +81,24 @@ Class HostelsController extends BaseController{
 
     public function update_hostel(){
 
+        $validation = Validator::make(Input::all(),['name' => 'required','email' =>'required','address' => 'required']);
+
+        if($validation->fails()){
+
+            return Redirect::back()->withInput()->withErrors($validation->messages());
+        }
+
         $hostel_id               = Input::get('hostel_id');
 
         $hostel                  = Hostel::find($hostel_id);
 
         $name                    = Input::get('name');
-        $description             = Input::get('description');
-        $promotional_artist_text = Input::get('promotional_artist_text');
+        $email                   = Input::get('email');
+        $address                 = Input::get('address');
+
+        $contact_number1         = (!empty(Input::get('contact_number1'))) ? Input::get('contact_number1') : '';
+        $contact_number2         = (!empty(Input::get('contact_number2'))) ? Input::get('contact_number2') : '';
+        $contact_number3         = (!empty(Input::get('contact_number3'))) ? Input::get('contact_number3') : '';
 
 
         $tableName = 'hostels';
@@ -136,56 +118,12 @@ Class HostelsController extends BaseController{
             $hostelFileName = $hostel->image;
         }
 
-        if(Input::hasFile('promotional_artist_image')){
-
-            $destinationPath = '../uploads/promotional_artist';
-
-            $artistFileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('promotional_artist_image')->move($destinationPath, $artistFileName);
-
-        }else{
-
-            $artistFileName = $hostel->promotional_artist_image;
-        }
-
-
-        if(Input::hasFile('city_guide_image')){
-
-            $destinationPath = '../uploads/city_guide';
-
-            $cityGuidefileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('city_guide_image')->move($destinationPath, $cityGuidefileName);
-
-        }else{
-
-            $cityGuidefileName = $hostel->city_guide_image;
-        }
-
-        if(Input::hasFile('excursion_image')){
-
-            $destinationPath = '../uploads/excursion';
-
-            $excursionImageFileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('excursion_image')->move($destinationPath, $excursionImageFileName);
-
-        }else{
-
-            $excursionImageFileName = $hostel->excursion_image;
-        }
-
-
-
         $hostel->name                       =   $name;
-        $hostel->description                =   $description;
-        $hostel->image                      =   $hostelFileName;
-        $hostel->promotional_artist_text    =   $promotional_artist_text;
-        $hostel->promotional_artist_image   =   $artistFileName;
-        $hostel->city_guide_image           =   $cityGuidefileName;
-        $hostel->excursion_image            =   $excursionImageFileName;
-
+        $hostel->email                      =   $email;
+        $hostel->address                    =   $address;
+        $hostel->contact_number1            =   $contact_number1;
+        $hostel->contact_number2            =   $contact_number2;
+        $hostel->contact_number3            =   $contact_number3;
 
         $hostel->save();
 
@@ -203,13 +141,17 @@ Class HostelsController extends BaseController{
             $hostel->delete();
 
             @unlink('../uploads/hostels/'.$hostel->image);
-            @unlink('../uploads/promotional_artist/'.$hostel->promotional_artist_image);
-            @unlink('../uploads/city_guide/'.$hostel->city_guide_image);
-            @unlink('../uploads/excursion/'.$hostel->excursion_image);
 
             return Redirect::to('admin/hostels')->with('msg','Hotel removed successfully');
         }
 
+    }
+
+    public function time_to_touristic(){
+
+        $hostels  = Hostel::all(); return $hostels ;
+
+        return View::make('admins.choose_hostel')->with('hostels',$hostels);
     }
 
 }

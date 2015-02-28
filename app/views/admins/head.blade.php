@@ -19,7 +19,16 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- end: META -->
+<<<<<<< HEAD
     {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
+=======
+
+    <!-- start: MAIN JS -->
+    {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
+    <!-- end: MAIN JS -->
+
+
+>>>>>>> 0f25a427de2aa0e3785b2464edd8b48baf2c21e1
     <!-- start: MAIN CSS -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
 
@@ -50,8 +59,8 @@
     {{ HTML::style('../assets/css/styles.css') }}
     {{ HTML::style('../assets/css/styles-responsive.css') }}
     {{ HTML::style('../assets/css/plugins.css') }}
-    {{ HTML::style('../assets/css/themes/theme-default.css" type="text/css" id="skin_color') }}
-    {{ HTML::style('../assets/css/print.css" type="text/css" media="print"') }}
+    {{ HTML::style("../assets/css/themes/theme-default.css", array("id"=>"skin_color")) }}
+    {{ HTML::style("../assets/css/print.css" ,array("media" => "print")) }}
     {{HTML::script('../assets/js/common.js') }}
 
     <!-- end: CORE CSS -->

@@ -61,6 +61,7 @@ function delete_hostel(hostel_id){
     if(confirm){
             $.ajax({
 
+
                 'url'       : 'delete_hostel',
                 'action'    : 'POST',
                 'data'      : {hostel_id:hostel_id},
@@ -96,7 +97,7 @@ function delete_language(language_id){
             console.log('Some error occurred');
         }
 
-    })
+    });
 
-    }
+}
 }

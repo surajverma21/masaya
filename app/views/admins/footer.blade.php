@@ -69,7 +69,7 @@
 <!-- start: CORE JAVASCRIPTS  -->
 {{ HTML::script('../assets/js/main.js') }}
 <!-- end: CORE JAVASCRIPTS  -->
-
+</script>
 </body>
 <!-- end: BODY -->
 </html>

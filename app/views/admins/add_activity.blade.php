@@ -106,6 +106,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                                <input type="text" class="form-control date-range">
+                            </div>
+                            </div>
+
                             <div class="form-actions">
                                 {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}
                             </div>

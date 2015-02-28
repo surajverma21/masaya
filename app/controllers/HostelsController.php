@@ -28,9 +28,9 @@ Class HostelsController extends BaseController{
         $email                   = Input::get('email');
         $address                 = Input::get('address');
 
-        $contact_number1         = (empty(Input::get('contact_number1'))) ? Input::get('contact_number1') : '';
-        $contact_number2         = (empty(Input::get('contact_number2'))) ? Input::get('contact_number1') : '';
-        $contact_number3         = (empty(Input::get('contact_number3'))) ? Input::get('contact_number1') : '';
+        $contact_number1         = (!empty(Input::get('contact_number1'))) ? Input::get('contact_number1') : '';
+        $contact_number2         = (!empty(Input::get('contact_number2'))) ? Input::get('contact_number1') : '';
+        $contact_number3         = (!empty(Input::get('contact_number3'))) ? Input::get('contact_number1') : '';
 
 
         $tableName = 'hostels';

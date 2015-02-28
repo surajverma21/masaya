@@ -101,26 +101,26 @@
                     10 Predefined Color Schemes
                 </div>
                 <div class="images icons-color">
-                    <a href="#" id="default"><img src="assets/images/color-1.png" alt="" class="active"></a>
-                    <a href="#" id="style2"><img src="assets/images/color-2.png" alt=""></a>
-                    <a href="#" id="style3"><img src="assets/images/color-3.png" alt=""></a>
-                    <a href="#" id="style4"><img src="assets/images/color-4.png" alt=""></a>
-                    <a href="#" id="style5"><img src="assets/images/color-5.png" alt=""></a>
-                    <a href="#" id="style6"><img src="assets/images/color-6.png" alt=""></a>
-                    <a href="#" id="style7"><img src="assets/images/color-7.png" alt=""></a>
-                    <a href="#" id="style8"><img src="assets/images/color-8.png" alt=""></a>
-                    <a href="#" id="style9"><img src="assets/images/color-9.png" alt=""></a>
-                    <a href="#" id="style10"><img src="assets/images/color-10.png" alt=""></a>
+                    <a href="#" id="default"><img src="../../assets/images/color-1.png" alt="" class="active"></a>
+                    <a href="#" id="style2"><img src="../../assets/images/color-2.png" alt=""></a>
+                    <a href="#" id="style3"><img src="../../assets/images/color-3.png" alt=""></a>
+                    <a href="#" id="style4"><img src="../../assets/images/color-4.png" alt=""></a>
+                    <a href="#" id="style5"><img src="../../assets/images/color-5.png" alt=""></a>
+                    <a href="#" id="style6"><img src="../../assets/images/color-6.png" alt=""></a>
+                    <a href="#" id="style7"><img src="../../assets/images/color-7.png" alt=""></a>
+                    <a href="#" id="style8"><img src="../../assets/images/color-8.png" alt=""></a>
+                    <a href="#" id="style9"><img src="../../assets/images/color-9.png" alt=""></a>
+                    <a href="#" id="style10"><img src="../../assets/images/color-10.png" alt=""></a>
                 </div>
                 <div class="box-title">
                     Backgrounds for Boxed Version
                 </div>
                 <div class="images boxed-patterns">
-                    <a href="#" id="bg_style_1"><img src="assets/images/bg.png" alt=""></a>
-                    <a href="#" id="bg_style_2"><img src="assets/images/bg_2.png" alt=""></a>
-                    <a href="#" id="bg_style_3"><img src="assets/images/bg_3.png" alt=""></a>
-                    <a href="#" id="bg_style_4"><img src="assets/images/bg_4.png" alt=""></a>
-                    <a href="#" id="bg_style_5"><img src="assets/images/bg_5.png" alt=""></a>
+                    <a href="#" id="bg_style_1"><img src="../../assets/images/bg.png" alt=""></a>
+                    <a href="#" id="bg_style_2"><img src="../../assets/images/bg_2.png" alt=""></a>
+                    <a href="#" id="bg_style_3"><img src="../../assets/images/bg_3.png" alt=""></a>
+                    <a href="#" id="bg_style_4"><img src="../../assets/images/bg_4.png" alt=""></a>
+                    <a href="#" id="bg_style_5"><img src="../../assets/images/bg_5.png" alt=""></a>
                 </div>
                 <div class="style-options">
                     <a href="#" class="clear_style">
@@ -250,7 +250,7 @@
                                         <a href="javascript:;" class="unread">
                                             <div class="clearfix">
                                                 <div class="thread-image">
-                                                    <img src="./assets/images/avatar-2.jpg" alt="">
+                                                    <img src="./../../assets/images/avatar-2.jpg" alt="">
                                                 </div>
                                                 <div class="thread-content">
                                                     <span class="author">Nicole Bell</span>
@@ -264,7 +264,7 @@
                                         <a href="javascript:;" class="unread">
                                             <div class="clearfix">
                                                 <div class="thread-image">
-                                                    <img src="./assets/images/avatar-3.jpg" alt="">
+                                                    <img src="./../../assets/images/avatar-3.jpg" alt="">
                                                 </div>
                                                 <div class="thread-content">
                                                     <span class="author">Steven Thompson</span>
@@ -278,7 +278,7 @@
                                         <a href="javascript:;">
                                             <div class="clearfix">
                                                 <div class="thread-image">
-                                                    <img src="./assets/images/avatar-5.jpg" alt="">
+                                                    <img src="./../../assets/images/avatar-5.jpg" alt="">
                                                 </div>
                                                 <div class="thread-content">
                                                     <span class="author">Kenneth Ross</span>
@@ -641,7 +641,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <div class="avatar-note"><img src="assets/images/avatar-2-small.jpg" alt="">
+                        <div class="avatar-note"><img src="../../assets/images/avatar-2-small.jpg" alt="">
                         </div>
                         <span class="author-note">Nicole</span>
                         <time class="timestamp" title="2014-02-18T00:00:00-05:00">
@@ -678,7 +678,7 @@
                         <div class="note-options pull-right">
                             <a href="#readNote" class="show-subviews read-note" data-subviews-options='{"startFrom": "right", "onShow": "readNote(subViewElement)", "onHide": "hideNote()"}'><i class="fa fa-chevron-circle-right"></i> Read</a><a href="#" class="delete-note"><i class="fa fa-times"></i> Delete</a>
                         </div>
-                        <div class="avatar-note"><img src="assets/images/avatar-3-small.jpg" alt="">
+                        <div class="avatar-note"><img src="../../assets/images/avatar-3-small.jpg" alt="">
                         </div>
                         <span class="author-note">Steven</span>
                         <time class="timestamp" title="2014-02-18T00:00:00-05:00">
@@ -708,7 +708,7 @@
                         <div class="note-options pull-right">
                             <a href="#readNote" class="show-subviews read-note" data-subviews-options='{"startFrom": "right", "onShow": "readNote(subViewElement)", "onHide": "hideNote()"}'><i class="fa fa-chevron-circle-right"></i> Read</a><a href="#" class="delete-note"><i class="fa fa-times"></i> Delete</a>
                         </div>
-                        <div class="avatar-note"><img src="assets/images/avatar-4-small.jpg" alt="">
+                        <div class="avatar-note"><img src="../../assets/images/avatar-4-small.jpg" alt="">
                         </div>
                         <span class="author-note">Ella</span>
                         <time class="timestamp" title="2014-02-18T00:00:00-05:00">
@@ -1214,7 +1214,7 @@
 </div>
 <div class="panel-body no-padding">
 <div class="padding-10">
-    <img width="50" height="50" alt="" class="img-circle pull-left" src="assets/images/avatar-1-big.jpg">
+    <img width="50" height="50" alt="" class="img-circle pull-left" src="../../assets/images/avatar-1-big.jpg">
     <h4 class="no-margin inline-block padding-5">Peter Clark <span class="block text-small text-left">UI Designer</span></h4>
     <div class="pull-right padding-15">
         <span class="text-small text-bold text-green"><i class="fa fa-dot-circle-o"></i> on-line</span>
@@ -1263,7 +1263,7 @@
         <table class="table table-striped table-hover">
             <tbody>
             <tr>
-                <td class="center"><img src="assets/images/avatar-1.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-1.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">UI Designer</span><span class="text-large">Peter Clark</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1292,7 +1292,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-2.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-2.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Content Designer</span><span class="text-large">Nicole Bell</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1321,7 +1321,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-3.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-3.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Visual Designer</span><span class="text-large">Steven Thompson</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1350,7 +1350,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-5.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-5.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Senior Designer</span><span class="text-large">Kenneth Ross</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1379,7 +1379,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-4.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-4.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Web Editor</span><span class="text-large">Ella Patterson</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1416,7 +1416,7 @@
         <table class="table table-striped table-hover">
             <tbody>
             <tr>
-                <td class="center"><img src="assets/images/avatar-3.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-3.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Visual Designer</span><span class="text-large">Steven Thompson</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1445,7 +1445,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-5.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-5.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Senior Designer</span><span class="text-large">Kenneth Ross</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1474,7 +1474,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-4.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-4.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Web Editor</span><span class="text-large">Ella Patterson</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1511,7 +1511,7 @@
         <table class="table table-striped table-hover">
             <tbody>
             <tr>
-                <td class="center"><img src="assets/images/avatar-2.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-2.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Content Designer</span><span class="text-large">Nicole Bell</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1540,7 +1540,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-3.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-3.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Visual Designer</span><span class="text-large">Steven Thompson</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1569,7 +1569,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-5.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-5.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Senior Designer</span><span class="text-large">Kenneth Ross</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1598,7 +1598,7 @@
                     </div></td>
             </tr>
             <tr>
-                <td class="center"><img src="assets/images/avatar-4.jpg" class="img-circle" alt="image"/></td>
+                <td class="center"><img src="../../assets/images/avatar-4.jpg" class="img-circle" alt="image"/></td>
                 <td><span class="text-small block text-light">Web Editor</span><span class="text-large">Ella Patterson</span><a href="#" class="btn"><i class="fa fa-pencil"></i></a></td>
                 <td class="center">
                     <div>
@@ -1737,7 +1737,7 @@
                 </div>
                 <div class="e-slider owl-carousel owl-theme portfolio-grid portfolio-hover" data-plugin-options='{"pagination": false, "stopOnHover": true}'>
                     <div class="item">
-                        <img src="assets/images/image01.jpg" alt="">
+                        <img src="../../assets/images/image01.jpg" alt="">
                         <div class="caption">
                             <h2 class="caption-title">Hover Style #10</h2>
                             <p class="caption-description">
@@ -1749,7 +1749,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img src="assets/images/image02.jpg" alt="">
+                        <img src="../../assets/images/image02.jpg" alt="">
                         <div class="caption">
                             <h2 class="caption-title">Hover Style #10</h2>
                             <p class="caption-description">
@@ -1761,7 +1761,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img src="assets/images/image03.jpg" alt="">
+                        <img src="../../assets/images/image03.jpg" alt="">
                         <div class="caption">
                             <h2 class="caption-title">Hover Style #10</h2>
                             <p class="caption-description">
@@ -1773,7 +1773,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img src="assets/images/image04.jpg" alt="">
+                        <img src="../../assets/images/image04.jpg" alt="">
                         <div class="caption">
                             <h2 class="caption-title">Hover Style #10</h2>
                             <p class="caption-description">
@@ -2469,7 +2469,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <div class="avatar-note"><img src="assets/images/avatar-2-small.jpg" alt="">
+                        <div class="avatar-note"><img src="../../assets/images/avatar-2-small.jpg" alt="">
                         </div>
                         <span class="author-note">Nicole Bell</span>
                         <time class="timestamp" title="2014-02-18T00:00:00-05:00">
@@ -2503,7 +2503,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <div class="avatar-note"><img src="assets/images/avatar-3-small.jpg" alt="">
+                        <div class="avatar-note"><img src="../../assets/images/avatar-3-small.jpg" alt="">
                         </div>
                         <span class="author-note">Steven Thompson</span>
                         <time class="timestamp" title="2014-02-18T00:00:00-05:00">
@@ -2533,7 +2533,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <div class="avatar-note"><img src="assets/images/avatar-4-small.jpg" alt="">
+                        <div class="avatar-note"><img src="../../assets/images/avatar-4-small.jpg" alt="">
                         </div>
                         <span class="author-note">Ella Patterson</span>
                         <time class="timestamp" title="2014-02-18T00:00:00-05:00">
@@ -2746,7 +2746,7 @@
                     </div>
                     <div class="form-group">
                         <div class="fileupload fileupload-new contributor-avatar" data-provides="fileupload">
-                            <div class="fileupload-new thumbnail"><img src="assets/images/anonymous.jpg" alt="" width="50" height="50"/>
+                            <div class="fileupload-new thumbnail"><img src="../../assets/images/anonymous.jpg" alt="" width="50" height="50"/>
                             </div>
                             <div class="fileupload-preview fileupload-exists thumbnail"></div>
                             <div class="contributor-avatar-options">

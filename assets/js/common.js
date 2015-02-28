@@ -71,11 +71,11 @@ function delete_hostel(hostel_id){
                 'error'     : function(){
                     console.log('Some error occurred');
                 }
+            })
+    }
 
-<<<<<<< HEAD
-}
 
-// Delete Lenaguage
+// Delete Language
 function delete_language(language_id){
 
     if(!language_id){
@@ -96,12 +96,7 @@ function delete_language(language_id){
             console.log('Some error occurred');
         }
 
-    });
+    })
 
-}
-
-=======
-            });
     }
 }
->>>>>>> aa8664f3ff2a85a4bb3c1b108752be592b1420fd

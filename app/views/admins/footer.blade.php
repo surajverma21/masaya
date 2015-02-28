@@ -11,13 +11,14 @@
     </div>
 </footer>
 <!-- start: MAIN JAVASCRIPTS -->
+
 <!--[if lt IE 9]>
 {{ HTML::script('assets/plugins/respond.min.js') }}
 {{ HTML::script('assets/plugins/excanvas.min.js') }}
-<script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js') }}
+
 		<![endif]-->
 <!--[if gte IE 9]><!-->
-{{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
+
 <!--<![endif]-->
 {{ HTML::script('../assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') }}
 {{ HTML::script('../assets/plugins/bootstrap/js/bootstrap.min.js') }}

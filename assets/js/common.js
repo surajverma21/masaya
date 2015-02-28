@@ -74,6 +74,8 @@ function delete_hostel(hostel_id){
                 });
     }
 
+}
+
 // Delete Lenaguage
 function delete_language(language_id){
 
@@ -98,6 +100,30 @@ function delete_language(language_id){
     });
 
 }
+
+function delete_activity(activity_id)
+{
+    if(!activity_id){
+        alert('No Activity ID found');
+        return false;
+    }
+    confirm = confirm('Are you sure you want to delete Activity!');
+
+    if(confirm){
+        $.ajax({
+
+            'url'       : 'delete_activity',
+            'action'    : 'POST',
+            'data'      : {activity_id:activity_id},
+            'success'   : function(result){
+
+                location.reload();
+            },
+            'error'     : function(){
+                console.log('Some error occurred');
+            }
+        });
+    }
 }
 
 

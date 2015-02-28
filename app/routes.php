@@ -63,7 +63,7 @@ Route::get('admin/delete_activity','ActivitiesController@delete_activity');
 // Test
 //Mehar Singh
 Route::get('test',function(){
-	return 'Test!';
+	//return View::make('admins.test');
 });
 
 //testkljlklkjn

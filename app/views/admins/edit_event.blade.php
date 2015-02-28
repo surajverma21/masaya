@@ -24,6 +24,7 @@
                                     <i class="fa fa-plus"></i> Add Event
                                 </a>
                             </li>
+                         </ul>
                         <!-- end: TOP NAVIGATION MENU -->
                     </div>
                 </div>
@@ -45,10 +46,11 @@
                     </ol>
                 </div>
             </div>
+
             <!-- end: BREADCRUMB -->
             <!-- start: PAGE CONTENT -->
             <div class="row">
-                <div class="col-md-6 col-lg-8 col-sm-6">
+                <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="box-login">
                         {{ Form::open(array('url' => 'admin/update_event','class' => 'form-horizontal', 'files' => true)) }}
 
@@ -61,34 +63,34 @@
                         <fieldset>
                             {{ Form::hidden('id', $event->id) }}
                             <div class="form-group">
-                                {{ Form::label('language_id','Language', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('language_id','Language', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::select('language_id', $languages) }}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::text('title', $event->event_title, $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('sub_title','Sub Title :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('sub_title','Sub Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::text('sub_title', $event->event_sub_title, $attributes = ['class' => 'form-control', 'placeholder' => 'Sub Title']) }}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('text','Text :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('text','Text :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::textarea('text', $event->event_text, $attributes = ['class' => 'form-control', 'placeholder' => '']) }}
                                 </div>
                             </div>
                             <div class="form-group">
-                                {{ Form::label('event_legend','Legend Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('event_legend','Legend Event', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     @if($event->event_legend == 'yes')
                                         {{ Form::checkbox('event_legend', 'yes', true) }}
@@ -98,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                {{ Form::label('event_medium','Medium Event', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('event_medium','Medium Event', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     @if($event->event_medium == 'yes')
                                     {{ Form::checkbox('event_medium', 'yes', true) }}
@@ -109,24 +111,24 @@
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('hostel_id','Hostel', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('hostel_id','Hostel', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::select('hostel_id', $hostels) }}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('month','Select Month', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('month','Select Month', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::selectMonth('month', $event->month_id, $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}
                                 </div>
                             </div>
                             <br/>
-                            <img style="height:15%" src="{{URL::to('/')}}/../uploads/events/{{$event->event_image}}" alt=""/>
+                            <img style="height:15%" src="{{URL::to('/')}}/../uploads/events/{{$event->event_image}}" alt="" width="200px"/>
                             <br/>
                             <br/>
                             <div class="form-group">
-                                {{ Form::label('event_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('event_image','Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
 
                                 <div class="col-sm-9">
                                     {{ Form::file('event_image', '', $attributes = ['class' => 'form-control']) }}

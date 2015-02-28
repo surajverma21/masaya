@@ -1,6 +1,10 @@
 @extends('master')
 @section('content')
 <!-- start: MAIN CONTAINER -->
+
+<!-- end: SLIDING BAR -->
+<div class="main-wrapper">
+<!-- start: MAIN CONTAINER -->
 <div class="main-container inner">
     <!-- start: PAGE -->
     <div class="main-content">
@@ -52,6 +56,40 @@
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
+                        <div class="panel-outer">
+                            <div class="panel-inner">
+                                <h4 class="panel-title">Add <span class="text-bold">Activity</span></h4>
+                                <div class="panel-tools">
+                                    <div class="dropdown">
+                                        <a class="btn btn-xs dropdown-toggle btn-transparent-grey" data-toggle="dropdown">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                        <ul role="menu" class="dropdown-menu dropdown-light pull-right">
+                                            <li>
+                                                <a href="#" class="panel-collapse collapses"><i class="fa fa-angle-up"></i> <span>Collapse</span> </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="panel-refresh">
+                                                    <i class="fa fa-refresh"></i> <span>Refresh</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="modal" href="#panel-config" class="panel-config">
+                                                    <i class="fa fa-wrench"></i> <span>Configurations</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="panel-expand">
+                                                    <i class="fa fa-expand"></i> <span>Fullscreen</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="#" class="btn btn-xs btn-link panel-close">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
                         {{ Form::open(array('url' => 'admin/save_activity','class' => 'form-horizontal','files' =>true)) }}
 
                         @if(Session::has('message'))
@@ -107,10 +145,11 @@
                             </div>
 
                             <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
-                                <input type="text" class="form-control date-range">
-                            </div>
+                                {{ Form::label('datetime','Activity date & time', $attributes = ['class' => 'input-group col-sm-2 control-label']) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
+                                    {{ Form::text('date-time-range', '', $attributes = ['class' => 'form-control date-time-range','required' => 'required']) }}
+                                </div>
                             </div>
 
                             <div class="form-actions">
@@ -118,7 +157,7 @@
                             </div>
                         </fieldset>
                         {{ Form::close() }}
-
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,16 +168,28 @@
         </div>
     </div>
     <!-- end: PAGE -->
+    <!-- *** READ NOTE *** -->
+    <div id="readNote">
+        <div class="barTopSubview">
+            <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>
+        </div>
+        <div class="noteWrap col-md-8 col-md-offset-2">
+            <div class="panel panel-note">
+                <div class="e-slider owl-carousel owl-theme">
+                    <div class="item">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- end: MAIN CONTAINER -->
-
-
 
 <script>
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+        FormElements.init();
     });
 </script>
 @stop

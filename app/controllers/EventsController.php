@@ -241,5 +241,12 @@ class EventsController extends \BaseController {
 		//
 	}
 
+    public function formElements()
+    {
+        return View::make('admins.form_elements');
+       // echo 'here';die;
+    }
+
+
 
 }

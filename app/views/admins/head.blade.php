@@ -9,7 +9,7 @@
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
-    <title>Rapido - Responsive Admin Template</title>
+    <title>Masaya</title>
     <!-- start: META -->
     <meta charset="utf-8" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
@@ -21,12 +21,14 @@
     <!-- end: META -->
 
     <!-- start: MAIN JS -->
+    <!--[if gte IE 9]><!-->
     {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
+    <!--<![endif]-->
     <!-- end: MAIN JS -->
 
 
-    <!-- start: MAIN CSS -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
+
     {{ HTML::style('../assets/plugins/bootstrap/css/bootstrap.min.css') }}
     {{ HTML::style('../assets/plugins/font-awesome/css/font-awesome.min.css') }}
     {{ HTML::style('../assets/plugins/iCheck/skins/all.css') }}
@@ -45,17 +47,25 @@
     {{ HTML::style('../assets/plugins/DataTables/media/css/DT_bootstrap.css') }}
     {{ HTML::style('../assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css') }}
     {{ HTML::style('../assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css') }}
+    {{ HTML::style('../assets/plugins/animate.css/animate.min.css') }}
+    {{ HTML::style('../assets/plugins/animate.css/animate.min.css') }}
+
     <!-- end: CSS REQUIRED FOR THIS SUBVIEW CONTENTS-->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    {{ HTML::style('../assets/plugins/weather-icons/css/weather-icons.min.css') }}
-    {{ HTML::style('../assets/plugins/nvd3/nv.d3.min.css') }}'
+    {{ HTML::style('../assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}
+    {{ HTML::style('../assets/plugins/select2/select2.css') }}
+    {{ HTML::style('../assets/plugins/datepicker/css/datepicker.css') }}
+    {{ HTML::style('../assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}
+    {{ HTML::style('../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css') }}
+    {{ HTML::style('../assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css') }}
+    {{ HTML::style('../assets/plugins/jQuery-Tags-Input/jquery.tagsinput.css') }}
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <!-- start: CORE CSS -->
     {{ HTML::style('../assets/css/styles.css') }}
     {{ HTML::style('../assets/css/styles-responsive.css') }}
     {{ HTML::style('../assets/css/plugins.css') }}
-    {{ HTML::style("../assets/css/themes/theme-default.css", array("id"=>"skin_color")) }}
-    {{ HTML::style("../assets/css/print.css" ,array("media" => "print")) }}
+    {{ HTML::style('../assets/css/themes/theme-default.css',array('id'=>'skin_color')) }}
+    {{ HTML::style('../assets/css/print.css',array("media" => "print")) }}
     {{HTML::script('../assets/js/common.js') }}
 
     <!-- end: CORE CSS -->

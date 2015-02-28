@@ -15,12 +15,19 @@ Class ActivitiesController extends BaseController{
 
     }
 
-    public function save_activity(){
-
-
+    public function save_activity()
+    {
         $name                    = Input::get('name');
         $description             = Input::get('description');
-        $lang_code               = Input::get('lang_code');
+        $lang_id               = Input::get('language_id');
+        $hostel_id               = Input::get('hostel_id');
+        $day                       = Input::get('day');
+        $datetimerange               = Input::get('date-time-range');
+
+        //echo $datetimerange;
+        $time = explode('-',$datetimerange);
+        $starttime = $time[0];
+        $endtime = $time[1];
 
 
         $tableName = 'activities';
@@ -44,124 +51,101 @@ Class ActivitiesController extends BaseController{
         $activity->name                       =   $name;
         $activity->description                =   $description;
         $activity->image                      =   $activityFileName;
-        $activity->lang_code                  =   $lang_code;
+        $activity->lang_id                    =   $lang_id;
         $activity->hostel_id                  =   $hostel_id;
+        $activity->day                        =   $day;
+        $activity->start_time                 =   $starttime;
+        $activity->end_time                   =   $endtime;
 
+        $activity->save();
 
-        $hostel->save();
-
-        return Redirect::to('admin/hostels')->with('msg','Hosted added successfully');
+        return Redirect::to('admin/activities')->with('msg','Activity added successfully');
     }
 
     public function edit_activity(){
 
-        $hostel_id = Route::input('id');
+        $activity_id = Route::input('id');
 
-        $hostel = Hostel::find($hostel_id);
-
-        if(!$hostel){
-               return Redirect::to('admin/hostels');
+        $activity = Activity::find($activity_id);
+        $hostels = Hostel::All()->lists('name' ,'id');
+        $languages = Language::All()->lists('name' ,'id');
+       // echo '<pre>';print_r($activity); die;
+        if(!$activity){
+               return Redirect::to('admin/activities');
         }
 
-        return View::make('admins/edit_hostel')->with('hostel',$hostel);
+        return View::make('admins/edit_activity', array('hostels' => $hostels , 'languages' => $languages))->with('activity',$activity);
     }
 
     public function update_activity(){
 
-        $hostel_id               = Input::get('hostel_id');
+        $activity_id             = Input::get('activity_id');
 
-        $hostel                  = Hostel::find($hostel_id);
+        $activity                = Activity::find($activity_id);
+
+
+        print_r($activity );
+
 
         $name                    = Input::get('name');
         $description             = Input::get('description');
-        $promotional_artist_text = Input::get('promotional_artist_text');
+        $lang_id                 = Input::get('language_id');
+        $hostel_id               = Input::get('hostel_id');
+        $day                     = Input::get('day');
+        $datetimerange           = Input::get('date-time-range');
 
+        //echo $datetimerange;
+        $time = explode('-',$datetimerange);
+        $starttime = $time[0];
+        $endtime = $time[1];
 
-        $tableName = 'hostels';
+        $tableName = 'activities';
 
         $fieldName = 'image';
 
-        if(Input::hasFile('hostel_image')){
+        if(Input::hasFile('activity_image')){
 
-            $destinationPath = '../uploads/hostels';
+            $destinationPath = '../uploads/activities';
 
-            $hostelFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+            $activityFileName = $this->generateRandomStringForImage($tableName,$fieldName);
 
-            Input::file('hostel_image')->move($destinationPath, $hostelFileName);
+            Input::file('activity_image')->move($destinationPath, $activityFileName);
 
-        }else{
-
-            $hostelFileName = $hostel->image;
         }
-
-        if(Input::hasFile('promotional_artist_image')){
-
-            $destinationPath = '../uploads/promotional_artist';
-
-            $artistFileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('promotional_artist_image')->move($destinationPath, $artistFileName);
-
-        }else{
-
-            $artistFileName = $hostel->promotional_artist_image;
-        }
-
-
-        if(Input::hasFile('city_guide_image')){
-
-            $destinationPath = '../uploads/city_guide';
-
-            $cityGuidefileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('city_guide_image')->move($destinationPath, $cityGuidefileName);
-
-        }else{
-
-            $cityGuidefileName = $hostel->city_guide_image;
-        }
-
-        if(Input::hasFile('excursion_image')){
-
-            $destinationPath = '../uploads/excursion';
-
-            $excursionImageFileName = $this->generateRandomStringForImage($tableName,$fieldName);
-
-            Input::file('excursion_image')->move($destinationPath, $excursionImageFileName);
-
-        }else{
-
-            $excursionImageFileName = $hostel->excursion_image;
+        else
+        {
+            $activityFileName = $activity->image;
         }
 
 
 
-        $hostel->name                       =   $name;
-        $hostel->description                =   $description;
-        $hostel->image                      =   $hostelFileName;
-        $hostel->promotional_artist_text    =   $promotional_artist_text;
-        $hostel->promotional_artist_image   =   $artistFileName;
-        $hostel->city_guide_image           =   $cityGuidefileName;
-        $hostel->excursion_image            =   $excursionImageFileName;
+        $activity->name                       =   $name;
+        $activity->description                =   $description;
+        $activity->image                      =   $activityFileName;
+        $activity->lang_id                    =   $lang_id;
+        $activity->hostel_id                  =   $hostel_id;
+        $activity->day                        =   $day;
+        $activity->start_time                 =   $starttime;
+        $activity->end_time                   =   $endtime;
 
 
-        $hostel->save();
+        $activity->save();
 
-        return Redirect::to('admin/hostels')->with('msg','Hosted added successfully');
+        return Redirect::to('admin/activities')->with('msg','Activity updated successfully');
     }
 
     public function delete_activity(){
 
-        $hostel_id = Input::get('hostel_id');
+        $activity_id = Input::get('activity_id');
 
-        $hostel = Hostel::find($hostel_id);
+        $activity = Activity::find($activity_id);
 
-        if($hostel){
-            $hostel->delete();
+        if($activity){
+            $activity->delete();
 
-            @unlink('../uploads/activities/'.$hostel->image);
+            @unlink('../uploads/activities/'.$activity->image);
 
-            return Redirect::to('admin/hostels')->with('msg','Hotel removed successfully');;
+            return Redirect::to('admin/activities')->with('msg','Activity removed successfully');;
         }
 
     }

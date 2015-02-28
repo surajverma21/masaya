@@ -125,7 +125,7 @@
                 </a>
                 <!-- start: LOGO -->
                 <a class="navbar-brand" href="index.html">
-                    {{ HTML::image('../assets/images/logo.png', '') }}
+                   MASAYA
                 </a>
                 <!-- end: LOGO -->
             </div>

@@ -35,7 +35,26 @@ Route::get('admin/edit_event/{id}','EventsController@edit_event')->before('auth'
 Route::post('admin/update_event','EventsController@update_event')->before('auth');
 Route::get('admin/delete_event','EventsController@delete_events')->before('auth');
 Route::resource('admin/events-activities','EventsController');
-Route::get('admin/time-to-touristic','HostelsController@time_to_touristic')->before('auth');
+Route::get('admin/time-to-touristic','HostelsController@touristic_choose_hostel')->before('auth');
+Route::post('admin/touristic','HostelsController@time_to_touristic')->before('auth');
+Route::get('admin/touristic/add','HostelsController@new_time_to_touristic')->before('auth');
+Route::get('admin/touristic','HostelsController@time_to_touristic')->before('auth');
+Route::post('admin/save_touristic','HostelsController@save_touristic')->before('auth');
+Route::get('admin/edit_time_to_touristic/{id}','HostelsController@edit_touristic')->before('auth');
+Route::post('admin/update_touristic','HostelsController@update_touristic')->before('auth');
+Route::get('admin/delete_time_to_touristics','HostelsController@delete_touristic')->before('auth');
+
+//Travel Tips
+Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel');
+Route::post('admin/travel-tips-index','HostelsController@list_travel_tips');
+Route::get('admin/travel-tips-index','HostelsController@list_travel_tips');
+Route::get('admin/travel-tip-add','HostelsController@add_travel_tip');
+Route::post('admin/save_travel_tip','HostelsController@save_travel_tip');
+Route::post('admin/save_travel_tip','HostelsController@save_travel_tip');
+Route::get('admin/delete_travel_tip','HostelsController@delete_travel_tip')->before('auth');
+Route::get('admin/edit-travel-tip/{id}','HostelsController@edit_travel_tip');
+Route::post('admin/update_travel_tip','HostelsController@update_travel_tip');
+Route::get('admin/travel-tips-index/{id}','HostelsController@list_travel_tips_for_hotel');
 
 
 

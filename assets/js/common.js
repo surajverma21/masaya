@@ -75,14 +75,10 @@ function delete_hostel(hostel_id){
             })
     }
 
-<<<<<<< HEAD
-}
 
 // Delete Lenaguage
-=======
 
-// Delete Language
->>>>>>> b8fbaa19a36cc6b03683d4c9400b78c10ea28003
+
 function delete_language(language_id){
 
     if(!language_id){
@@ -107,15 +103,16 @@ function delete_language(language_id){
 
 }
 
-function delete_activity(activity_id)
-{
+function delete_activity(activity_id){
+
+
     if(!activity_id){
         alert('No Activity ID found');
         return false;
     }
-    confirm = confirm('Are you sure you want to delete Activity!');
+    var confirmme = confirm('Are you sure you want to delete Activity!');
 
-    if(confirm){
+    if(confirmme){
         $.ajax({
 
             'url'       : 'delete_activity',
@@ -130,4 +127,60 @@ function delete_activity(activity_id)
             }
         });
     }
+ }
+}
+
+function delete_time_to_touristics(touristic_id,hostel_id){
+
+    if(!touristic_id){
+        alert('No touristic id ID found');
+        return false;
+    }
+
+    var confirmme = confirm('Are you sure you want to delete this Touristic!');
+
+    if(confirm){
+        $.ajax({
+
+            'url'       : 'delete_time_to_touristics',
+            'action'    : 'POST',
+            'data'      : {touristic_id:touristic_id},
+            'success'   : function(result){
+
+                //$('#msg').html(result);
+                location.reload();
+            },
+            'error'     : function(){
+                console.log('Some error occurred');
+            }
+        });
+    }
+}
+
+function delete_travel_tip(tip_id,hostel_id){
+
+    if(!tip_id){
+        alert('No Tip ID found');
+        return false;
+    }
+
+    var confirmme = confirm('Are you sure you want to delete this Touristic!');
+
+    if(confirm){
+        $.ajax({
+
+            'url'       : 'delete_travel_tip',
+            'action'    : 'POST',
+            'data'      : {tip_id:tip_id},
+            'success'   : function(result){
+                //$('#msg').html(result);
+                location.reload();
+            },
+            'error'     : function(){
+                console.log('Some error occurred');
+            }
+        });
+    }
+
+
 }

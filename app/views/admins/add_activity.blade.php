@@ -145,12 +145,13 @@
                             </div>
 
                             <div class="form-group">
-                                {{ Form::label('datetime','Activity date & time', $attributes = ['class' => 'input-group col-sm-2 control-label']) }}
-                                <div class="input-group">
+                                {{ Form::label('datetime','Activity date & time', $attributes = ['class' => 'input-group col-sm-3 calenderfrm control-label']) }}
+                                <div class="input-group col-sm-9 paddinglft " >
                                     <span class="input-group-addon"> <i class="fa fa-calendar"></i> </span>
                                     {{ Form::text('date-time-range', '', $attributes = ['class' => 'form-control date-time-range','required' => 'required']) }}
                                 </div>
                             </div>
+
 
                             <div class="form-actions">
                                 {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}

@@ -75,14 +75,10 @@ function delete_hostel(hostel_id){
             })
     }
 
-<<<<<<< HEAD
+
 }
 
-// Delete Lenaguage
-=======
 
-// Delete Language
->>>>>>> b8fbaa19a36cc6b03683d4c9400b78c10ea28003
 function delete_language(language_id){
 
     if(!language_id){

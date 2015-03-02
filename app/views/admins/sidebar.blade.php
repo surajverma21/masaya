@@ -45,6 +45,12 @@
                 <span class="title">Time To touristic points</span>
             </a>
         </li>
+        <li>
+            <a href="travel_tip">
+                <span class="title">Travel Tips</span>
+            </a>
+        </li>
+
     </ul>
 </li>
 

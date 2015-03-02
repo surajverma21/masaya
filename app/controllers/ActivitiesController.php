@@ -9,6 +9,7 @@ Class ActivitiesController extends BaseController{
     }
 
     public function add_activity(){
+
         $hostels = Hostel::All()->lists('name' ,'id');
         $languages = Language::All()->lists('name' ,'id');
         return View::make('admins.add_activity', array('hostels' => $hostels , 'languages' => $languages));

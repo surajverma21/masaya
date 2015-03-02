@@ -147,11 +147,234 @@ Class HostelsController extends BaseController{
 
     }
 
-    public function time_to_touristic(){
+    public function touristic_choose_hostel(){
 
-        $hostels  = Hostel::all(); return $hostels ;
+        $hostels  = Hostel::all();
 
         return View::make('admins.choose_hostel')->with('hostels',$hostels);
     }
 
+
+    public function time_to_touristic(){
+
+        $hostel_id = Input::get('hostel');
+
+        Session::forget('hostel_id');
+        Session::put('hostel_id',$hostel_id);
+
+        $time_to_touristics = TimeToTouristic::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_timetotouristics')->with('time_to_touristics',$time_to_touristics);
+
+    }
+
+    public function new_time_to_touristic(){
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        return View::make('admins.add_timetotouristics')->with('languages',$languages);
+
+    }
+
+    public function save_touristic(){
+
+
+        $hostel_id   = Input::get('hostel_id');
+        $time        =  (int) Input::get('time');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $time_to_touristic_point                    = new TimeToTouristic;
+        $time_to_touristic_point->hostel_id         = $hostel_id;
+        $time_to_touristic_point->language_id       = Input::get('language');
+        $time_to_touristic_point->time_on_point     = $time + 1;
+        $time_to_touristic_point->description       = Input::get('description');
+
+
+        $time_to_touristic_point->save();
+
+        return Redirect::action('HostelsController@time_to_touristic',array('hostel' => $hostel_id))->with('msg','Touristic added successfully');
+    }
+
+    public function edit_touristic(){
+
+        $id = Route::input('id');
+
+        $touristic  = TimeToTouristic::with('hostel')->find($id);
+        $languages  = Language::All()->lists('name' ,'id');
+        $time_range = range(1,50);
+
+        if(empty($touristic)){
+            return Redirect::to('admin/touristic');
+        }
+
+        return View::make('admins.edit_timetotouristics')->with('touristic',$touristic)->with('default',$touristic->time_on_point)->with('time_range',$time_range)->with('languages',$languages);
+
+    }
+
+    public function update_touristic(){
+
+        $id          =  Input::get('touristic_id');
+        $hostel_id   =  Input::get('hostel_id');
+        $description =  Input::get('description');
+        $time        =  (int) Input::get('time');
+
+        $time_to_touristic_point                    =  TimeToTouristic::find($id);
+        $time_to_touristic_point->hostel_id         = $hostel_id;
+        $time_to_touristic_point->language_id       = Input::get('language');
+        $time_to_touristic_point->time_on_point     = $time + 1;
+        $time_to_touristic_point->description       = $description;
+        $time_to_touristic_point->save();
+
+        return Redirect::action('HostelsController@time_to_touristic',array('hostel' => $hostel_id))->with('msg','Touristic updated successfully');
+
+    }
+
+    public function delete_touristic(){
+
+        $id          =  Input::get('touristic_id');
+
+        $touristic   =  TimeToTouristic::find($id);
+
+        $touristic->delete();
+
+        return 'Touristic deleted successfully';
+    }
+
+    public function time_to_touristic_with_hostel(){
+
+        $hostel_id = Route::input('hostel_id');
+
+        Session::forget('hostel_id');
+        Session::put('hostel_id',$hostel_id);
+
+        $time_to_touristics = TimeToTouristic::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_timetotouristics')->with('time_to_touristics',$time_to_touristics);
+
+    }
+
+
+
+        public function travel_tip_choose_hostel(){
+
+            $hostels  = Hostel::all();
+
+            return View::make('admins.choose_hostel_travel_tip')->with('hostels',$hostels);
+        }
+
+        public function list_travel_tips(){
+
+            $hostel_id = Input::get('hostel');
+
+            Session::forget('hostel_id');
+            Session::put('hostel_id',$hostel_id);
+
+            $travel_tips = TravelTip::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+            return View::make('admins.list_travel_tips')->with('travel_tips',$travel_tips);
+
+        }
+
+        public function add_travel_tip(){
+
+            $languages = Language::All()->lists('name' ,'id');
+
+            return View::make('admins.add_travel_tips')->with('languages',$languages);
+
+        }
+
+        public function save_travel_tip(){
+
+
+            $language_id = Input::get('language');
+            $hostel_id   = Input::get('hostel_id');
+            $title       = Input::get('title');
+            $description = Input::get('description');
+
+            if(empty($hostel_id)){
+
+                $hostel_id = Session::get('hostel_id');
+                $hostel_id = $hostel_id[0];
+            }
+
+            $travel_tip                    = new TravelTip;
+            $travel_tip->hostel_id         = $hostel_id;
+            $travel_tip->title             = $title;
+            $travel_tip->description       = $description;
+            $travel_tip->language_id       = $language_id;
+
+
+            $travel_tip->save();
+
+            return Redirect::action('HostelsController@list_travel_tips',array('hostel' => $hostel_id))->with('msg','Touristic added successfully');
+        }
+
+    public function delete_travel_tip(){
+
+        $tip_id = Input::get('tip_id');
+
+        $travel_tip = TravelTip::find($tip_id);
+
+        $travel_tip->delete();
+
+        return 'Travel tip deleted successfully';
+    }
+
+    public function edit_travel_tip(){
+
+        $tip_id     = Route::input('id');
+        $travel_tip = TravelTip::with('hostel')->with('language')->find($tip_id);
+        $hostel_id  = Session::get('hostel_id');
+        $languages  = Language::All()->lists('name' ,'id');
+
+        if(empty($travel_tip)){
+
+            return Redirect::action('HostelsController@list_travel_tips',array('hostel' => $hostel_id));
+        }else{
+            return View::make('admins.edit_travel_tips')->with('travel_tip',$travel_tip)->with('languages',$languages);
+        }
+    }
+
+    public function update_travel_tip(){
+
+        $tip_id      = Input::get('travel_tip_id');
+
+        $language_id = Input::get('language');
+        $hostel_id   = Input::get('hostel_id');
+        $title       = Input::get('title');
+        $description = Input::get('description');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $travel_tip                    = TravelTip::find($tip_id);
+        $travel_tip->title             = $title;
+        $travel_tip->description       = $description;
+        $travel_tip->language_id       = $language_id;
+
+        $travel_tip->save();
+
+        return Redirect::action('HostelsController@list_travel_tips',array('hostel' => $hostel_id))->with('msg','Touristic updated successfully');
+
+    }
+
+    public function list_travel_tips_for_hotel(){
+
+        $hostel_id = Route::input('id');
+
+        Session::forget('hostel_id');
+        Session::put('hostel_id',$hostel_id);
+
+        $travel_tips = TravelTip::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_travel_tips')->with('travel_tips',$travel_tips);
+    }
 }

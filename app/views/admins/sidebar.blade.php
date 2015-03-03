@@ -50,6 +50,12 @@
                 <span class="title">Travel Tips</span>
             </a>
         </li>
+        <li>
+            <a href="promotional_artists">
+                <span class="title">Promotional Artist</span>
+            </a>
+        </li>
+
 
     </ul>
 </li>

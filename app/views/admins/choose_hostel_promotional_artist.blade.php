@@ -16,20 +16,20 @@
 
                     </div>
                 </div>
-<!--                <div class="col-sm-6 col-xs-12">-->
-<!--                    <div class="toolbar-tools pull-right">-->
-<!--                        <!-- start: TOP NAVIGATION MENU -->-->
-<!--                        <ul class="nav navbar-right">-->
-<!--                            <!-- start: TO-DO DROPDOWN -->-->
-<!--                            <li class="dropdown">-->
-<!--                                <a href="{{ URL::to('/') }}/admin/add_hostel">-->
-<!--                                    <i class="fa fa-plus"></i> Add Hostel-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                        <!-- end: TOP NAVIGATION MENU -->-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="col-sm-6 col-xs-12">-->
+                <!--                    <div class="toolbar-tools pull-right">-->
+                <!--                        <!-- start: TOP NAVIGATION MENU -->
+                <!--                        <ul class="nav navbar-right">-->
+                <!--                            <!-- start: TO-DO DROPDOWN -->
+                <!--                            <li class="dropdown">-->
+                <!--                                <a href="{{ URL::to('/') }}/admin/add_hostel">-->
+                <!--                                    <i class="fa fa-plus"></i> Add Hostel-->
+                <!--                                </a>-->
+                <!--                            </li>-->
+                <!--                        </ul>-->
+                <!--                        <!-- end: TOP NAVIGATION MENU -->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
             <!-- end: TOOLBAR -->
             <!-- end: PAGE HEADER -->
@@ -77,18 +77,17 @@
 
                             @if(count($hostels))
 
-                                    <h3>Choose hostel and click Next...</h3> </br></br>
-                                    {{ Form::open(array('url' => 'admin/touristic','class' => 'form-horizontal','files' =>true)) }}
-                                        @foreach($hostels as $hostel)
-                                            {{Form::radio('hostel',$hostel->id)}} {{$hostel->name}}
-                                            <br/>
-                                         @endforeach
+                            <h3>Choose hostel and click Next...</h3> </br></br>
+                            {{ Form::open(array('url' => 'admin/promotional-artist-index','class' => 'form-horizontal','files' =>true)) }}
+                            @foreach($hostels as $hostel)
+                            {{Form::radio('hostel',$hostel->id)}} {{$hostel->name}}
+                            <br/>
+                            @endforeach
 
-                                    {{ Form::submit('Next', $attributes = ['class' => 'btn btn-green pull-right']) }}
+                            {{ Form::submit('Next', $attributes = ['class' => 'btn btn-green pull-right']) }}
                             @else
 
                             No Hostels are available...
-
                             @endif
                         </div>
                     </div>

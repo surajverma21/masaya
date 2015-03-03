@@ -11,8 +11,9 @@ class FrontController extends \BaseController {
     {
        // $events = HostelEvent::All();
         $events = DB::table('events')->where('event_legend_img', '=', 'yes')->get();
-        $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', 1)->get();
-        $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 1)->get();
+        $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', 3)->get();
+       //echo '<pre>'; print_r($medium);die;
+        $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 3)->get();
         $data['monthly_activity'] = View::make('front.eventpartial')->with('medium',$medium)->with('small',$small);
 
         $activities = Activity::All();
@@ -30,6 +31,12 @@ class FrontController extends \BaseController {
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', $month)->get();
         return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);
     }
+/*
+    public function getartist()
+    {
+        $events = HostelEvent::All();
+        return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);
+    }*/
 
 
     /**

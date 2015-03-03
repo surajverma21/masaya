@@ -191,91 +191,44 @@ if($monthly_activity != '')
 
 
 
-<?php  $check_array = array();
-$i=0;
-foreach($activities as $activitydata)
-{
+            <?php
+            $check_array = array();
+            foreach($activities as $activitydata)
+            {
 
-    if(in_array($activitydata->start_time,$check_array))
-    {
-        $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
+                $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
+            }
 
-    }
-    else
-    {
-
-        $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
-
-    }
-   // $check_array[$activitydata->start_time]['time'] = $activitydata->start_time;
-    //$activitydata->start_time[$activitydata->day] = $activitydata->name;
-}
-
-echo '<pre>';print_r($check_array);die;
-//echo $check_array[0]
+            ?>
 
 
+            <?php foreach($check_array as $key => $val) {
+
+                $Get_time = explode(' ',$key);
+                $hours = $Get_time[1];
+                $time = $Get_time[2];
+                $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+
+                ?>
+
+                <ul class="act_content_sec text-center">
+                    <li><span class="date_section"><?php echo @$time_in_24_hour_format.'H'; ?></span></li>
+                    <li>
+                        <div class="inne_space <?php if(@$val['1']) { echo 'table_sec-yellow'; } ?>">
+                            <span><?php if(@$val['1']) { echo $val['1']; } ?></span>
+                        </div>
+                    </li>
+                    <li><div class="inne_space <?php if(@$val['2']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['2']) { echo $val['2']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['3']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['3']) { echo $val['3']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['4']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['4']) { echo $val['4']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['5']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['5']) { echo $val['5']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['6']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['6']) { echo $val['6']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['7']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['7']) { echo $val['7']; } ?></span></div></li>
+                </ul>
 
 
-foreach($check_array as $key => $val )
-{
-    foreach($val as $k2 => $v2)
-    {
-   // echo $key;
-    echo $v2;
-    }
-}
-
-?>
-
-            $j = 1;
-            @foreach($check_array as $key => $activitydata)
-            $i = $activitydata[$j];
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section"></span></li>
-                Monday<li><div class="inne_space table_sec-yellow"><span><?php if(array_key_exists('1',$activitydata[$i][$j])) echo $check_array[$i][$j]?></span></div></li>
-                Tuesday<li><div class="inne_space"><span>dfjdslkfj->2</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-            </ul>
-            <?php die; ?>
-            @endforeach
-
-       <!--     <ul class="act_content_sec text-center">
-                <li><span class="date_section">17h</span></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocina</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Al Aire (Microfono Abierto)</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Campeonato de Rana</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Cine Club</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section">19h</span></li>
-                <li><div class="inne_space table_sec-default"><span>Juegos criollos</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section">17h</span></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Musica en Vivo</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Karaoke</span></div></li>
-            </ul>-->
-
+            <?php } ?>
 
 
         </div>

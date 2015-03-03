@@ -60,6 +60,14 @@ Route::get('admin/edit-travel-tip/{id}','HostelsController@edit_travel_tip')->be
 Route::post('admin/update_travel_tip','HostelsController@update_travel_tip')->before('auth');
 Route::get('admin/travel-tips-index/{id}','HostelsController@list_travel_tips_for_hotel')->before('auth');
 
+//Promotional artists
+
+Route::get('admin/promotional_artists','HostelsController@promotional_artists_choose_hostel');
+Route::post('admin/promotional-artist-index','HostelsController@promotional_artist_index');
+Route::get('admin/promotional-artist-add','HostelsController@add_promotional_artist');
+Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
+Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
+
 
 
 //Hostels

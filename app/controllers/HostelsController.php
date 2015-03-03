@@ -376,5 +376,96 @@ Class HostelsController extends BaseController{
         $travel_tips = TravelTip::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
 
         return View::make('admins.list_travel_tips')->with('travel_tips',$travel_tips);
+
+    }
+
+    public function promotional_artists_choose_hostel(){
+
+        $hostels  = Hostel::all();
+
+        return View::make('admins.choose_hostel_promotional_artist')->with('hostels',$hostels);
+    }
+
+    public function promotional_artist_index(){
+
+            if(Input::get('hostel')){
+
+                $hostel_id = Input::get('hostel');
+                Session::forget('hostel_id');
+                Session::put('hostel_id',$hostel_id);
+            }else{
+                $hostel_id = Session::get('hostel_id');
+            }
+
+
+        $promotional_artists = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_promotional_artists')->with('promotional_artists',$promotional_artists);
+
+    }
+
+    public function promotional_artist_index_all(){
+
+
+        $hostel_id = Session::get('hostel_id');
+
+        $promotional_artists = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_promotional_artists')->with('promotional_artists',$promotional_artists);
+
+    }
+
+
+
+    public function add_promotional_artist(){
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        return View::make('admins.add_promotional_artist')->with('languages',$languages);
+
+    }
+
+    public function save_promotional_artist(){
+
+        $language_id        = Input::get('language');
+        $hostel_id          = Session::get('hostel_id');
+        $title              = Input::get('title');
+        $sub_title          = Input::get('sub_title');
+        $description        = Input::get('promotional_artist_text');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $tableName = 'promotional_artists';
+
+        $fieldName = 'promotional_artist_image';
+
+
+        if(Input::hasFile('promotional_artist_image')){
+
+            $destinationPath = '../uploads/promotional_artist';
+
+            $promotionalArtistFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+
+            Input::file('promotional_artist_image')->move($destinationPath, $promotionalArtistFileName);
+
+        }else{
+
+            $promotionalArtistFileName = '';
+        }
+
+        $promotionalArtist                              = new PromotionalArtist;
+        $promotionalArtist->hostel_id                   = $hostel_id;
+        $promotionalArtist->title                       = $title;
+        $promotionalArtist->promotional_artist_text     = $description;
+        $promotionalArtist->language_id                 = $language_id;
+        $promotionalArtist->promotional_artist_image    = $promotionalArtistFileName;
+
+        $promotionalArtist->save();
+
+        return Redirect::action('HostelsController@promotional_artist_index_all')->with('msg','Promotional artist added successfully');
     }
 }

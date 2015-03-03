@@ -45,16 +45,16 @@ Route::post('admin/update_touristic','HostelsController@update_touristic')->befo
 Route::get('admin/delete_time_to_touristics','HostelsController@delete_touristic')->before('auth');
 
 //Travel Tips
-Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel');
-Route::post('admin/travel-tips-index','HostelsController@list_travel_tips');
-Route::get('admin/travel-tips-index','HostelsController@list_travel_tips');
-Route::get('admin/travel-tip-add','HostelsController@add_travel_tip');
-Route::post('admin/save_travel_tip','HostelsController@save_travel_tip');
-Route::post('admin/save_travel_tip','HostelsController@save_travel_tip');
+Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel')->before('auth');
+Route::post('admin/travel-tips-index','HostelsController@list_travel_tips')->before('auth');
+Route::get('admin/travel-tips-index','HostelsController@list_travel_tips')->before('auth');
+Route::get('admin/travel-tip-add','HostelsController@add_travel_tip')->before('auth');
+Route::post('admin/save_travel_tip','HostelsController@save_travel_tip')->before('auth');
+Route::post('admin/save_travel_tip','HostelsController@save_travel_tip')->before('auth');
 Route::get('admin/delete_travel_tip','HostelsController@delete_travel_tip')->before('auth');
-Route::get('admin/edit-travel-tip/{id}','HostelsController@edit_travel_tip');
-Route::post('admin/update_travel_tip','HostelsController@update_travel_tip');
-Route::get('admin/travel-tips-index/{id}','HostelsController@list_travel_tips_for_hotel');
+Route::get('admin/edit-travel-tip/{id}','HostelsController@edit_travel_tip')->before('auth');
+Route::post('admin/update_travel_tip','HostelsController@update_travel_tip')->before('auth');
+Route::get('admin/travel-tips-index/{id}','HostelsController@list_travel_tips_for_hotel')->before('auth');
 
 
 

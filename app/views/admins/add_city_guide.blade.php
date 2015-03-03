@@ -21,7 +21,7 @@
                         <ul class="nav navbar-right">
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
-                                <a href="{{ URL::to('/') }}/admin/save-city-guide">
+                                <a href="{{ URL::to('/') }}/admin/city-guide-add">
                                     <i class="fa fa-plus"></i> Add Member
                                 </a>
                             </li>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
-                        {{ Form::open(array('url' => 'admin/promotional-artist-save','class' => 'form-horizontal','files' =>true)) }}
+                        {{ Form::open(array('url' => 'admin/save-city-guide','class' => 'form-horizontal','files' =>true)) }}
 
                         @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -72,9 +72,9 @@
 
 
                             <div class="form-group">
-                                {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('city_guide_text','City Guide Text :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('title', '', $attributes = ['class' => 'form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    {{ Form::text('city_guide_text', '', $attributes = ['class' => 'form-control','required' => 'required', 'rows' => 4  ]) }}
                                     <div style="color:red"> {{ $errors->first('title') }} </div>
                                 </div>
                             </div>

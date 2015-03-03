@@ -521,7 +521,7 @@ Class HostelsController extends BaseController{
 
         if(Input::hasFile('city_guide_image')){
 
-            $destinationPath = '../uploads/promotional_artist';
+            $destinationPath = '../uploads/city_guide';
 
             $cityGuideFileName = $this->generateRandomStringForImage($tableName,$fieldName);
 
@@ -534,7 +534,7 @@ Class HostelsController extends BaseController{
 
         $cityGuide                              = new CityGuide;
         $cityGuide->hostel_id                   = $hostel_id;
-        $cityGuide->title                       = $city_guide_text;
+        $cityGuide->city_guide_text             = $city_guide_text;
         $cityGuide->language_id                 = $language_id;
         $cityGuide->city_guide_image            = $cityGuideFileName;
 
@@ -548,9 +548,8 @@ Class HostelsController extends BaseController{
 
            $hostel_id = Session::get('hostel_id');
 
-
-           $city_guide = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
-
+           $city_guide = CityGuide::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+           return $city_guide; die;
            return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
 
        }

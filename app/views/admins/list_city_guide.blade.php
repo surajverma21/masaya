@@ -103,6 +103,7 @@
                                     <th class="hidden-xs">#</th>
                                     <th class="hidden-xs">Text</th>
                                     <th class="hidden-xs">Language</th>
+                                    <th class="hidden-xs">Image</th>
                                     <th></th>
 
                                 </tr>
@@ -131,18 +132,18 @@
 
                                     <td class="hidden-xs">
 
-                                        {{ $guide->promotional_artist_text }}
+                                        {{ $guide->language->name }}
 
                                     </td>
 
                                     <td>
-                                        {{ $promotional_artist->language->name }}
+                                        <img src={{ asset($guide->city_guide_image) }}>
                                     </td>
 
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <a href="edit_time_to_touristic/{{$promotional_artist->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$promotional_artist->id}},{{$promotional_artist->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>
+                                            <a href="edit_time_to_touristic/{{$guide->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$guide->id}},{{$guide->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
                                             <div class="btn-group">

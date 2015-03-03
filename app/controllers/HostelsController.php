@@ -468,4 +468,29 @@ Class HostelsController extends BaseController{
 
         return Redirect::action('HostelsController@promotional_artist_index_all')->with('msg','Promotional artist added successfully');
     }
+
+    public function city_guide_choose_hostel(){
+
+        $hostels  = Hostel::all();
+
+        return View::make('admins.choose_hostel_city_guide')->with('hostels',$hostels);
+    }
+
+    public function city_guide_index(){
+
+        if(Input::get('hostel')){
+
+            $hostel_id = Input::get('hostel');
+            Session::forget('hostel_id');
+            Session::put('hostel_id',$hostel_id);
+        }else{
+            $hostel_id = Session::get('hostel_id');
+        }
+
+        $city_guide = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
+
+    }
+
 }

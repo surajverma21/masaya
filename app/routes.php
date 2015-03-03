@@ -69,6 +69,10 @@ Route::post('admin/promotional-artist-save','HostelsController@save_promotional_
 Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
 
 
+//City Guide image on Activities page
+
+Route::get('admin/city-guide','HostelsController@city_guide_choose_hostel');
+
 
 //Hostels
 Route::get('admin/hostels','HostelsController@index')->before('auth');

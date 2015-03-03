@@ -56,6 +56,11 @@
             </a>
         </li>
 
+        <li>
+            <a href="city-guide">
+                <span class="title">City Guide</span>
+            </a>
+        </li>
 
     </ul>
 </li>

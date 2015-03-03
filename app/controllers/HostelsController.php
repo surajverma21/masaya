@@ -462,6 +462,7 @@ Class HostelsController extends BaseController{
         $promotionalArtist->title                       = $title;
         $promotionalArtist->promotional_artist_text     = $description;
         $promotionalArtist->language_id                 = $language_id;
+        $promotionalArtist->sub_title                   = $sub_title;
         $promotionalArtist->promotional_artist_image    = $promotionalArtistFileName;
 
         $promotionalArtist->save();
@@ -492,5 +493,66 @@ Class HostelsController extends BaseController{
         return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
 
     }
+
+    public function city_guide_add(){
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        return View::make('admins.add_city_guide')->with('languages',$languages);
+
+    }
+
+    public function save_city_guide(){
+
+        $language_id        = Input::get('language');
+        $hostel_id          = Session::get('hostel_id');
+        $city_guide_text    = Input::get('city_guide_text');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $tableName = 'city_guide';
+
+        $fieldName = 'city_guide_image';
+
+
+        if(Input::hasFile('city_guide_image')){
+
+            $destinationPath = '../uploads/promotional_artist';
+
+            $cityGuideFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+
+            Input::file('city_guide_image')->move($destinationPath, $cityGuideFileName);
+
+        }else{
+
+            $cityGuideFileName = '';
+        }
+
+        $cityGuide                              = new CityGuide;
+        $cityGuide->hostel_id                   = $hostel_id;
+        $cityGuide->title                       = $city_guide_text;
+        $cityGuide->language_id                 = $language_id;
+        $cityGuide->city_guide_image            = $cityGuideFileName;
+
+        $cityGuide->save();
+
+        return Redirect::action('HostelsController@city_guide_index_all')->with('msg','City guide artist added successfully');
+    }
+
+       public function city_guide_index_all(){
+
+
+           $hostel_id = Session::get('hostel_id');
+
+
+           $city_guide = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+           return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
+
+       }
 
 }

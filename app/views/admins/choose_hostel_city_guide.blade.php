@@ -78,7 +78,7 @@
                             @if(count($hostels))
 
                             <h3>Choose hostel and click Next...</h3> </br></br>
-                            {{ Form::open(array('url' => 'admin/promotional-artist-index','class' => 'form-horizontal','files' =>true)) }}
+                            {{ Form::open(array('url' => 'admin/city-guide-index','class' => 'form-horizontal','files' =>true)) }}
                             @foreach($hostels as $hostel)
                             {{Form::radio('hostel',$hostel->id)}} {{$hostel->name}}
                             <br/>

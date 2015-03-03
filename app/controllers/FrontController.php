@@ -10,17 +10,28 @@ class FrontController extends \BaseController {
     public function index()
     {
        // $events = HostelEvent::All();
-        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->get();
-        $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', 3)->get();
-       //echo '<pre>'; print_r($medium);die;
-        $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 3)->get();
+        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->get();   // All events
+
+        $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', 3)->get(); // medium events
+
+        $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 3)->get(); // small events
+
         $data['monthly_activity'] = View::make('front.eventpartial')->with('medium',$medium)->with('small',$small);
 
         $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->get();    // Change this when get hostel in session.
+
         $activities = Activity::All();
 
+        $cityguide = DB::table('city_guide')->where('id', '=', 1)->get();
 
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist);
+
+
+        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later
+
+        $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records
+        //echo '<pre>';print_r($hostels);die;
+
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels);
     }
 
 
@@ -31,6 +42,14 @@ class FrontController extends \BaseController {
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', $month)->get();
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', $month)->get();
         return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);
+    }
+
+    public function gettouristic()
+    {
+        $id=Input::get('hostelid');
+        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', $id)->get();  // partial load later
+        return View::make('front.touristicpartial')->with('touristic',$touristic);
+       // echo "<pre>";print_r($touristic);die;
     }
 
 

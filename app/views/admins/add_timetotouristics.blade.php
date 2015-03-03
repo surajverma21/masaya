@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::textarea('description', '', $attributes = ['class' => 'form-control', 'required' => 'required','rows' => 4]) }}
+                                    {{ Form::textarea('description', '', $attributes = ['class' => 'form-control ckeditor', 'required' => 'required','rows' => 4]) }}
                                     <div style="color:red"> {{ $errors->first('address') }} </div>
                                 </div>
                             </div>

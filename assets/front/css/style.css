@@ -517,7 +517,10 @@ ul.last_ul {
 }
 .tour_1con {
     display: inline-block;
-    position: relative;
+    position: relative; width:100%;
+}
+.tour_img_hgt {
+    max-height: 450px;
 }
 .tour_content_top {
     left: 0;

@@ -6,7 +6,7 @@
 
         $(document).ready( function() {
             $('#myCarousel').carousel({
-                interval:   400000,
+                interval:   400000
             });
 
             var clickEvent = false;
@@ -463,19 +463,20 @@ if($monthly_activity != '')
         <div class="container">
             <div class="tour_wrapper text-center">
                 <div class="row">
+                    <?php if(isset($cityguide)){ ?>
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_santa_marta.png" class="imgfull-width">
+                            <img alt="" src="../uploads/city_guide/{{$cityguide[0]->city_guide_image}}" class="imgfull-width tour_img_hgt">
                             <div class="tour_content_top text-center les les_space">
                                 <h1>SANTA MARTA</h1>
-                                <h2>SUIVEZ LE GUIDE</h2>
+                                <h2>{{$cityguide[0]->city_guide_text}}</h2>
                             </div>
                         </div>
                     </div>
-
+                    <?php } ?>
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width">
+                            <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width tour_img_hgt">
                             <div class="tour_content_top text-center les_space">
                                 <h1>MASAYA TRAVEL</h1>
                                 <h2>EXCURSIONS AU DÉPART DE SANTA MARTA</h2>
@@ -634,23 +635,20 @@ if($monthly_activity != '')
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
                                 <h3 class="foo_list_title">Temps à pied <br>des différents points d’intérêt</h3>
-                                <ul class="detail_listing2">
-                                    <li>
-                                        <p>Boire un café Juan Valdez</p>
-                                        <div class="list_month-detail text-center">2mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Visiter la Cathédrale</p>
-                                        <p>Voir la plage</p>
-                                        <p>Faire quelques courses</p>
-                                        <div class="list_month-detail text-center">3mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Aller au Musée de l’Or</p>
-                                        <p>Se faire une terrasse au Parque de los Novios</p>
-                                        <div class="list_month-detail text-center">5mn</div>
-                                    </li>
+                               <ul class="detail_listing2">
+
+                                        @foreach($touristic as $tours)
+                                   <li>
+                                       {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+                                   </li>
+                                        @endforeach
+
                                 </ul>
+                               <!-- @foreach($touristic as $tours)
+                               {{ $tours->description}}
+                                <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+                                @endforeach-->
                             </div>
                         </div>
 
@@ -955,7 +953,9 @@ if($monthly_activity != '')
 </div>
 
 <ul class="contant_cities_foo">
-    <li id="the-first-tab" class="hidden_mobile contactclose">
+
+
+    <li  class="hidden_mobile contactclose">
         <a href="#bottom-tab1">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
@@ -964,6 +964,7 @@ if($monthly_activity != '')
             </div>
         </a>
     </li>
+
     <li class="padding_none contactclose">
         <a href="#bottom-tab2">
             <div class="socail12">

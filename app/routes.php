@@ -75,6 +75,8 @@ Route::get('admin/city-guide','HostelsController@city_guide_choose_hostel');
 Route::post('admin/city-guide-index','HostelsController@city_guide_index');
 Route::get('admin/city-guide-add','HostelsController@city_guide_add');
 Route::post('admin/save-city-guide','HostelsController@save_city_guide');
+Route::get('admin/city-guide-index-all','HostelsController@city_guide_index_all');
+
 
 //Hostels
 Route::get('admin/hostels','HostelsController@index')->before('auth');
@@ -83,7 +85,7 @@ Route::post('admin/save_hostel','HostelsController@save_hostel')->before('auth')
 Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel')->before('auth');
 Route::post('admin/update_hostel','HostelsController@update_hostel')->before('auth');
 Route::get('admin/delete_hostel','HostelsController@delete_hostel')->before('auth');
-//Route::get('admin/');
+
 
 //Languages
 Route::get('admin/languages','LanguagesController@index');
@@ -101,13 +103,10 @@ Route::get('admin/edit_activity/{id}','ActivitiesController@edit_activity');
 Route::post('admin/update_activity','ActivitiesController@update_activity');
 Route::get('admin/delete_activity','ActivitiesController@delete_activity');
 
-// Test
-//Mehar Singh
-Route::get('test',function(){
-	return View::make('testing');
-});
 
-//testkljlklkjn
-//suraj verma
 
 //Route::get('/admin',function)->before('auth');
+//Event::listen('illuminate.query', function($query)
+//{
+//    var_dump($query);
+//});

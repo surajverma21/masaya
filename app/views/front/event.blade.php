@@ -424,14 +424,20 @@ if($monthly_activity != '')
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
-            <div class="musicions_inner-con">
-                <h1>Artistes, musiciens...</h1>
-                <h2>Vos talents nous intéressent !</h2>
-                <p>Chez Masaya, nous soutenons quotidiennement la promotion d’artistes locaux et internationaux et créons ainsi un lieu d’échanges et de rencontres hors du commun, extra - ordinaire. <br><br>
-
-                    <strong>Si quelques nuits contre une de vos performances vous intéressent contactez-nous !</strong> </p>
-                <a class="btn btn-default btn-yellow" href="#">Contactez-nous !</a>
-            </div>
+             <div class="slide_main_content">
+                <div class="musicions_inner-con">
+                   <?php  if(isset($promotional_artist))
+                   { ?>
+                    <h1>{{$promotional_artist[0]->title}}</h1>
+                    <h2>Vos talents nous intéressent !</h2>
+                    <p>{{$promotional_artist[0]->promotional_artist_text}}</p>
+                   <?php
+                   }
+                   ?>
+                    <a class="btn btn-default btn-yellow" href="#">Contactez-nous !</a>
+                </div>
+                <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
+             </div>
         </div>
     </div>
     <!-- musician section -->

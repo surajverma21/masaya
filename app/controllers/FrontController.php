@@ -16,10 +16,11 @@ class FrontController extends \BaseController {
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 3)->get();
         $data['monthly_activity'] = View::make('front.eventpartial')->with('medium',$medium)->with('small',$small);
 
+        $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->get();
         $activities = Activity::All();
 
 
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities);
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist);
     }
 
 
@@ -31,12 +32,7 @@ class FrontController extends \BaseController {
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', $month)->get();
         return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);
     }
-/*
-    public function getartist()
-    {
-        $events = HostelEvent::All();
-        return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);
-    }*/
+
 
 
     /**

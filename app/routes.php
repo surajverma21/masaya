@@ -16,6 +16,7 @@ Route::get('/events-activities','FrontController@index');
 Route::get('/getactivities','FrontController@getactivity');
 
 
+
 Route::get('admin/login','MembersController@login')->before('guest');
 Route::get('/admin', array('as' => 'home', 'uses' => 'MembersController@index'))->before('auth');
 Route::get('admin/index','MembersController@index');

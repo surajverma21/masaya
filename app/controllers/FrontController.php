@@ -16,7 +16,7 @@ class FrontController extends \BaseController {
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 3)->get();
         $data['monthly_activity'] = View::make('front.eventpartial')->with('medium',$medium)->with('small',$small);
 
-        $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->get();
+        $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->get();    // Change this when get hostel in session.
         $activities = Activity::All();
 
 

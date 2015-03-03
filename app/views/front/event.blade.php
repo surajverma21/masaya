@@ -43,6 +43,21 @@
                 }
                 clickEvent = false;
             });
+
+            $(".Contactus").on('click',function(){
+               //alert('test');
+                //$(".padding_none.contact_cities").trigger("click");
+                var path = window.location.href+'#bottom-tab3';
+                //$(".contact_cities a").trigger('click');
+               location.href=''+path;
+                //$(".foo3_contacts").slideDown();
+               // $(".foo3_contacts").animate({ scrollTop: $('#foo3_contacts').height()}, 1000);
+                location.reload();
+            });
+
+            $(".fo_close").on('click',function(){
+                $('#tab-bottom-container ul li a.active').trigger('click');
+            });
         });
 </script>
 
@@ -428,13 +443,13 @@ if($monthly_activity != '')
                 <div class="musicions_inner-con">
                    <?php  if(isset($promotional_artist))
                    { ?>
-                    <h1>{{$promotional_artist[0]->title}}</h1>
-                    <h2>Vos talents nous intéressent !</h2>
-                    <p>{{$promotional_artist[0]->promotional_artist_text}}</p>
+                    {{$promotional_artist[0]->title}}
+                    {{$promotional_artist[0]->sub_title}}
+                    {{$promotional_artist[0]->promotional_artist_text}}
                    <?php
                    }
                    ?>
-                    <a class="btn btn-default btn-yellow" href="#">Contactez-nous !</a>
+                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">Contactez-nous !</a>
                 </div>
                 <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
              </div>
@@ -584,7 +599,7 @@ if($monthly_activity != '')
                         </h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -713,7 +728,7 @@ if($monthly_activity != '')
                         </h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -840,7 +855,7 @@ if($monthly_activity != '')
                         <h3>&nbsp;</h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -940,7 +955,7 @@ if($monthly_activity != '')
 </div>
 
 <ul class="contant_cities_foo">
-    <li id="the-first-tab" class="hidden_mobile">
+    <li id="the-first-tab" class="hidden_mobile contactclose">
         <a href="#bottom-tab1">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
@@ -949,7 +964,7 @@ if($monthly_activity != '')
             </div>
         </a>
     </li>
-    <li class="padding_none">
+    <li class="padding_none contactclose">
         <a href="#bottom-tab2">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
@@ -958,7 +973,7 @@ if($monthly_activity != '')
             </div>
         </a>
     </li>
-    <li class="padding_none">
+    <li class="padding_none contact_cities contactclose">
         <a href="#bottom-tab3">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/contacts.png" alt="" />

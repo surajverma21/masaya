@@ -26,14 +26,20 @@ class EventsController extends \BaseController {
         $hostel         = Input::get('hostel_id');
         $language         = Input::get('language_id');
 
+        $event = new HostelEvent;
+
+
         if (Input::hasFile('event_image'))
         {
             $image      = Input::file('event_image');
             $image_name = $this->genUniqueImageName();
             $image->move('../uploads/events', $image_name);
         }
+        else
+        {
+            $image_name = "";
+        }
 
-        $event = new HostelEvent;
 
         $event->event_title         = $title;
         $event->event_sub_title     = $sub_title;
@@ -46,7 +52,7 @@ class EventsController extends \BaseController {
         $event->lang_id             = $language;
 
         if($event->save()){
-            return View::make('admins.index');
+            return View::make('admins/index');
         }else{
             return View::make('admins.events')->with('message', 'Some error occurred');
         }

@@ -10,6 +10,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+// Front end
+
+Route::get('/events-activities','FrontController@index');
+Route::get('/getactivities','FrontController@getactivity');
 
 
 Route::get('admin/login','MembersController@login')->before('guest');
@@ -86,7 +90,7 @@ Route::get('admin/delete_activity','ActivitiesController@delete_activity');
 // Test
 //Mehar Singh
 Route::get('test',function(){
-	//return View::make('admins.test');
+	return View::make('testing');
 });
 
 //testkljlklkjn

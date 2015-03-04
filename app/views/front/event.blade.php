@@ -371,7 +371,7 @@ if(isset($monthly_activity) && $monthly_activity != '')
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
             </ul>
         </div>
-        <div class="slide_act_cul tablet_button_con hidden_mobile">
+        <div class="slide_act_cul desktop_none tablet_button_con hidden_mobile">
             <button class="exe_button">Découvrir toutes les activités de la semaine</button>
         </div>
         <!-- acts wrapper for tablet -->
@@ -421,13 +421,19 @@ if(isset($monthly_activity) && $monthly_activity != '')
 </div>
 <!-- activity cultural -->
 
+<<<<<<< HEAD
 
 
 <div class="activity_slide tablet-hide">
    <div class="container">
  <!-- Banner section   Activiites Slider Desktop   -->
+=======
+<div class="activity_slide tablet-hide">
+    <div class="container">
+<!-- Banner section   Activiites Slider Desktop   -->
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
 <div class="act_slide_inner">
-   <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="images/shadow_bottom.png" alt="" /> </div>
+   <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
     <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
 
         <div class="row">
@@ -442,11 +448,11 @@ if(isset($monthly_activity) && $monthly_activity != '')
                           //$check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
               ?>
-                  <div class="row item <?php if($i==1){echo 'active'; }?>">
-                                 <div class="col-md-6">
-                                      <img src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
+                  <div class="row item margin_none <?php if($i==1){echo 'active'; }?>">
+                                 <div class="col-md-6 padding_none">
+                                      <img class="imgfull-width tour_sec-img_hgt" src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
                                  </div>
-                                 <div class="col-md-6">
+                                 <div class="col-md-6 padding_none">
                                      <div class="slide_main_con">
                                           <h1>{{$activitydata->name;}}</h1>
                                           <p>{{$activitydata->description;}}</p>
@@ -476,9 +482,17 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
 </div>
 <!-- Banner section -->
+<<<<<<< HEAD
 </div>
 </div>
 
+=======
+<div class="slide_act_cul tablet_button_con hidden_mobile">
+    <button class="exe_button">Découvrir toutes les activités de la semaine</button>
+</div>
+</div>
+</div>
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
 
 
 <!-- Exe activity main con -->
@@ -514,27 +528,36 @@ if(isset($monthly_activity) && $monthly_activity != '')
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
-         <?php  if( count($promotional_artist) > 0)
-         {
-          ?>
+
+         <?php  if(count($promotional_artist)>0)
+                   { ?>
              <div class="slide_main_content">
                 <div class="musicions_inner-con">
-
+                  
                     {{$promotional_artist[0]->title}}
                     {{$promotional_artist[0]->sub_title}}
                     {{$promotional_artist[0]->promotional_artist_text}}
+<<<<<<< HEAD
 
 
 
 
+=======
+                 
+
+
+
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
                     <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
 
                 </div>
                 <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
              </div>
                <?php
-               }
-               ?>
+
+                   }
+                   ?>
+
         </div>
     </div>
     <!-- musician section -->
@@ -545,8 +568,10 @@ if(isset($monthly_activity) && $monthly_activity != '')
         <div class="container">
             <div class="tour_wrapper text-center">
                 <div class="row">
+
                    <?php if(count($cityguide) > 0)
                    { ?>
+
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
                             <img alt="" src="../uploads/city_guide/{{$cityguide[0]->city_guide_image}}" class="imgfull-width tour_img_hgt">

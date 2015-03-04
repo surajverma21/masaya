@@ -55,7 +55,12 @@ class FrontController extends BaseController {
         //echo '<pre>';print_r($hostels);die;
         //echo session::get('hostel_name'); die
 
+<<<<<<< HEAD
         return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('hostelForActivity',$event_hostel);
+=======
+
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages);
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
 
     }
 

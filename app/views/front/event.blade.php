@@ -439,20 +439,22 @@ if($monthly_activity != '')
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
+         <?php  if(count($promotional_artist)>0)
+                   { ?>
              <div class="slide_main_content">
                 <div class="musicions_inner-con">
-                   <?php  if(isset($promotional_artist))
-                   { ?>
+                  
                     {{$promotional_artist[0]->title}}
                     {{$promotional_artist[0]->sub_title}}
                     {{$promotional_artist[0]->promotional_artist_text}}
-                   <?php
-                   }
-                   ?>
+                 
                     <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
                 </div>
                 <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
              </div>
+               <?php
+                   }
+                   ?>
         </div>
     </div>
     <!-- musician section -->
@@ -463,7 +465,7 @@ if($monthly_activity != '')
         <div class="container">
             <div class="tour_wrapper text-center">
                 <div class="row">
-                    <?php if(isset($cityguide)){ ?>
+                    <?php if(count($cityguide)>0){ ?>
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
                             <img alt="" src="../uploads/city_guide/{{$cityguide[0]->city_guide_image}}" class="imgfull-width tour_img_hgt">

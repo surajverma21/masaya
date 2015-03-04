@@ -4,7 +4,7 @@ if(isset($medium) && !empty($medium)  || isset($small) && !empty($small))
 {
 
 ?>
-    <h1 class="text-center">En Mars à Santa Marta</h1>
+    <h1 class="text-center">{{ trans('greet.In') }} {{ trans('greet.March') }} {{ trans('greet.Santa_Marta') }}</h1>
 
     <div class="row margin_none">
         <div class="col-md-6 col-sm-6 padding_none">
@@ -35,65 +35,65 @@ if(isset($mediumevent) && !empty($mediumevent)  || isset($smallevent) && !empty(
 {
     if($mediumevent[0]->month_id == 1)
     {
-        $month  = 'Janvier';
+        $month  = "January";
     }
     else
     if($mediumevent[0]->month_id == 2)
     {
-        $month  = 'Février';
+        $month  = "February";
     }
     else
     if($mediumevent[0]->month_id == 3)
     {
-        $month  = 'Mars';
+        $month  = "March";
     }
     else
     if($mediumevent[0]->month_id == 4)
     {
-       $month  = 'Avril';
+       $month  = "April";
     }
     else
     if($mediumevent[0]->month_id == 5)
     {
-        $month  = 'Mai';
+        $month  = "May";
     }
     else
     if($mediumevent[0]->month_id == 6)
     {
-        $month  = 'Juin';
+        $month  = "June";
     }
     else
     if($mediumevent[0]->month_id == 7)
     {
-      $month  = 'Juillet';
+      $month  = "July";
     }
     else
     if($mediumevent[0]->month_id == 8)
     {
-         $month  = 'Août';
+         $month  = "August";
     }
     else
     if($mediumevent[0]->month_id == 9)
     {
-       $month  = 'Septembre';
+       $month  = "September";
     }
     else
     if($mediumevent[0]->month_id == 10)
     {
-      $month  = 'Octobre';
+      $month  = "October";
     }
     else
     if($mediumevent[0]->month_id == 11)
     {
-      $month  = 'Novembre';
+      $month  = "November";
     }
     else
     if($mediumevent[0]->month_id == 12)
     {
-       $month  = 'Décembre';
+       $month  = "December";
     }
 ?>
-    <h1 class="text-center">En {{$month}} à Santa Marta</h1>
+    <h1 class="text-center">{{ trans('greet.In') }} {{ trans('greet.'.$month)}} {{ trans('greet.Santa_Marta') }}</h1>
 
     <div class="row margin_none">
         <div class="col-md-6 col-sm-6 padding_none">

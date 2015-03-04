@@ -16,6 +16,11 @@ Route::get('/events-activities','FrontController@index');
 Route::get('/getactivities','FrontController@getactivity');
 Route::get('/gettouristic','FrontController@gettouristic');
 
+//Language Switcher
+Route::get('/language', array(
+    'as'        => 'language-chooser',
+    'uses'      => 'LanguageController@chooser'
+));
 
 
 

@@ -39,24 +39,24 @@ class FrontController extends BaseController {
             session::put('hostel_name','MasayaHostelSantaMarta');
         }
 
-        $getlikes = new SocialController();
-        $totalLikes = $getlikes->fbLikeCount(session::get('hostel_name'));
+        $getLikes = new SocialController();
+        $totalLikes = $getLikes->fbLikeCount(session::get('hostel_name'));
         $data1 = array();
-        $data1 = array("fblikes" => $totalLikes,"hostel_name" =>session::put('hostel_name') );
+        $data1 = array("fblikes" => $totalLikes,"hostel_name" =>session::get('hostel_name') );
+
+        // Event & Activities Hostel image
+        $getHostelActivities = new HostelRoomsController();
+        $event_hostel = $getHostelActivities->event_activities_hostel();
 
 
         $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later on bottom
 
-        $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records
+        $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records santa marta & bogota
         //echo '<pre>';print_r($hostels);die;
+        //echo session::get('hostel_name'); die
 
-<<<<<<< HEAD
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('hostelForActivity',$event_hostel);
 
-
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)-with('fblikes',$data1);
-=======
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages);
->>>>>>> 11bd66a8919ef6ac2b27997a1ff6001ab6329d2f
     }
 
 

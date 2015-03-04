@@ -1443,18 +1443,28 @@ button.exe_button:after{ position:absolute; content:url(../images/select_arrow_t
 .table_title:first-child {background-image: none;}
 .act_content_sec {
     border-bottom: 1px dotted #d5cbc5;
+    bottom: 0;
     display: inline-block;
+    left: 0;
     margin: 0;
     padding: 7px 0;
+    top: 0;
     width: 100%;
 }
 .act_content_sec li {
+    border-radius: 0;
     display: inline-table;
-    height:35px;
+    height: 35px;
     margin: 0;
     padding: 0 5px;
     text-align: center;
+    text-indent: 0;
     vertical-align: middle;
+    width: 12%;
+}
+.act_content_sec li.active {
+    background-color: transparent;
+    height: 35px;
     width: 12%;
 }
 .act_wrapper {

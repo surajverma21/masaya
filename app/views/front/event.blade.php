@@ -59,11 +59,36 @@
             $(".fo_close").on('click',function(){
                 $('#tab-bottom-container ul li a.active').trigger('click');
             });
+
+
+
+
+
+
         });
 </script>
 
+<style>
+.fb_iframe_widget {
+    display: inline-block;
+    position: relative;
+}
+.fb-like {
+    cursor: pointer;
+    height: 53px;
+    opacity: 0;
+    position: absolute !important;
+    top: 28px;
+    visibility: hidden;
+    width: 60px;
+}
+</style>
+
 <!-- inner yellow section -->
 <div class="main_yellow_inner">
+
+
+<?php //echo '<pre>';print_r($fblikes); die;?>
     <div class="container">
 
         <!-- responsive drop down -->
@@ -389,11 +414,18 @@ if(isset($monthly_activity) && $monthly_activity != '')
         <!-- acts wrapper for mobile -->
 
 
+
+
+
     </div>
 </div>
 <!-- activity cultural -->
 
-           <!-- Banner section   Activiites Slider Desktop   -->
+
+
+<div class="activity_slide tablet-hide">
+   <div class="container">
+ <!-- Banner section   Activiites Slider Desktop   -->
 <div class="act_slide_inner">
    <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="images/shadow_bottom.png" alt="" /> </div>
     <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
@@ -432,11 +464,11 @@ if(isset($monthly_activity) && $monthly_activity != '')
         </div>
 
         <a data-slide="prev" role="button" href="#carousel-example-generic" class="left carousel-control">
-          <span aria-hidden="true" class="banner_arroe_left"><img src="images/banner_arrow_left.png" alt="" /></span>
+          <span aria-hidden="true" class="banner_arroe_left"><img src="../assets/front/images/act_banner_Arrow.png" alt="" /></span>
           <span class="sr-only">Previous</span>
         </a>
         <a data-slide="next" role="button" href="#carousel-example-generic" class="right carousel-control">
-          <span aria-hidden="true" class="banner_arroe_right"><img src="images/banner_arrow_rgt.png" alt="" /></span>
+          <span aria-hidden="true" class="banner_arroe_right"><img src="../assets/front/images/act_banner_Arrow_rgt.png" alt="" /></span>
           <span class="sr-only">Next</span>
         </a>
       </div>
@@ -444,6 +476,8 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
 </div>
 <!-- Banner section -->
+</div>
+</div>
 
 
 
@@ -466,8 +500,9 @@ if(isset($monthly_activity) && $monthly_activity != '')
                     </div>
                     <div class="col-md-2 col-sm-2 padding_none">
                         <div class="social_likes text-center">
+                        <div class="fb-like" data-href="https://www.facebook.com/<?php echo $fblikes['hostel_name']; ?>" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
                             <img src="../assets/front/images/facebook_likes.png" alt="" />
-                            <h2>2 209</h2>
+                            <h2><?php echo $fblikes['fblikes']; ?></h2>
                         </div>
                     </div>
                 </div>
@@ -488,16 +523,12 @@ if(isset($monthly_activity) && $monthly_activity != '')
                     {{$promotional_artist[0]->title}}
                     {{$promotional_artist[0]->sub_title}}
                     {{$promotional_artist[0]->promotional_artist_text}}
-<<<<<<< HEAD
 
 
-                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">Contactez-nous !</a>
-=======
-                   <?php
-                   }
-                   ?>
+
+
                     <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
->>>>>>> 11bd66a8919ef6ac2b27997a1ff6001ab6329d2f
+
                 </div>
                 <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
              </div>
@@ -591,7 +622,9 @@ if(isset($monthly_activity) && $monthly_activity != '')
                 <div class="row exe_1_bg1">
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_main2.png" class="imgfull-width">
+                            <?php if(count($hostelForActivity) > 0){?>
+                            <img alt="" src="../uploads/hostel_hotel_room_preview/<?php echo $hostelForActivity[0]->hostel_room_preview_image;?>" class="imgfull-width">
+                            <?php } ?>
                             <div class="tour_content_top text-center les les_space">
                                 <h1>SANTA MARTA</h1>
                                 <h2>{{ trans('greet.FOLLOW THE LEADER') }}</h2>
@@ -1009,18 +1042,24 @@ if(isset($monthly_activity) && $monthly_activity != '')
 </div>
 
 <ul class="contant_cities_foo">
-
-
-    <li  class="hidden_mobile contactclose">
-        <a href="#bottom-tab1">
+<?php
+$i=1;
+?>
+    @foreach($hostels as $hostel)
+    <li  <?php if($i==1){?>class="hidden_mobile contactclose" <?php }else{ ?> class="padding_none contactclose" <?php }  ?>>
+        <a href="#bottom-tab<?php echo $i;?>">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
                 <img class="rev_show" src="../assets/front/images/location_active.png" alt="" />
-                <h2>Bogota</h2>
+                <h2 <?php if($i==2){ ?> class="hidden_mobile" <?php }  ?>>{{$hostel->name}}</h2>
             </div>
         </a>
     </li>
+    <?php $i++; ?>
+    @endforeach
 
+    
+{{--
     <li class="padding_none contactclose">
         <a href="#bottom-tab2">
             <div class="socail12">
@@ -1029,7 +1068,7 @@ if(isset($monthly_activity) && $monthly_activity != '')
                 <h2 class="hidden_mobile">Santa Marta</h2>
             </div>
         </a>
-    </li>
+    </li>--}}
     <li class="padding_none contact_cities contactclose">
         <a href="#bottom-tab3">
             <div class="socail12">

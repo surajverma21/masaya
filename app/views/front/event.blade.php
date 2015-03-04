@@ -13,9 +13,10 @@
             $('#myCarousel').on('click', '.nav a', function() {
 
                 var value = $(this).attr('rel');
+
                 $.ajax(
                 {
-                    url: "http://localhost/lara/masaya/public/getactivities",
+                    url: "getactivities",
                     data:{month:value},
                     'action'    : 'POST',
                     success: function(data) {
@@ -112,6 +113,7 @@
 
     </div>
 </div>
+
 <!-- inner yellow section -->
 
 <!-- activity_2 banner section -->
@@ -171,7 +173,7 @@ $i = 0; ?>
 
 <div id="getcontentactivity">
     <?php
-if($monthly_activity != '')
+if(isset($monthly_activity) && $monthly_activity != '')
 {
     echo $monthly_activity;
 }
@@ -207,43 +209,62 @@ if($monthly_activity != '')
 
 
             <?php
+
             $check_array = array();
-            foreach($activities as $activitydata)
+
+            if(isset($activities))
             {
+                    foreach($activities as $activitydata)
+                    {
 
-                $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
+                        $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
+                    }
             }
+
+           ?>
+
+            <?php
+            if(count($check_array)>0)
+            {
+            $i = 1;
+            $j=0;
+             foreach($check_array as $key => $val)
+                {
+                   // echo count($check_array);
+                   // echo '<pre>';print_r($check_array);die;
+
+                    $Get_time = explode(' ',$key);
+                    $hours = $Get_time[1];
+                    $time = $Get_time[2];
+                    $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+
 
             ?>
 
 
-            <?php foreach($check_array as $key => $val) {
-
-                $Get_time = explode(' ',$key);
-                $hours = $Get_time[1];
-                $time = $Get_time[2];
-                $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
-
-                ?>
-
-                <ul class="act_content_sec text-center">
-                    <li><span class="date_section"><?php echo @$time_in_24_hour_format.'H'; ?></span></li>
-                    <li>
-                        <div class="inne_space <?php if(@$val['1']) { echo 'table_sec-yellow'; } ?>">
-                            <span><?php if(@$val['1']) { echo $val['1']; } ?></span>
-                        </div>
-                    </li>
-                    <li><div class="inne_space <?php if(@$val['2']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['2']) { echo $val['2']; } ?></span></div></li>
-                    <li><div class="inne_space <?php if(@$val['3']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['3']) { echo $val['3']; } ?></span></div></li>
-                    <li><div class="inne_space <?php if(@$val['4']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['4']) { echo $val['4']; } ?></span></div></li>
-                    <li><div class="inne_space <?php if(@$val['5']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['5']) { echo $val['5']; } ?></span></div></li>
-                    <li><div class="inne_space <?php if(@$val['6']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['6']) { echo $val['6']; } ?></span></div></li>
-                    <li><div class="inne_space <?php if(@$val['7']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['7']) { echo $val['7']; } ?></span></div></li>
-                </ul>
+                  <ul class="act_content_sec text-center carousel-indicators">
+                          <li <?php if($i==1){ echo 'class="active"'; }?>><span class="date_section"><?php echo $time_in_24_hour_format.'H'; ?></span></li>
+                          <li class="" <?php if(isset($val['1'])) { ?> data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic">
+                              <div class="inne_space <?php if(isset($val['1'])) { echo 'table_sec-yellow'; } ?>">
+                                  <span><?php if(isset($val['1'])) { echo $val['1']; } ?></span>
+                              </div>
+                          </li>
+                          <li class="" <?php if(isset($val['2'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['2'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['2'])) { echo $val['2']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['3'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['3'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['3'])) { echo $val['3']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['4'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['4'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['4'])) { echo $val['4']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['5'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['5'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['5'])) { echo $val['5']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['6'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['6'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['6'])) { echo $val['6']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['7'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['7'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['7'])) { echo $val['7']; } ?></span></div></li>
+                      </ul>
 
 
-            <?php } ?>
+            <?php
+            $i++;
+            }
+                }
+
+            ?>
 
 
         </div>
@@ -325,7 +346,7 @@ if($monthly_activity != '')
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
             </ul>
         </div>
-        <div class="slide_act_cul tablet_button_con hidden_mobile">
+        <div class="slide_act_cul desktop_none tablet_button_con hidden_mobile">
             <button class="exe_button">Découvrir toutes les activités de la semaine</button>
         </div>
         <!-- acts wrapper for tablet -->
@@ -372,39 +393,64 @@ if($monthly_activity != '')
 </div>
 <!-- activity cultural -->
 
-<!-- activity_cul slider -->
 <div class="activity_slide tablet-hide">
     <div class="container">
-        <!-- Desktop -->
-        <div class="act_slide_inner">
-            <a class="slide_arrow_right" href="#"><img src="../assets/front/images/act_banner_Arrow_rgt.png" alt="" /></a>
-            <a class="slide_arrow_left" href="#"><img src="../assets/front/images/act_banner_Arrow.png" alt="" /></a>
-            <div class="row margin_none">
-                <div class="col-md-12 col-md-offset-1-padd">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="imgfull-width" src="../assets/front/images/act_slide_img.png" alt="" />
-                        </div>
-                        <div class="col-md-6">
-                            <div class="slide_main_con">
-                                <h1>Juegos criollos</h1>
-                                <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
-                                <em>Tous les lundi à 21h</em>
-                            </div>
-                        </div>
+<!-- Banner section   Activiites Slider Desktop   -->
+<div class="act_slide_inner">
+   <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
+    <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div role="listbox" class="carousel-inner">
+            <?php
+           if(isset($activities))
+              {
+                      $i = 1;
+                      foreach($activities as $activitydata)
+                      {
+                          //$check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
+
+              ?>
+                  <div class="row item margin_none <?php if($i==1){echo 'active'; }?>">
+                                 <div class="col-md-6 padding_none">
+                                      <img class="imgfull-width tour_sec-img_hgt" src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
+                                 </div>
+                                 <div class="col-md-6 padding_none">
+                                     <div class="slide_main_con">
+                                          <h1>{{$activitydata->name;}}</h1>
+                                          <p>{{$activitydata->description;}}</p>
+                                      </div>
+                                 </div>
                     </div>
+                    <?php
+                    $i++;
+                         }
+                 }
+                 ?>
+
                 </div>
             </div>
         </div>
-        <!-- Desktop -->
 
-        <div class="slide_act_cul">
-            <button class="exe_button">Découvrir toutes les activités de la semaine</button>
-        </div>
+        <a data-slide="prev" role="button" href="#carousel-example-generic" class="left carousel-control">
+          <span aria-hidden="true" class="banner_arroe_left"><img src="../assets/front/images/act_banner_Arrow.png" alt="" /></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a data-slide="next" role="button" href="#carousel-example-generic" class="right carousel-control">
+          <span aria-hidden="true" class="banner_arroe_right"><img src="../assets/front/images/act_banner_Arrow_rgt.png" alt="" /></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 
-    </div>
+
 </div>
-<!-- activity_cul slider -->
+<!-- Banner section -->
+<div class="slide_act_cul tablet_button_con hidden_mobile">
+    <button class="exe_button">Découvrir toutes les activités de la semaine</button>
+</div>
+</div>
+</div>
 
 
 <!-- Exe activity main con -->
@@ -439,6 +485,7 @@ if($monthly_activity != '')
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
+
          <?php  if(count($promotional_artist)>0)
                    { ?>
              <div class="slide_main_content">
@@ -448,13 +495,19 @@ if($monthly_activity != '')
                     {{$promotional_artist[0]->sub_title}}
                     {{$promotional_artist[0]->promotional_artist_text}}
                  
+
+
+
                     <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
+
                 </div>
                 <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
              </div>
                <?php
+
                    }
                    ?>
+
         </div>
     </div>
     <!-- musician section -->
@@ -465,7 +518,10 @@ if($monthly_activity != '')
         <div class="container">
             <div class="tour_wrapper text-center">
                 <div class="row">
-                    <?php if(count($cityguide)>0){ ?>
+
+                   <?php if(count($cityguide) > 0)
+                   { ?>
+
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
                             <img alt="" src="../uploads/city_guide/{{$cityguide[0]->city_guide_image}}" class="imgfull-width tour_img_hgt">
@@ -475,7 +531,9 @@ if($monthly_activity != '')
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php
+                    }
+                    ?>
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
                             <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width tour_img_hgt">
@@ -647,10 +705,12 @@ if($monthly_activity != '')
                                         @endforeach
 
                                 </ul>
-                               <!-- @foreach($touristic as $tours)
-                               {{ $tours->description}}
-                                <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
-                                @endforeach-->
+                               @foreach($touristic as $tours)
+
+                                        {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+
+                                @endforeach
                             </div>
                         </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-class FrontController extends \BaseController {
+class FrontController extends BaseController {
 
     /**
      * Display a listing of the resource.
@@ -32,14 +32,27 @@ class FrontController extends \BaseController {
 
         $cityguide = DB::table('city_guide')->where('id', '=', 1)->get();
 
+        session::put('hostel_id',1);   //     Will be dynamic after getting hostel from session in homepage.
+        if(session::get("hostel_id") == 1)   // session::puts('varname','hostel-id');
+        {
+           // $_SESSION['hostel-name'] = 'MasayaHostelSantaMarta';  // Condition based on $_SESSION['hostel-id']
+            session::put('hostel_name','MasayaHostelSantaMarta');
+        }
+
+        $getlikes = new SocialController();
+        $totalLikes = $getlikes->fbLikeCount(session::get('hostel_name'));
+        $data1 = array();
+        $data1 = array("fblikes" => $totalLikes,"hostel_name" =>session::put('hostel_name') );
 
 
-        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later
+        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later on bottom
 
         $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records
         //echo '<pre>';print_r($hostels);die;
 
+
         return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages);
+
     }
 
 
@@ -47,6 +60,7 @@ class FrontController extends \BaseController {
     public function getactivity($month=null)
     {
         $month=Input::get('month');
+
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', $month)->get();
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', $month)->get();
         return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);

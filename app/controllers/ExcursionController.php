@@ -69,7 +69,7 @@ class ExcursionController extends BaseController{
         $excursion                      = new ExcursionPreview;
         $excursion->hostel_id           = $hostel_id;
         $excursion->excursion_text      = $excursion_text;
-        $excursion->language_id    = $language_id;
+        $excursion->language_id         = $language_id;
         $excursion->save();
 
         return Redirect::action('HostelsController@list_excursion_hostel_previews_all')->with('msg','City guide artist added successfully');

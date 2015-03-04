@@ -111,9 +111,13 @@ Route::post('admin/excursion-save','ExcursionController@excursion_save')->before
 Route::get('admin/list-excursion-hostel-previews-all','ExcursionController@list_excursion_hostel_previews_all');
 
 
-//Instagram Images
 
-Route::get('admin/instagram','InstagramController@getImages');
+
+
+
+Route::get('admin/hostel-room-preview-image','HostelRoomsController@hostel_preview_image');
+Route::any('admin/choose-hostel-preview-index','HostelRoomsController@choose_hostel_preview_index');
+Route::post('admin/save-hostel-room_preview','HostelRoomsController@save_hostel_room_preview');
 
 //Route::get('/admin',function)->before('auth');
 //Event::listen('illuminate.query', function($query)

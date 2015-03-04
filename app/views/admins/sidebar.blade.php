@@ -68,6 +68,12 @@
             </a>
         </li>
 
+        <li>
+            <a href="hostel-room-preview-image">
+                <span class="title">Hostel Room Image</span>
+            </a>
+        </li>
+
     </ul>
 </li>
 

@@ -549,9 +549,10 @@ Class HostelsController extends BaseController{
            $hostel_id = Session::get('hostel_id');
 
            $city_guide = CityGuide::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
-           return $city_guide; die;
+
            return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
 
        }
+
 
 }

@@ -62,6 +62,12 @@
             </a>
         </li>
 
+        <li>
+            <a href="excursion">
+                <span class="title">Excursion</span>
+            </a>
+        </li>
+
     </ul>
 </li>
 

@@ -8,6 +8,8 @@
 */
 !function ($, moment) {
 
+
+
     var DateRangePicker = function (element, options, cb) {
 
         // by default, the daterangepicker element is placed at the bottom of HTML body
@@ -486,9 +488,11 @@
         },
 
         toggle: function (e) {
+
             if (this.element.hasClass('active')) {
                 this.hide();
             } else {
+
                 this.show();
             }
         },

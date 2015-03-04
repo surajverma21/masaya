@@ -52,25 +52,32 @@
                             <a href="#">{{ HTML::image('../assets/images/image03_th.jpg') }}</a>
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image04_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image04_th.jpg') }}</a>
+
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image05_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image05_th.jpg') }}</a>
+
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image06_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image06_th.jpg') }}</a>
+
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image07_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image07_th.jpg') }}</a>
+
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image08_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image08_th.jpg') }}</a>
+
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image09_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image09_th.jpg') }}</a>
+
                         </li>
                         <li>
-                            <a href="#"><img alt="" src="assets/images/image10_th.jpg"></a>
+                            <a href="#">{{ HTML::image('../assets/images/image10_th.jpg') }}</a>
+
                         </li>
                     </ul>
                 </div>
@@ -118,7 +125,7 @@
                 </a>
                 <!-- start: LOGO -->
                 <a class="navbar-brand" href="index.html">
-                    {{ HTML::image('../assets/images/logo.png', '') }}
+                   MASAYA
                 </a>
                 <!-- end: LOGO -->
             </div>

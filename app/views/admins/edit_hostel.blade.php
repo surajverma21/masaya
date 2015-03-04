@@ -62,74 +62,66 @@
 
                         <fieldset>
 
+
                             {{Form::hidden('hostel_id',$hostel->id) }}
 
-                            <div class="form-group">
-                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::text('name', $hostel->name, $attributes = ['class' => 'form-control', 'placeholder' => 'Hostel Name','required' => 'required']) }}
-                                </div>
-                            </div>
 
                             <div class="form-group">
-                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('description', $hostel->description, $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about place','required' => 'required']) }}
+                                    {{ Form::text('name', $hostel->name, $attributes = ['class' => 'form-control','required' => 'required']) }}
+                                    <div style="color:red"> {{ $errors->first('name') }} </div>
                                 </div>
                             </div>
 
 
                             <div class="form-group">
-                                {{ Form::label('hostel_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                                {{ Form::label('email','Email Address :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::email('email', $hostel->email, $attributes = ['class' => 'form-control', 'required' => 'required']) }}
+                                    <div style="color:red"> {{ $errors->first('email') }} </div>
+                                </div>
+                            </div>
 
-                                <div class="col-sm-7">
+                            <div class="form-group">
+                                {{ Form::label('address','Address :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::textarea('address', $hostel->address, $attributes = ['class' => 'form-control', 'required' => 'required','rows' => 4]) }}
+                                    <div style="color:red"> {{ $errors->first('address') }} </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                {{ Form::label('contact_number1','Contact Number 1 :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::input('text','contact_number1', $hostel->contact_number1, $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('contact_number2','Contact Number 2 :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::input('text','contact_number2', $hostel->contact_number2, $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('contact_number3','Contact Number 3 :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::input('text','contact_number3', $hostel->contact_number3, $attributes = ['class' => 'form-control']) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ Form::label('hostel_image','Hostel Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
+
+                                <div class="col-sm-9">
                                     {{ Form::file('hostel_image', '', $attributes = ['class' => 'form-control']) }}
                                 </div>
-                                @if($hostel->image)
-                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/hostels/{{$hostel->image}}" alt=""/></div>
-                                @endif
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('promotional_artist_text','Description :', $attributes = ['class' => 'col-sm-2 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::text('promotional_artist_text', $hostel->promotional_artist_text, $attributes = ['class' => 'form-control', 'placeholder' => 'A short text about place','required' => 'required']) }}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('promotional_artist_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
-
-                                <div class="col-sm-7">
-                                    {{ Form::file('promotional_artist_image', '', $attributes = ['class' => 'form-control']) }}
-                                </div>
-                                @if($hostel->promotional_artist_image)
-                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/promotional_artist/{{$hostel->promotional_artist_image}}" alt=""/></div>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                {{ Form::label('city_guide_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
-
-                                <div class="col-sm-7">
-                                    {{ Form::file('city_guide_image', '', $attributes = ['class' => 'form-control']) }}
-                                </div>
-                                @if($hostel->city_guide_image)
-                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/city_guide/{{$hostel->city_guide_image}}" alt=""/></div>
-                                @endif
-                            </div>
-
-
-                            <div class="form-group">
-                                {{ Form::label('excursion_image','Image', $attributes = ['class' => 'col-sm-2 control-label']) }}
-
-                                <div class="col-sm-7">
-                                    {{ Form::file('excursion_image', '', $attributes = ['class' => 'form-control']) }}
-                                </div>
-                                @if($hostel->excursion_image)
-                                <div class="col-sm-3"><img style="max-width:100%;" src="{{URL::to('/')}}/../uploads/excursion/{{$hostel->excursion_image}}" alt=""/></div>
-                                @endif
-                            </div>
 
 
                             <div class="form-actions">

@@ -23,4 +23,10 @@ class HostelEvent extends Eloquent implements UserInterface, RemindableInterface
      */
 //    protected $hidden = array('password', 'remember_token');
     public $timestamp = true;
+
+
+    public function hostel(){
+
+        return $this->belongsTo('Hostel','hostel_id','id');
+    }
 }

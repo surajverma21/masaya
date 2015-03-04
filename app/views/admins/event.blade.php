@@ -62,6 +62,13 @@
 
                 <fieldset>
                     <div class="form-group">
+                        {{ Form::label('language_id','Language', $attributes = ['class' => 'col-sm-2 control-label']) }}
+                        <div class="col-sm-9">
+                            {{ Form::select('language_id', $languages) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         {{ Form::label('event_title','Title', $attributes = ['class' => 'col-sm-2 control-label']) }}
                         <div class="col-sm-9">
                             {{ Form::text('event_title', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Title']) }}

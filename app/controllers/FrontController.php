@@ -1,6 +1,6 @@
 <?php
 
-class FrontController extends \BaseController {
+class FrontController extends BaseController {
 
     /**
      * Display a listing of the resource.
@@ -24,6 +24,17 @@ class FrontController extends \BaseController {
 
         $cityguide = DB::table('city_guide')->where('id', '=', 1)->get();
 
+        session::put('hostel_id',1);   //     Will be dynamic after getting hostel from session in homepage.
+        if(session::get("hostel_id") == 1)   // session::puts('varname','hostel-id');
+        {
+           // $_SESSION['hostel-name'] = 'MasayaHostelSantaMarta';  // Condition based on $_SESSION['hostel-id']
+            session::put('hostel_name','MasayaHostelSantaMarta');
+        }
+
+        $getlikes = new SocialController();
+        $totalLikes = $getlikes->fbLikeCount(session::get('hostel_name'));
+        $data1 = array();
+        $data1 = array("fblikes" => $totalLikes,"hostel_name" =>session::put('hostel_name') );
 
 
         $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later on bottom
@@ -33,7 +44,7 @@ class FrontController extends \BaseController {
 
 
 
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels);
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)-with('fblikes',$data1);
     }
 
 

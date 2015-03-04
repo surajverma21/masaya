@@ -81,17 +81,17 @@
 
         <!-- Top links start here -->
         <ul class="y_inner-topul text-center mobile_hidden">
-            <li><a href="#">Hébergement <br> à Santa Marta</a></li>
-            <li><a class="active" href="#">Événements &amp; <br> activités culturelles</a></li>
-            <li><a href="#">Équipements <br> &amp; services</a></li>
-            <li><a href="#">Excursions &amp; <br> voyages</a></li>
-            <li><a href="#">Comment <br> s’y rendre</a></li>
+            <li><a href="#">{{trans('greet.Accommodation in')}} Santa Marta</a></li>
+            <li><a class="active" href="#">{{ trans('greet.Events & Cultural Activities') }}</a></li>
+            <li><a href="#">{{ trans('greet.Equipment & Services') }}</a></li>
+            <li><a href="#">{{ trans('greet.Excursions & Trips') }}</a></li>
+            <li><a href="#">{{ trans('greet.How to get there') }}</a></li>
         </ul>
         <!-- Top links start here -->
 
         <!-- Top content -->
         <div class="row inner-y_conternt1">
-            <div class="col-md-12"><h1 class="title_yellow">Évènements &amp; Activités culturelles</h1></div>
+            <div class="col-md-12"><h1 class="title_yellow">{{ trans('greet.Events & Cultural Activities') }}</h1></div>
             <div class="col-md-9 col-sm-12">
                 <em>Plus qu’un simple hostel, Masaya se veut être un lieu de culture, de rencontres et d’échanges interculturels.
                     A Santa Marta, découvrez la gastronomie « costeña » : le riz coco, la banane plantain sous toutes ses coutures…  les sons et rythmes aux influences africaines ; les danses locales et colombiennes… De nombreux artistes vous proposent chaque semaine de découvrir leur culture, leurs origines…<br><br>
@@ -99,13 +99,13 @@
                     Notre but est de vous faire connaître le pays dans ce qu'il a de meilleur, c’est pour cela que nous vous proposons un guide culturel regroupant les activités phare de Santa Marta et de la région Magdalena. Consultez notre calendrier et faites place à la culture lors de votre voyage… </em>
                 <div class="row">
                     <div class="col-md-12 span10 mobile_center">
-                        <a href="#" class="btn btn-default" >Evénements autour de Santa Marta</a>
-                        <a href="#" class="btn btn-default" >L’agenda culturel de Masaya</a>
+                        <a href="#" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
+                        <a href="#" class="btn btn-default" >{{ trans('greet.The cultural program of Masaya') }}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 pull-right hidden-tablet">
-                <div class="les_jours">TOUS LES JOURS DES ACTIVITÉS <span> 100% GRATUITES </span> </div>
+                <div class="les_jours">{{ trans('greet.DAILY ACTIVITIES') }} <span> 100% {{ trans('greet.FREE') }} </span> </div>
             </div>
         </div>
         <!-- Top content -->
@@ -146,18 +146,18 @@ $i = 0; ?>
 <div class="container">
 <div class="exe_month_2con">
             <div class="row nav nav-pills nav-justified">
-                <div class="col-md-1 col-sm-1 text-center active" data-target="#myCarousel" data-slide-to="0"><a href="#" rel="3">Mars</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="1"><a href="#" rel="4">Avril</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="2"><a href="#" rel="5">Mai</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="3"><a href="#" rel="6">Juin</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="4"><a href="#" rel="7">Juillet</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="5"><a href="#" rel="8">Août</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="6"><a href="#" rel="9">Septembre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="7"><a href="#" rel="10">Octobre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="8"><a href="#" rel="11">Novembre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="9"><a href="#" rel="12">Décembre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="10"><a href="#" rel="1">Janvier</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="11"><a href="#" rel="2">Février</a></div>
+                <div class="col-md-1 col-sm-1 text-center active" data-target="#myCarousel" data-slide-to="0"><a href="#" rel="3">{{ trans('greet.March') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="1"><a href="#" rel="4">{{ trans('greet.April') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="2"><a href="#" rel="5">{{ trans('greet.May') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="3"><a href="#" rel="6">{{ trans('greet.June') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="4"><a href="#" rel="7">{{ trans('greet.July') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="5"><a href="#" rel="8">{{ trans('greet.August') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="6"><a href="#" rel="9">{{ trans('greet.September') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="7"><a href="#" rel="10">{{ trans('greet.October') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="8"><a href="#" rel="11">{{ trans('greet.November') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="9"><a href="#" rel="12">{{ trans('greet.December') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="10"><a href="#" rel="1">{{ trans('greet.January') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="11"><a href="#" rel="2">{{ trans('greet.February') }}</a></div>
             </div>
 </div>
 </div>
@@ -186,22 +186,22 @@ if($monthly_activity != '')
 <div class="activity_cultural_wrapper">
     <div class="container">
         <div class="heading_top text-center">
-            <h1>Nos activités culturelles</h1>
-            <h2>Notre programmation culturelle</h2>
-            <p>Tous les jours sur notre terrasse, des activités culturelles gratuites et garanties 100% caraïbes !</p>
+            <h1>{{ trans('greet.Our cultural activities')}}</h1>
+            <h2>{{ trans('greet.Our cultural program')}}</h2>
+            <p>{{ trans('greet.Every day on our terrace, free cultural activities and guarantees 100% Caribbean !')}}</p>
         </div>
 
         <!-- acts wrapper for dekstop -->
         <div class="act_wrapper tablet-hide">
             <ul class="act_head text-center">
                 <li class="table_title">&nbsp;</li>
-                <li class="table_title">Lundi</li>
-                <li class="table_title">Mardi</li>
-                <li class="table_title">Mercredi</li>
-                <li class="table_title">Jeudi</li>
-                <li class="table_title">Vendredi</li>
-                <li class="table_title">Samedi</li>
-                <li class="table_title">Dimanche</li>
+                <li class="table_title">{{ trans('greet.On Monday') }}</li>
+                <li class="table_title">{{ trans('greet.On Tuesday') }}</li>
+                <li class="table_title">{{ trans('greet.On Wednesday') }}</li>
+                <li class="table_title">{{ trans('greet.On Thursday') }}</li>
+                <li class="table_title">{{ trans('greet.On Friday') }}</li>
+                <li class="table_title">{{ trans('greet.On Saturday') }}</li>
+                <li class="table_title">{{ trans('greet.On Sunday') }}</li>
             </ul>
 
 
@@ -422,7 +422,7 @@ if($monthly_activity != '')
                     </div>
 
                     <div class="col-md-7 col-sm-7">
-                        <h4>Masaya Hostel Santa Marta <br > pour suivre nos activités et la vie de l’hostel</h4>
+                        <h4>Masaya Hostel Santa Marta <br > {{ trans('greet.to follow our activities and the hostel life') }}</h4>
                     </div>
                     <div class="col-md-2 col-sm-2 padding_none">
                         <div class="social_likes text-center">
@@ -449,7 +449,7 @@ if($monthly_activity != '')
                    <?php
                    }
                    ?>
-                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">Contactez-nous !</a>
+                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
                 </div>
                 <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
              </div>
@@ -479,7 +479,7 @@ if($monthly_activity != '')
                             <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width tour_img_hgt">
                             <div class="tour_content_top text-center les_space">
                                 <h1>MASAYA TRAVEL</h1>
-                                <h2>EXCURSIONS AU DÉPART DE SANTA MARTA</h2>
+                                <h2>{{ trans('greet.EXCURSIONS DEPARTURE')}} SANTA MARTA</h2>
                             </div>
                         </div>
                     </div>
@@ -495,11 +495,11 @@ if($monthly_activity != '')
                     <div class="col-lg-2 col-md-3 col-sm-6 padding_none">
                         <div class="instagram">
                             <img src="../assets/front/images/instagram.png" alt="" />
-                            <h5>Envoyez-nous un selfie ! Partagez les photos de votre voyage et découvrez les expériences Masaya de vos prédécesseurs
+                            <h5>{{ trans('greet.Instagram_Text') }}
                                 <span>@masayahostels</span>
                                 <span>#masayahostel</span>
                             </h5>
-                            <a href="#" class="btn btn-default btn-yellow span-top20">Toutes vos photos</a>
+                            <a href="#" class="btn btn-default btn-yellow span-top20">{{ trans('greet.All your photos') }}</a>
                         </div>
                     </div>
                     <!-- col2 end -->
@@ -540,7 +540,7 @@ if($monthly_activity != '')
                             <img alt="" src="../assets/front/images/exe_main2.png" class="imgfull-width">
                             <div class="tour_content_top text-center les les_space">
                                 <h1>SANTA MARTA</h1>
-                                <h2>SUIVEZ LE GUIDE</h2>
+                                <h2>{{ trans('greet.FOLLOW THE LEADER') }}</h2>
                             </div>
                         </div>
                     </div>
@@ -906,7 +906,7 @@ if($monthly_activity != '')
                                 <div class="form-group">
                                     <textarea placeholder="Votre message, question, remarque..." class="textarea"></textarea>
                                 </div>
-                                <div class="form-group"><input type="submit" value="Envoyer votre demande" class="btn btn-default"></div>
+                                <div class="form-group"><input type="submit" value="{{ trans('greet.Send your request') }}" class="btn btn-default"></div>
                             </form>
 
                         </div>
@@ -979,7 +979,7 @@ if($monthly_activity != '')
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/contacts.png" alt="" />
                 <img class="rev_show" src="../assets/front/images/contacts_active.png" alt="" />
-                <h2 class="hidden_mobile">Contactez-nous</h2>
+                <h2 class="hidden_mobile">{{ trans('greet.Contact us !') }}</h2>
             </div>
         </a>
     </li>

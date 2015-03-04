@@ -54,3 +54,27 @@ $(".custom-select").change(function(){
     });
 
 })
+
+
+//Language Switcher
+function change(lang) {
+
+console.log(lang);
+    $.ajax({
+
+        'url'       : 'language',
+        'action'    : 'POST',
+        'data'      : {locale:lang},
+        'success'   : function(result){
+
+            location.reload();
+
+        },
+        'error'     : function(){
+            console.log('Some error occurred');
+        }
+    });
+}
+
+/*
+ {{ URL::to('/') }}/*/

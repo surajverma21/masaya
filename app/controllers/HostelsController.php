@@ -549,14 +549,32 @@ Class HostelsController extends BaseController{
            $hostel_id = Session::get('hostel_id');
 
            $city_guide = CityGuide::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
-<<<<<<< HEAD
 
-=======
+
+
  //          return $city_guide; die;
->>>>>>> 10f7ab31aea5f4bb9a707e68b0364acbf3c6d3ea
+
            return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
 
        }
+
+    public function promotional_artist_edit(){
+
+        $id = Route::input('id');
+
+        $tip_id             = Route::input('id');
+        $promotional_artist = TravelTip::with('hostel')->with('language')->find($tip_id);
+        $hostel_id          = Session::get('hostel_id');
+        $languages          = Language::All()->lists('name' ,'id');
+
+        if(empty($travel_tip)){
+
+            return Redirect::action('HostelsController@list_travel_tips',array('hostel' => $hostel_id));
+        }else{
+            return View::make('admins.edit_promotional_artist')->with('travel_tip',$travel_tip)->with('languages',$languages);
+        }
+
+    }
 
 
 }

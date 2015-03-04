@@ -18,6 +18,7 @@ Route::get('/gettouristic','FrontController@gettouristic');
 
 
 
+
 Route::get('admin/login','MembersController@login')->before('guest');
 Route::get('/admin', array('as' => 'home', 'uses' => 'MembersController@index'))->before('auth');
 Route::get('admin/index','MembersController@index');
@@ -50,6 +51,8 @@ Route::get('admin/edit_time_to_touristic/{id}','HostelsController@edit_touristic
 Route::post('admin/update_touristic','HostelsController@update_touristic')->before('auth');
 Route::get('admin/delete_time_to_touristics','HostelsController@delete_touristic')->before('auth');
 
+
+
 //Travel Tips
 Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel')->before('auth');
 Route::post('admin/travel-tips-index','HostelsController@list_travel_tips')->before('auth');
@@ -69,6 +72,7 @@ Route::post('admin/promotional-artist-index','HostelsController@promotional_arti
 Route::get('admin/promotional-artist-add','HostelsController@add_promotional_artist');
 Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
 Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
+Route::get('admin/edit-promotional-artist/{id}','HostelsController@promotional_artist_edit');
 
 
 //City Guide image on Activities page

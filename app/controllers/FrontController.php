@@ -26,10 +26,12 @@ class FrontController extends \BaseController {
 
 
 
-        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later
+        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later on bottom
 
         $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records
         //echo '<pre>';print_r($hostels);die;
+
+        
 
         return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels);
     }
@@ -39,6 +41,7 @@ class FrontController extends \BaseController {
     public function getactivity($month=null)
     {
         $month=Input::get('month');
+
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', $month)->get();
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', $month)->get();
         return View::make('front.eventpartial')->with('mediumevent',$medium)->with('smallevent',$small);

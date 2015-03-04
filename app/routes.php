@@ -95,22 +95,36 @@ Route::get('admin/delete_hostel','HostelsController@delete_hostel')->before('aut
 
 
 //Languages
-Route::get('admin/languages','LanguagesController@index');
-Route::get('admin/add_language','LanguagesController@add_language');
-Route::post('admin/save_language','LanguagesController@save_language');
-Route::get('admin/edit_language/{id}','LanguagesController@edit_language');
-Route::post('admin/update_language','LanguagesController@update_language');
-Route::get('admin/delete_language','LanguagesController@delete_language');
+Route::get('admin/languages','LanguagesController@index')->before('auth');
+Route::get('admin/add_language','LanguagesController@add_language')->before('auth');
+Route::post('admin/save_language','LanguagesController@save_language')->before('auth');
+Route::get('admin/edit_language/{id}','LanguagesController@edit_language')->before('auth');
+Route::post('admin/update_language','LanguagesController@update_language')->before('auth');
+Route::get('admin/delete_language','LanguagesController@delete_language')->before('auth');
 
 //Activities
-Route::get('admin/activities','ActivitiesController@index');
-Route::get('admin/add_activity','ActivitiesController@add_activity');
-Route::post('admin/save_activity','ActivitiesController@save_activity');
-Route::get('admin/edit_activity/{id}','ActivitiesController@edit_activity');
-Route::post('admin/update_activity','ActivitiesController@update_activity');
-Route::get('admin/delete_activity','ActivitiesController@delete_activity');
+Route::get('admin/activities','ActivitiesController@index')->before('auth');
+Route::get('admin/add_activity','ActivitiesController@add_activity')->before('auth');
+Route::post('admin/save_activity','ActivitiesController@save_activity')->before('auth');
+Route::get('admin/edit_activity/{id}','ActivitiesController@edit_activity')->before('auth');
+Route::post('admin/update_activity','ActivitiesController@update_activity')->before('auth');
+Route::get('admin/delete_activity','ActivitiesController@delete_activity')->before('auth');
+
+//Excursion
+Route::get('admin/excursion','ExcursionController@excursion_choose_hostel')->before('auth');
+Route::post('admin/excursion-index','ExcursionController@list_excursion_hostel_previews')->before('auth');
+Route::get('admin/excursion-add','ExcursionController@excursion_add')->before('auth');
+Route::post('admin/excursion-save','ExcursionController@excursion_save')->before('auth');
+Route::get('admin/list-excursion-hostel-previews-all','ExcursionController@list_excursion_hostel_previews_all');
 
 
+
+
+
+
+Route::get('admin/hostel-room-preview-image','HostelRoomsController@hostel_preview_image');
+Route::any('admin/choose-hostel-preview-index','HostelRoomsController@choose_hostel_preview_index');
+Route::post('admin/save-hostel-room_preview','HostelRoomsController@save_hostel_room_preview');
 
 //Route::get('/admin',function)->before('auth');
 //Event::listen('illuminate.query', function($query)

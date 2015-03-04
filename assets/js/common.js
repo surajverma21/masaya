@@ -191,3 +191,4 @@ function delete_travel_tip(tip_id,hostel_id){
 
 
 }
+

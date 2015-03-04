@@ -2,11 +2,13 @@
 
 <body>
 <div class="top_header">
-    <div class="pull-left left_exp">L'expérience Masaya</div>
+    <div class="pull-left left_exp">{{ trans('greet.Experience_Masaya') }}</div>
     <ul class="pull-right top_links">
         <li><a href="#">Se connector</a></li>
-        <li><a href="#">S'enregister</a></li>
-        <li><a href="#"><img src="../assets/front/images/icon1.png" alt="" /></a></li>
+        <li><a href="#">{{ trans('greet.Register') }}</a></li>
+        @foreach ($langs as $lang)
+            <li><a href="javascript:void(0)" title ="{{ $lang->name }}" onclick="return change('{{ $lang->lang_code }}')"><img src="{{URL::to('/')}}/../uploads/languages/{{ $lang->icon }}" alt="" /></a></li>
+        @endforeach
         <li><a href="#">COP$</a></li>
     </ul>
 </div>
@@ -29,7 +31,7 @@
                 <li class="nav-item"><a href="#"><span>Voyagaz en colombie</span><br /> Tips & travels</a></li>
             </ul>
         </div>
-        <div class="pull-right reserver_con" ><a href="#">RÉserver</a></div>
+        <div class="pull-right reserver_con" ><a href="#">{{ trans('greet.Book Now') }}</a></div>
     </div>
     <div class="reserver_top_form" style="display:none;" >
         <div class="container">

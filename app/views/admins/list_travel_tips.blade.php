@@ -190,12 +190,6 @@
     </div>
     <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
-@stop
-@extends('admins.head')
-@extends('admins.header')
-@extends('admins.sidebar')
-@extends('admins.footer')
 
 <script>
     jQuery(document).ready(function() {
@@ -204,3 +198,10 @@
         Index.init();
     });
 </script>
+
+<!-- end: MAIN CONTAINER -->
+@stop
+@extends('admins.head')
+@extends('admins.header')
+@extends('admins.sidebar')
+@extends('admins.footer')

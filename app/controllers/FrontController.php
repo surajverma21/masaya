@@ -7,8 +7,16 @@ class FrontController extends BaseController {
      *
      * @return Response
      */
+
+    public function change_language () {
+        $languages = LanguageSwitcher::All();
+        return $languages;
+    }
+
     public function index()
     {
+        $laguages = $this->change_language();
+
        // $events = HostelEvent::All();
         $events = DB::table('events')->where('event_legend_img', '=', 'yes')->get();   // All events
 
@@ -42,9 +50,13 @@ class FrontController extends BaseController {
         $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records
         //echo '<pre>';print_r($hostels);die;
 
+<<<<<<< HEAD
 
 
         return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)-with('fblikes',$data1);
+=======
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages);
+>>>>>>> 11bd66a8919ef6ac2b27997a1ff6001ab6329d2f
     }
 
 

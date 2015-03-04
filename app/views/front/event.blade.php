@@ -6,7 +6,7 @@
 
         $(document).ready( function() {
             $('#myCarousel').carousel({
-                interval:   400000,
+                interval:   400000
             });
 
             var clickEvent = false;
@@ -42,6 +42,21 @@
                     }
                 }
                 clickEvent = false;
+            });
+
+            $(".Contactus").on('click',function(){
+               //alert('test');
+                //$(".padding_none.contact_cities").trigger("click");
+                var path = window.location.href+'#bottom-tab3';
+                //$(".contact_cities a").trigger('click');
+               location.href=''+path;
+                //$(".foo3_contacts").slideDown();
+               // $(".foo3_contacts").animate({ scrollTop: $('#foo3_contacts').height()}, 1000);
+                location.reload();
+            });
+
+            $(".fo_close").on('click',function(){
+                $('#tab-bottom-container ul li a.active').trigger('click');
             });
         });
 </script>
@@ -191,91 +206,44 @@ if($monthly_activity != '')
 
 
 
-<?php  $check_array = array();
-$i=0;
-foreach($activities as $activitydata)
-{
+            <?php
+            $check_array = array();
+            foreach($activities as $activitydata)
+            {
 
-    if(in_array($activitydata->start_time,$check_array))
-    {
-        $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
+                $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
+            }
 
-    }
-    else
-    {
-
-        $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
-
-    }
-   // $check_array[$activitydata->start_time]['time'] = $activitydata->start_time;
-    //$activitydata->start_time[$activitydata->day] = $activitydata->name;
-}
-
-echo '<pre>';print_r($check_array);die;
-//echo $check_array[0]
+            ?>
 
 
+            <?php foreach($check_array as $key => $val) {
+
+                $Get_time = explode(' ',$key);
+                $hours = $Get_time[1];
+                $time = $Get_time[2];
+                $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+
+                ?>
+
+                <ul class="act_content_sec text-center">
+                    <li><span class="date_section"><?php echo @$time_in_24_hour_format.'H'; ?></span></li>
+                    <li>
+                        <div class="inne_space <?php if(@$val['1']) { echo 'table_sec-yellow'; } ?>">
+                            <span><?php if(@$val['1']) { echo $val['1']; } ?></span>
+                        </div>
+                    </li>
+                    <li><div class="inne_space <?php if(@$val['2']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['2']) { echo $val['2']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['3']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['3']) { echo $val['3']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['4']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['4']) { echo $val['4']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['5']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['5']) { echo $val['5']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['6']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['6']) { echo $val['6']; } ?></span></div></li>
+                    <li><div class="inne_space <?php if(@$val['7']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['7']) { echo $val['7']; } ?></span></div></li>
+                </ul>
 
 
-foreach($check_array as $key => $val )
-{
-    foreach($val as $k2 => $v2)
-    {
-   // echo $key;
-    echo $v2;
-    }
-}
-
-?>
-
-            $j = 1;
-            @foreach($check_array as $key => $activitydata)
-            $i = $activitydata[$j];
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section"></span></li>
-                Monday<li><div class="inne_space table_sec-yellow"><span><?php if(array_key_exists('1',$activitydata[$i][$j])) echo $check_array[$i][$j]?></span></div></li>
-                Tuesday<li><div class="inne_space"><span>dfjdslkfj->2</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-            </ul>
-            <?php die; ?>
-            @endforeach
-
-       <!--     <ul class="act_content_sec text-center">
-                <li><span class="date_section">17h</span></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocina</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Al Aire (Microfono Abierto)</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Campeonato de Rana</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Cine Club</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section">19h</span></li>
-                <li><div class="inne_space table_sec-default"><span>Juegos criollos</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section">17h</span></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Musica en Vivo</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Karaoke</span></div></li>
-            </ul>-->
-
+            <?php } ?>
 
 
         </div>
@@ -471,14 +439,20 @@ foreach($check_array as $key => $val )
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
-            <div class="musicions_inner-con">
-                <h1>Artistes, musiciens...</h1>
-                <h2>Vos talents nous intéressent !</h2>
-                <p>Chez Masaya, nous soutenons quotidiennement la promotion d’artistes locaux et internationaux et créons ainsi un lieu d’échanges et de rencontres hors du commun, extra - ordinaire. <br><br>
-
-                    <strong>Si quelques nuits contre une de vos performances vous intéressent contactez-nous !</strong> </p>
-                <a class="btn btn-default btn-yellow" href="#">Contactez-nous !</a>
-            </div>
+             <div class="slide_main_content">
+                <div class="musicions_inner-con">
+                   <?php  if(isset($promotional_artist))
+                   { ?>
+                    {{$promotional_artist[0]->title}}
+                    {{$promotional_artist[0]->sub_title}}
+                    {{$promotional_artist[0]->promotional_artist_text}}
+                   <?php
+                   }
+                   ?>
+                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">Contactez-nous !</a>
+                </div>
+                <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
+             </div>
         </div>
     </div>
     <!-- musician section -->
@@ -489,19 +463,20 @@ foreach($check_array as $key => $val )
         <div class="container">
             <div class="tour_wrapper text-center">
                 <div class="row">
+                    <?php if(isset($cityguide)){ ?>
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_santa_marta.png" class="imgfull-width">
+                            <img alt="" src="../uploads/city_guide/{{$cityguide[0]->city_guide_image}}" class="imgfull-width tour_img_hgt">
                             <div class="tour_content_top text-center les les_space">
                                 <h1>SANTA MARTA</h1>
-                                <h2>SUIVEZ LE GUIDE</h2>
+                                <h2>{{$cityguide[0]->city_guide_text}}</h2>
                             </div>
                         </div>
                     </div>
-
+                    <?php } ?>
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width">
+                            <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width tour_img_hgt">
                             <div class="tour_content_top text-center les_space">
                                 <h1>MASAYA TRAVEL</h1>
                                 <h2>EXCURSIONS AU DÉPART DE SANTA MARTA</h2>
@@ -625,7 +600,7 @@ foreach($check_array as $key => $val )
                         </h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -660,23 +635,20 @@ foreach($check_array as $key => $val )
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
                                 <h3 class="foo_list_title">Temps à pied <br>des différents points d’intérêt</h3>
-                                <ul class="detail_listing2">
-                                    <li>
-                                        <p>Boire un café Juan Valdez</p>
-                                        <div class="list_month-detail text-center">2mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Visiter la Cathédrale</p>
-                                        <p>Voir la plage</p>
-                                        <p>Faire quelques courses</p>
-                                        <div class="list_month-detail text-center">3mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Aller au Musée de l’Or</p>
-                                        <p>Se faire une terrasse au Parque de los Novios</p>
-                                        <div class="list_month-detail text-center">5mn</div>
-                                    </li>
+                               <ul class="detail_listing2">
+
+                                        @foreach($touristic as $tours)
+                                   <li>
+                                       {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+                                   </li>
+                                        @endforeach
+
                                 </ul>
+                               <!-- @foreach($touristic as $tours)
+                               {{ $tours->description}}
+                                <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+                                @endforeach-->
                             </div>
                         </div>
 
@@ -754,7 +726,7 @@ foreach($check_array as $key => $val )
                         </h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -881,7 +853,7 @@ foreach($check_array as $key => $val )
                         <h3>&nbsp;</h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -981,7 +953,9 @@ foreach($check_array as $key => $val )
 </div>
 
 <ul class="contant_cities_foo">
-    <li id="the-first-tab" class="hidden_mobile">
+
+
+    <li  class="hidden_mobile contactclose">
         <a href="#bottom-tab1">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
@@ -990,7 +964,8 @@ foreach($check_array as $key => $val )
             </div>
         </a>
     </li>
-    <li class="padding_none">
+
+    <li class="padding_none contactclose">
         <a href="#bottom-tab2">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
@@ -999,7 +974,7 @@ foreach($check_array as $key => $val )
             </div>
         </a>
     </li>
-    <li class="padding_none">
+    <li class="padding_none contact_cities contactclose">
         <a href="#bottom-tab3">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/contacts.png" alt="" />

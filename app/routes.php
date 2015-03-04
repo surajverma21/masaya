@@ -14,6 +14,8 @@
 
 Route::get('/events-activities','FrontController@index');
 Route::get('/getactivities','FrontController@getactivity');
+Route::get('/gettouristic','FrontController@gettouristic');
+
 
 
 Route::get('admin/login','MembersController@login')->before('guest');
@@ -71,11 +73,11 @@ Route::get('admin/promotional-artist-index-all','HostelsController@promotional_a
 
 //City Guide image on Activities page
 
-Route::get('admin/city-guide','HostelsController@city_guide_choose_hostel');
-Route::post('admin/city-guide-index','HostelsController@city_guide_index');
-Route::get('admin/city-guide-add','HostelsController@city_guide_add');
-Route::post('admin/save-city-guide','HostelsController@save_city_guide');
-Route::get('admin/city-guide-index-all','HostelsController@city_guide_index_all');
+Route::get('admin/city-guide','HostelsController@city_guide_choose_hostel')->before('auth');
+Route::post('admin/city-guide-index','HostelsController@city_guide_index')->before('auth');
+Route::get('admin/city-guide-add','HostelsController@city_guide_add')->before('auth');
+Route::post('admin/save-city-guide','HostelsController@save_city_guide')->before('auth');
+Route::get('admin/city-guide-index-all','HostelsController@city_guide_index_all')->before('auth');
 
 
 //Hostels

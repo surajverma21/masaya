@@ -78,6 +78,7 @@ Route::get('admin/promotional-artist-add','HostelsController@add_promotional_art
 Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
 Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
 Route::get('admin/edit-promotional-artist/{id}','HostelsController@promotional_artist_edit');
+Route::post('admin/promotional-artist-update','HostelsController@promotional_artist_update');
 
 
 //City Guide image on Activities page

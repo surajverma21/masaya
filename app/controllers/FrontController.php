@@ -17,7 +17,7 @@ class FrontController extends \BaseController {
     {
         $laguages = $this->change_language();
 
-       // $events = HostelEvent::All();
+
         $events = DB::table('events')->where('event_legend_img', '=', 'yes')->get();   // All events
 
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->where('month_id', '=', 3)->get(); // medium events
@@ -32,14 +32,15 @@ class FrontController extends \BaseController {
 
         $cityguide = DB::table('city_guide')->where('id', '=', 1)->get();
 
-
-
         $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->get();  // partial load later
 
         $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records
-        //echo '<pre>';print_r($hostels);die;
 
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages);
+        $socialObject    = new SocialController;
+
+        $instagramPictures = $socialObject->getInstagramImages();
+
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('instagramPictures',$instagramPictures);
     }
 
 

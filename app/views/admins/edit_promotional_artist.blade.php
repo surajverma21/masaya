@@ -12,8 +12,7 @@
             <div class="toolbar row">
                 <div class="col-sm-6 hidden-xs">
                     <div class="page-header">
-                        <!--                        <h1>Dashboard <small>overview &amp; stats </small></h1>-->
-                        <h1>{{$touristic->hostel->name or ''}}</h1>
+                        <h1>Dashboard <small>overview &amp; stats </small></h1>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
@@ -23,7 +22,7 @@
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
                                 <a href="{{ URL::to('/') }}/admin/addmember">
-                                    <i class="fa fa-plus"></i> Add Member
+                                    <i class="fa fa-plus"></i> Add New
                                 </a>
                             </li>
                         </ul>
@@ -31,11 +30,6 @@
                     </div>
                 </div>
             </div>
-            @if(Session::has('message'))
-            <div class="alert alert-info">
-                {{ Session::get('message') }}
-            </div>
-            @endif
             <!-- end: TOOLBAR -->
             <!-- end: PAGE HEADER -->
             <!-- start: BREADCRUMB -->
@@ -48,58 +42,95 @@
                             </a>
                         </li>
                         <li class="active">
-                            Edit
+                            Add
                         </li>
                     </ol>
                 </div>
             </div>
             <!-- end: BREADCRUMB -->
             <!-- start: PAGE CONTENT -->
-
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
-                        {{ Form::open(array('url' => 'admin/update_touristic','class' => 'form-horizontal','files' =>true)) }}
+                        {{ Form::open(array('url' => 'admin/promotional-artist-update','class' => 'form-horizontal','files' =>true)) }}
 
-
+                        @if(Session::has('message'))
+                        <div class="alert alert-info">
+                            {{ Session::get('message') }}
+                        </div>
+                        @endif
 
                         <fieldset>
-
-
-                            {{Form::hidden('touristic_id',$touristic->id) }}
-                            {{Form::hidden('hostel_id',$touristic->hostel_id) }}
-
+                                {{Form::hidden('resource_id',$promotional_artist->id)}}
                             <div class="form-group">
-                                {{ Form::label('language','Language :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('language','Language :', $attributes = ['class' => 'col-sm-3 control-label ']) }}
                                 <div class="col-sm-9">
-                                    {{Form::select('language',$languages,$touristic->language_id)}}
+                                    {{ Form::select('language', $languages) }}
                                     <div style="color:red"> {{ $errors->first('language') }} </div>
                                 </div>
                             </div>
 
 
-
                             <div class="form-group">
-                                {{ Form::label('time','Time :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{Form::select('time',$time_range,$touristic->time_on_point - 1)}}
-                                    <div style="color:red"> {{ $errors->first('time') }} </div>
+                                    {{ Form::textarea('title', $promotional_artist->title, $attributes = ['class' => 'form-control ckeditor form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    <div style="color:red"> {{ $errors->first('title') }} </div>
                                 </div>
                             </div>
 
 
                             <div class="form-group">
-                                {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('sub_title','Sub Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('description', $touristic->description, $attributes = ['class' => 'form-control', 'rerequired' => 'required']) }}
-                                    <div style="color:red"> {{ $errors->first('description') }} </div>
+                                    {{ Form::textarea('sub_title', $promotional_artist->sub_title, $attributes = ['class' => 'form-control ckeditor form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    <div style="color:red"> {{ $errors->first('sub_title') }} </div>
                                 </div>
                             </div>
 
 
+                            <div class="form-group">
+                                {{ Form::label('promotional_artist_text','Promotional Artist Text :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::textarea('promotional_artist_text', $promotional_artist->promotional_artist_text, $attributes = ['class' => 'form-control ckeditor form-control', 'required' => 'required','rows' => 4]) }}
+                                    <div style="color:red"> {{ $errors->first('promotional_artist_text') }} </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+
+                                    {{ Form::label('promotional_artist_image','Promotional Artist image : ', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                    <div class="fileupload fileupload-new col-sm-6" data-provides="fileupload">
+                                        @if($promotional_artist->promotional_artist_image)
+                                            <div class="fileupload-new thumbnail"><img src="{{URL::to('/')}}/../uploads/promotional_artist/{{ $promotional_artist->promotional_artist_image }}" alt="" />
+                                        @else
+                                                <div class="fileupload-new thumbnail"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA?text=no+image" alt="" />
+
+                                        @endif
+                                        </div>
+                                        <div class="fileupload-preview fileupload-exists thumbnail"></div>
+                                        <div style="margin-top:10px;">
+                                            <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture-o"></i> Select image</span><span class="fileupload-exists"><i class="fa fa-picture-o"></i> Change</span>
+
+                                                <input type="file" name="promotional_artist_image">
+                                            </span>
+                                            <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
+                                                <i class="fa fa-times"></i> Remove
+                                            </a>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
 
                             <div class="form-actions">
-                                {{ Form::submit('Update', $attributes = ['class' => 'btn btn-green pull-right']) }}
+                                {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}
                             </div>
                         </fieldset>
                         {{ Form::close() }}

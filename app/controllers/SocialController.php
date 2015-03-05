@@ -1,6 +1,6 @@
 <?php
 
-Class InstagramController extends BaseController{
+Class SocialController extends BaseController{
 
     public function object2array($object){
 
@@ -56,7 +56,11 @@ Class InstagramController extends BaseController{
 
         foreach ($arrayI['data'] as $keyI => $valueI) {
 
+            if($tCounter > 7){
+                break;
+            }
             $finalT[$tCounter]['photos']  = $valueI['images']['standard_resolution']['url'];
+            $finalT[$tCounter]['link']    = $valueI['link'];
 
             $tCounter++;
         }

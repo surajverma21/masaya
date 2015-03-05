@@ -139,20 +139,12 @@
                         </a>
                         <ul class="dropdown-menu dropdown-dark">
                             <li>
-                                <a href="pages_user_profile.html">
+                                <a href="{{url('admin/edit/'.Auth::user()->id)}}">
                                     My Profile
                                 </a>
                             </li>
-                            <li>
-                                <a href="pages_calendar.html">
-                                    My Calendar
-                                </a>
-                            </li>
-                            <li>
-                                <a href="pages_messages.html">
-                                    My Messages (3)
-                                </a>
-                            </li>
+
+
                             <!--
                                                     <li>
                                                         <a href="login_lock_screen.html">

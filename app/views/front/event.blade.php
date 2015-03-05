@@ -508,14 +508,10 @@ if($monthly_activity != '')
                     <div class="col-lg-10 col-md-9 col-sm-6 padding_none">
                         <div class="socail_../assets/front/images">
                             <div class="row margin_none">
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_17.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_18.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_19.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_23.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_21.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_22.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_20.png" alt="" /></div>
-                                <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><img class="imgfull-width" src="../assets/front/images/img2_small_24.png" alt="" /></div>
+
+                                @foreach($instagramPictures as $pics)
+                                    <div class="col-md-3 col-sm-6 col-xs-6 padding_none"><a href="{{$pics['link']}}"><img class="imgfull-width" src="{{$pics['photos']}}" alt="" /></a></div>
+                             @endforeach
                             </div>
                         </div>
                     </div>

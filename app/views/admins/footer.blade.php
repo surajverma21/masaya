@@ -40,7 +40,24 @@
         </div>
     </div>
 </footer>
+<<<<<<< HEAD
 
+=======
+<!-- start: MAIN JAVASCRIPTS -->
+
+<!--[if lt IE 9]>
+
+{{ HTML::script('../assets/plugins/respond.min.js') }}
+{{ HTML::script('../assets/plugins/excanvas.min.js') }}
+{{ HTML::script('../assets/plugins/jQuery/jquery-1.11.1.min.js') }}
+<![endif]-->
+
+{{ HTML::script('assets/plugins/respond.min.js') }}
+{{ HTML::script('assets/plugins/excanvas.min.js') }}
+
+		<![endif]-->
+
+>>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
 <!--[if gte IE 9]><!-->
 {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
 <!--<![endif]-->

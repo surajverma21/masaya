@@ -31,6 +31,11 @@
 
 
 
+<<<<<<< HEAD
+=======
+    <!-- start: MAIN CSS -->
+
+>>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
 
     {{ HTML::style('../assets/plugins/bootstrap/css/bootstrap.min.css') }}

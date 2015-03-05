@@ -197,6 +197,7 @@ function delete_travel_tip(tip_id,hostel_id){
 
 }
 
+<<<<<<< HEAD
 function common_delete(primary_id,url){
 
 
@@ -225,3 +226,12 @@ function common_delete(primary_id,url){
 
  }
 
+=======
+//Language Switcher
+function change_lang(code) {
+    alert(code);
+}
+
+/*
+{{ URL::to('/') }}/*/
+>>>>>>> 4cd9e2c640502e221610032065275e39b8173f38

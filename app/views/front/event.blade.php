@@ -931,7 +931,7 @@ foreach($activities as $activitydata)
                     <div class="row">
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
-                                <h3 class="foo_list_title">Temps à pied <br>des différents points d’intérêt</h3>
+                                <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}}}</h3>
                                 <ul class="detail_listing2">
                                     <li>
                                         <p>Boire un café Juan Valdez</p>
@@ -955,7 +955,7 @@ foreach($activities as $activitydata)
 
                         <div class="col-md-8 col-sm-7">
                             <div class="foo_right_side">
-                                <h3 class="foo_list_title">&nbsp;<br>Comment arriver ?</h3>
+                                <h3 class="foo_list_title">&nbsp;<br>{{ trans('greet.How to get there') }} ?</h3>
 
                                 <div class="foo_address">
                                     <div class="row">
@@ -976,7 +976,7 @@ foreach($activities as $activitydata)
                                     <div class="row">
                                         <div class="col-md-3">
                                             <img class="mobile_tip" src="../assets/front/images/foo_tips.png" alt="" />
-                                            <h3>TRAVEL Tips</h3>
+                                            <h3>{{ trans('greet.TRAVEL Tips')}}</h3>
                                         </div>
                                         <div class="col-md-9">
                                             <h4>prendre le bus / taxi</h4>
@@ -1015,7 +1015,7 @@ foreach($activities as $activitydata)
                         <a class="footer_logo" href="#"><img src="../assets/front/images/footer_logo.png" alt="" /></a>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-9">
-                        <h1>Contactez-nous !</h1>
+                        <h1>{{ trans('greet.Contact us !') }}</h1>
                     </div>
                     <div class="col-md-3 col-sm-3 hidden_mobile">
                         <h3>&nbsp;</h3>

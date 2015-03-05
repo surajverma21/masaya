@@ -64,6 +64,11 @@ return array(
     "All rights reserved"=>"Tous droits réservés",
     "FOLLOW THE LEADER"=>"SUIVEZ LE GUIDE",
     "Send your request"=>"Envoyer votre demande",
+    "TRAVEL Tips"=>"Conseils de voyage",
+    "How to get there"=>"Comment arriver",
+    "Walking time"=>"Temps à pied",
+    "different points of interest"=>"des différents points d’intérêt",
+
 
 );
 ?>

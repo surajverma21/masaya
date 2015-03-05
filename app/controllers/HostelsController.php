@@ -626,4 +626,108 @@ Class HostelsController extends BaseController{
 
     }
 
+    public function how_to_get_there(){
+
+        $hostels  = Hostel::all();
+
+        return View::make('admins.choose_hostel_how_to_get_there')->with('hostels',$hostels);
+    }
+
+    public function how_to_get_there_index(){
+
+        if(Input::get('hostel')){
+
+            $hostel_id = Input::get('hostel');
+            Session::forget('hostel_id');
+            Session::put('hostel_id',$hostel_id);
+        }else{
+            $hostel_id = Session::get('hostel_id');
+        }
+
+
+        $how_to_get_there = HowToGetThere::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_how_to_get_there_index')->with('how_to_get_there',$how_to_get_there);
+    }
+    public function how_to_get_there_add(){
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        return View::make('admins.add_how_to_get_there')->with('languages',$languages);
+    }
+
+    public function how_to_get_there_save(){
+
+        $language_id                    = Input::get('language');
+        $hostel_id                      = Session::get('hostel_id');
+        $how_to_get_there_title         = Input::get('title');
+        $how_to_get_there_description   = Input::get('description');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $how_to_get_there                              = new HowToGetThere;
+        $how_to_get_there->hostel_id                   = $hostel_id;
+        $how_to_get_there->title                       = $how_to_get_there_title;
+        $how_to_get_there->language_id                 = $language_id;
+        $how_to_get_there->description                 = $how_to_get_there_description;
+
+        $how_to_get_there->save();
+
+        return Redirect::action('HostelsController@how_to_get_there_index_all')->with('msg','How to get there added successfully');
+    }
+
+    public function how_to_get_there_index_all(){
+
+        if(Input::get('hostel')){
+
+            $hostel_id = Input::get('hostel');
+            Session::forget('hostel_id');
+            Session::put('hostel_id',$hostel_id);
+        }else{
+            $hostel_id = Session::get('hostel_id');
+        }
+
+
+        $how_to_get_there = HowToGetThere::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_how_to_get_there_index')->with('how_to_get_there',$how_to_get_there);
+    }
+
+    public function edit_how_to_get_there(){
+
+        $id = Route::input('id');
+
+        $how_to_get_there   =   HowToGetThere::with('hostel')->find($id);
+        $languages          =   Language::All()->lists('name' ,'id');
+
+        if(empty($how_to_get_there)){
+            return Redirect::to('admin/how-to-get-there-index');
+        }
+
+        return View::make('admins.edit_how_to_get_there')->with('how_to_get_there',$how_to_get_there)->with('languages',$languages);
+
+    }
+
+    public function how_to_get_there_update(){
+
+        $id          =  Input::get('id');
+        $language    =  Input::get('language');
+        $title       =  Input::get('title');
+        $description =  Input::get('description');
+
+
+        $how_to_get_there_update                    = HowToGetThere::find($id);
+        $how_to_get_there_update->language_id       = $language;
+        $how_to_get_there_update->title             = $title;
+        $how_to_get_there_update->description       = $description;
+        $how_to_get_there_update->save();
+
+
+        return Redirect::action('HostelsController@how_to_get_there_index_all')->with('msg','How to get there updated successfully');
+
+    }
 }

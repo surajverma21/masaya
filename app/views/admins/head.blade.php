@@ -19,9 +19,9 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- end: META -->
-<<<<<<< HEAD
+
     {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
-=======
+
 
     <!-- start: MAIN JS -->
     <!--[if gte IE 9]><!-->

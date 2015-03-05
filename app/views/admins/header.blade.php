@@ -135,7 +135,7 @@
                     <!-- start: USER DROPDOWN -->
                     <li class="dropdown current-user">
                         <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                            {{ HTML::image('../assets/images/avatar-1-small.jpg', 'a picture', array('class' => 'img-circle')) }}<!-- class="img-circle" alt="">--> <span class="username hidden-xs">{{ Auth::user()->username }}</span> <i class="fa fa-caret-down "></i>
+                            <!-- class="img-circle" alt="">--> <span class="username hidden-xs">{{ Auth::user()->username }}</span> <i class="fa fa-caret-down "></i>
                         </a>
                         <ul class="dropdown-menu dropdown-dark">
                             <li>

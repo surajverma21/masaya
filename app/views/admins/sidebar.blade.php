@@ -74,6 +74,12 @@
             </a>
         </li>
 
+        <li>
+            <a href="how-to-get-there">
+                <span class="title">How To Get There</span>
+            </a>
+        </li>
+
     </ul>
 </li>
 

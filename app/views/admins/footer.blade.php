@@ -27,12 +27,12 @@
 <!-- start: MAIN JAVASCRIPTS -->
 
 <!--[if lt IE 9]>
-<<<<<<< HEAD
+
 {{ HTML::script('../assets/plugins/respond.min.js') }}
 {{ HTML::script('../assets/plugins/excanvas.min.js') }}
 {{ HTML::script('../assets/plugins/jQuery/jquery-1.11.1.min.js') }}
 <![endif]-->
-=======
+
 {{ HTML::script('assets/plugins/respond.min.js') }}
 {{ HTML::script('assets/plugins/excanvas.min.js') }}
 

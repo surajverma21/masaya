@@ -191,59 +191,60 @@ if($monthly_activity != '')
 
 
 
-<?php  $check_array = array();
-$i=0;
+<?php 
+//echo "<pre>";print_r($activities);die;
+ $check_array = array();
+
 foreach($activities as $activitydata)
 {
 
-    if(in_array($activitydata->start_time,$check_array))
+    /*if(in_array($activitydata->start_time,$check_array))
     {
         $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
 
     }
     else
-    {
+    {*/
 
-        $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
+        $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
-    }
+   /* }*/
    // $check_array[$activitydata->start_time]['time'] = $activitydata->start_time;
     //$activitydata->start_time[$activitydata->day] = $activitydata->name;
 }
 
-echo '<pre>';print_r($check_array);die;
+//echo '<pre>';print_r($check_array);die;
 //echo $check_array[0]
 
 
 
 
-foreach($check_array as $key => $val )
+/*foreach($check_array as $key => $val )
 {
-    foreach($val as $k2 => $v2)
-    {
-   // echo $key;
-    echo $v2;
-    }
-}
+    echo "<pre>";print_r($val);die;
+    
+}*/
 
 ?>
 
-            $j = 1;
-            @foreach($check_array as $key => $activitydata)
-            $i = $activitydata[$j];
+            
+            <?php foreach($check_array as $key => $val) {
+            ?>
+            
             <ul class="act_content_sec text-center">
-                <li><span class="date_section"></span></li>
-                Monday<li><div class="inne_space table_sec-yellow"><span><?php if(array_key_exists('1',$activitydata[$i][$j])) echo $check_array[$i][$j]?></span></div></li>
-                Tuesday<li><div class="inne_space"><span>dfjdslkfj->2</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span></span></div></li>
-                <li><div class="inne_space"><span></span></div></li>
+                <li><span class="date_section"></span><?php echo $key; ?></li>
+                <li><div class="inne_space <?php if(@$val['1']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['1']) { echo $val['1']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['2']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['2']) { echo $val['2']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['3']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['3']) { echo $val['3']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['4']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['4']) { echo $val['4']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['5']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['5']) { echo $val['5']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['6']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['6']) { echo $val['6']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['7']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['7']) { echo $val['7']; } ?></span></div></li>
             </ul>
-            <?php die; ?>
-            @endforeach
+          
+                 
+            <?php } ?>
 
        <!--     <ul class="act_content_sec text-center">
                 <li><span class="date_section">17h</span></li>

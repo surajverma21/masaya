@@ -158,7 +158,7 @@
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+        
     });
 </script>
 @stop

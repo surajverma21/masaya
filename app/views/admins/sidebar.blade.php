@@ -63,9 +63,11 @@
 <li class="active open">
     <a href="{{ URL::to('/') }}/admin/activities"><i class="fa fa-desktop"></i> <span class="title"> Activities </span></a>
 </li>
-
+<li class="active open">
+    <a href="{{ URL::to('/') }}/admin/languages"><i class="fa fa-desktop"></i> <span class="title"> Languages </span></a>
+</li>
 <li>
-    <a href="{{ URL::to('/') }}/admin/languages"><i class="fa fa-cogs"></i> <span class="title"> Languages </span><i class="icon-arrow"></i> </a>
+    <a href="javascript:void(0);"><i class="fa fa-cogs"></i> <span class="title"> Extra element </span><i class="icon-arrow"></i> </a>
     <ul class="sub-menu">
         <li>
             <a href="ui_elements.html">

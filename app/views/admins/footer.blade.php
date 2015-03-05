@@ -27,17 +27,17 @@
 <!-- start: MAIN JAVASCRIPTS -->
 
 <!--[if lt IE 9]>
-<<<<<<< HEAD
+
 {{ HTML::script('../assets/plugins/respond.min.js') }}
 {{ HTML::script('../assets/plugins/excanvas.min.js') }}
 {{ HTML::script('../assets/plugins/jQuery/jquery-1.11.1.min.js') }}
 <![endif]-->
-=======
+
 {{ HTML::script('assets/plugins/respond.min.js') }}
 {{ HTML::script('assets/plugins/excanvas.min.js') }}
 
 		<![endif]-->
->>>>>>> b8fbaa19a36cc6b03683d4c9400b78c10ea28003
+
 <!--[if gte IE 9]><!-->
 {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
 <!--<![endif]-->

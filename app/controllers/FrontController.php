@@ -22,6 +22,7 @@ class FrontController extends BaseController {
         $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get();   // All events
 //        return $events;
 
+
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->Where('month_id', '=', 3)->Where('lang_id','=',$lang_id)->get(); // medium events
 
         $small = DB::table('events')->where('event_medium_img', '=', NULL)->where('event_legend_img', '=', NULL)->where('month_id', '=', 3)->Where('lang_id','=',$lang_id)->get(); // small events
@@ -37,7 +38,7 @@ class FrontController extends BaseController {
         session::put('hostel_id',1);   //     Will be dynamic after getting hostel from session in homepage.
         if(session::get("hostel_id") == 1)   // session::puts('varname','hostel-id');
         {
-           // $_SESSION['hostel-name'] = 'MasayaHostelSantaMarta';  // Condition based on $_SESSION['hostel-id']
+            // $_SESSION['hostel-name'] = 'MasayaHostelSantaMarta';  // Condition based on $_SESSION['hostel-id']
             session::put('hostel_name','MasayaHostelSantaMarta');
         }
 
@@ -79,7 +80,7 @@ class FrontController extends BaseController {
         $id=Input::get('hostelid');
         $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', $id)->get();  // partial load later
         return View::make('front.touristicpartial')->with('touristic',$touristic);
-       // echo "<pre>";print_r($touristic);die;
+        // echo "<pre>";print_r($touristic);die;
     }
 
 

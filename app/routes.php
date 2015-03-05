@@ -24,6 +24,7 @@ Route::get('/language', array(
 Route::get('/lang', 'LanguageController@event_n_activities_data');
 
 
+
 Route::get('admin/login','MembersController@login')->before('guest');
 Route::get('/admin', array('as' => 'home', 'uses' => 'MembersController@index'))->before('auth');
 Route::get('admin/index','MembersController@index');
@@ -56,6 +57,8 @@ Route::get('admin/edit_time_to_touristic/{id}','HostelsController@edit_touristic
 Route::post('admin/update_touristic','HostelsController@update_touristic')->before('auth');
 Route::get('admin/delete_time_to_touristics','HostelsController@delete_touristic')->before('auth');
 
+
+
 //Travel Tips
 Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel')->before('auth');
 Route::post('admin/travel-tips-index','HostelsController@list_travel_tips')->before('auth');
@@ -75,6 +78,8 @@ Route::post('admin/promotional-artist-index','HostelsController@promotional_arti
 Route::get('admin/promotional-artist-add','HostelsController@add_promotional_artist');
 Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
 Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
+Route::get('admin/edit-promotional-artist/{id}','HostelsController@promotional_artist_edit');
+Route::post('admin/promotional-artist-update','HostelsController@promotional_artist_update');
 
 
 //City Guide image on Activities page
@@ -119,13 +124,23 @@ Route::post('admin/excursion-save','ExcursionController@excursion_save')->before
 Route::get('admin/list-excursion-hostel-previews-all','ExcursionController@list_excursion_hostel_previews_all');
 
 
+//How to get there..
+
+Route::get('admin/how-to-get-there','HostelsController@how_to_get_there')->before('auth');
+Route::post('admin/how-to-get-there-index','HostelsController@how_to_get_there_index')->before('auth');
+Route::get('admin/how-to-get-there-add','HostelsController@how_to_get_there_add');
+Route::post('admin/how-to-get-there-save','HostelsController@how_to_get_there_save');
+Route::get('admin/how-to-get-there-index-all','HostelsController@how_to_get_there_index_all')->before('auth');
+Route::get('admin/edit-how-to-get-there/{id}','HostelsController@edit_how_to_get_there');
+Route::post('admin/how-to-get-there-update','HostelsController@how_to_get_there_update');
 
 
 
 
-Route::get('admin/hostel-room-preview-image','HostelRoomsController@hostel_preview_image');
-Route::any('admin/choose-hostel-preview-index','HostelRoomsController@choose_hostel_preview_index');
-Route::post('admin/save-hostel-room_preview','HostelRoomsController@save_hostel_room_preview');
+
+Route::get('admin/hostel-room-preview-image','HostelRoomsController@hostel_preview_image')->before('auth');
+Route::any('admin/choose-hostel-preview-index','HostelRoomsController@choose_hostel_preview_index')->before('auth');
+Route::post('admin/save-hostel-room_preview','HostelRoomsController@save_hostel_room_preview')->before('auth');
 
 //Route::get('/admin',function)->before('auth');
 //Event::listen('illuminate.query', function($query)

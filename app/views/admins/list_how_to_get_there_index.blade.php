@@ -13,8 +13,8 @@
             <div class="toolbar row">
                 <div class="col-sm-6 hidden-xs">
                     <div class="page-header">
-                        @if(count($promotional_artists))
-                        <h1>{{ $promotional_artists[0]->hostel->name or ''}}</h1>
+                        @if(count($how_to_get_there))
+                        <h1>{{ $how_to_get_there[0]->hostel->name or ''}}</h1>
                         @endif
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                         <ul class="nav navbar-right">
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
-                                <a href="promotional-artist-add">
+                                <a href="how-to-get-there-add">
                                     <i class="fa fa-plus"></i> Add New
                                 </a>
                             </li>
@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li class="active">
-                              Promotional artist
+                            How To Get There
                         </li>
                     </ol>
                 </div>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            @if(count($promotional_artists))
+                            @if(count($how_to_get_there))
                             <table class="table table-striped table-hover" id="sample-table-2">
                                 <thead>
                                 <tr>
@@ -101,8 +101,7 @@
 
 
                                     <th class="hidden-xs">#</th>
-                                    <th class="hidden-xs">Title</th>
-                                    <th class="hidden-xs">Promotional Artist Text</th>
+                                    <th class="hidden-xs">Text</th>
                                     <th class="hidden-xs">Language</th>
                                     <th></th>
 
@@ -112,7 +111,7 @@
 
                                 <?php $count = 1;?>
 
-                                @foreach ($promotional_artists as $promotional_artist)
+                                @foreach ($how_to_get_there as $how_to_get)
 
                                 <tr>
 
@@ -128,25 +127,17 @@
                                     </td>
                                     <!--                        <td class="center"><img src="assets/images/avatar-1.jpg" alt="image"/></td>-->
 
-                                    <td>{{ $promotional_artist->title }} </td>
+                                    <td>{{ $how_to_get->title }} </td>
 
-                                    <td class="hidden-xs">
-                                        @if (strlen($promotional_artist->promotional_artist_text) > 15)
-
-                                                 {{ substr($promotional_artist->promotional_artist_text,0,15) }}..
-                                        @else
-                                                  {{ $promotional_artist->promotional_artist_text }}
-                                        @endif
-                                    </td>
 
                                     <td>
-                                        {{ $promotional_artist->language->name }}
+                                        {{ $how_to_get->language->name }}
                                     </td>
 
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <a href="edit-promotional-artist/{{$promotional_artist->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-<!--                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$promotional_artist->id}},{{$promotional_artist->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>-->
+                                            <a href="edit-how-to-get-there/{{$how_to_get->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$how_to_get->id}},{{$how_to_get->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
                                             <div class="btn-group">
@@ -173,7 +164,7 @@
                                 </tbody>
                             </table>
                             @else
-                            No Promotional artist ...
+                            No How to get there...
                             @endif
                         </div>
                     </div>
@@ -187,6 +178,12 @@
     <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
+@stop
+@extends('admins.head')
+@extends('admins.header')
+@extends('admins.sidebar')
+@extends('admins.footer')
+
 <script>
     jQuery(document).ready(function() {
         Main.init();
@@ -194,10 +191,3 @@
         Index.init();
     });
 </script>
-
-@stop
-@extends('admins.head')
-@extends('admins.header')
-@extends('admins.sidebar')
-@extends('admins.footer')
-

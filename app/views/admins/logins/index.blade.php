@@ -6,7 +6,7 @@
 <div class="row">
     <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
         <div class="logo">
-            <img src="../assets/images/logo.png">
+            <img src="{{url('../assets/images/logo.png')}}" width="70px" >
         </div>
         <!-- start: LOGIN BOX -->
 
@@ -58,7 +58,7 @@
 <!--            </form>-->
             <!-- start: COPYRIGHT -->
             <div class="copyright">
-                2014 &copy; Rapido by cliptheme.
+                2014 &copy; Masaya Hostels.
             </div>
             <!-- end: COPYRIGHT -->
         </div>

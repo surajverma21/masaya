@@ -147,6 +147,7 @@
 <!-- Wrapper for slides -->
 <div class="carousel-inner">
 <?php
+
 if(isset($events)){
 $i = 0; ?>
 @foreach($events as $event)
@@ -421,17 +422,10 @@ if(isset($monthly_activity) && $monthly_activity != '')
 </div>
 <!-- activity cultural -->
 
-<<<<<<< HEAD
 
-
-<div class="activity_slide tablet-hide">
-   <div class="container">
- <!-- Banner section   Activiites Slider Desktop   -->
-=======
 <div class="activity_slide tablet-hide">
     <div class="container">
 <!-- Banner section   Activiites Slider Desktop   -->
->>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
 <div class="act_slide_inner">
    <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
     <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
@@ -482,17 +476,11 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
 </div>
 <!-- Banner section -->
-<<<<<<< HEAD
-</div>
-</div>
-
-=======
 <div class="slide_act_cul tablet_button_con hidden_mobile">
     <button class="exe_button">Découvrir toutes les activités de la semaine</button>
 </div>
 </div>
 </div>
->>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
 
 
 <!-- Exe activity main con -->
@@ -537,17 +525,7 @@ if(isset($monthly_activity) && $monthly_activity != '')
                     {{$promotional_artist[0]->title}}
                     {{$promotional_artist[0]->sub_title}}
                     {{$promotional_artist[0]->promotional_artist_text}}
-<<<<<<< HEAD
 
-
-
-
-=======
-                 
-
-
-
->>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
                     <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
 
                 </div>

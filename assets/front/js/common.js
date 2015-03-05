@@ -65,8 +65,9 @@ function change(lang) {
         'action'    : 'POST',
         'data'      : {locale:lang},
         'success'   : function(result){
-            //window.data = JSON.parse(result);
-            //console.log(window.data);
+//            window.data = result;
+
+//            console.log(window.data.events[0].event_title);
            location.reload();
 
         },

@@ -21,6 +21,7 @@ Route::get('/language', array(
     'as'        => 'language-chooser',
     'uses'      => 'LanguageController@chooser'
 ));
+Route::get('/lang', 'LanguageController@event_n_activities_data');
 
 
 

@@ -26,6 +26,24 @@ Class SocialController extends BaseController{
         return $return;
     }
 
+
+    //Facebook Likes
+    public function fbLikeCount($id)
+    {
+
+        $json_url ='https://graph.facebook.com/'.$id.'';
+        $json = file_get_contents($json_url);
+        $json_output = json_decode($json);
+        //echo '<pre>'; print_r($json_output); echo '</pre>'; die;
+        //Extract the likes count from the JSON object
+        if($json_output->likes){
+            return $likes = $json_output->likes;
+        }else{
+            return  0;
+        }
+       // return View::make('front.event')->with('fblikes',$likes);
+    }
+
     public function fetchData($url){
 
         $chI = curl_init();

@@ -59,15 +59,15 @@ $(".custom-select").change(function(){
 //Language Switcher
 function change(lang) {
 
-console.log(lang);
     $.ajax({
 
         'url'       : 'language',
         'action'    : 'POST',
         'data'      : {locale:lang},
         'success'   : function(result){
-
-            location.reload();
+            //window.data = JSON.parse(result);
+            //console.log(window.data);
+           location.reload();
 
         },
         'error'     : function(){

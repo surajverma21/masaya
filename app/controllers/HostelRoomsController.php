@@ -35,6 +35,16 @@ class HostelRoomsController extends BaseController{
 
         }
 
+    // Event Activities hostel Preview based on Current Hostel Right now Static FOR SANTA MARTA
+
+
+       public function event_activities_hostel()
+       {
+           //session::get('hostel_id');
+           $get_hostel_activities = DB::table('hostel_room_preview')->where('hostel_id', '=', 1)->get();   // All events
+           return $get_hostel_activities;
+       }
+
         public function hostel_preview_add(){
 
             return View::make('admins.list_hostel_room_preview');

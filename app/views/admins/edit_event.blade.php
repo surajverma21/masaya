@@ -92,7 +92,7 @@
                             <div class="form-group">
                                 {{ Form::label('event_legend','Legend Event', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    @if($event->event_legend == 'yes')
+                                    @if($event->event_legend_img == 'yes')
                                         {{ Form::checkbox('event_legend', 'yes', true) }}
                                     @else
                                         {{ Form::checkbox('event_legend', 'yes') }}
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 {{ Form::label('event_medium','Medium Event', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    @if($event->event_medium == 'yes')
+                                    @if($event->event_medium_img == 'yes')
                                     {{ Form::checkbox('event_medium', 'yes', true) }}
                                     @else
                                     {{ Form::checkbox('event_medium', 'yes') }}
@@ -133,6 +133,8 @@
                                 <div class="col-sm-9">
                                     {{ Form::file('event_image', '', $attributes = ['class' => 'form-control']) }}
                                 </div>
+                               <!--( Minimum Size : 1400*650 in pix )
+                                ( Minimum Size : 720*600 in pix )-->
                             </div>
 
                             <div class="form-actions">

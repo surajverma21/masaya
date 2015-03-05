@@ -13,21 +13,21 @@
             <div class="toolbar row">
                 <div class="col-sm-6 hidden-xs">
                     <div class="page-header">
-                        <h1>Dashboard <small>overview &amp; stats </small></h1>
+
                     </div>
                 </div>
                 <!--                <div class="col-sm-6 col-xs-12">-->
                 <!--                    <div class="toolbar-tools pull-right">-->
-                <!--                        <!-- start: TOP NAVIGATION MENU -->-->
+                <!--                        <!-- start: TOP NAVIGATION MENU -->
                 <!--                        <ul class="nav navbar-right">-->
-                <!--                            <!-- start: TO-DO DROPDOWN -->-->
+                <!--                            <!-- start: TO-DO DROPDOWN -->
                 <!--                            <li class="dropdown">-->
                 <!--                                <a href="{{ URL::to('/') }}/admin/add_hostel">-->
                 <!--                                    <i class="fa fa-plus"></i> Add Hostel-->
                 <!--                                </a>-->
                 <!--                            </li>-->
                 <!--                        </ul>-->
-                <!--                        <!-- end: TOP NAVIGATION MENU -->-->
+                <!--                        <!-- end: TOP NAVIGATION MENU -->
                 <!--                    </div>-->
                 <!--                </div>-->
             </div>
@@ -100,7 +100,6 @@
     </div>
     <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
 
 <script>
     jQuery(document).ready(function() {
@@ -109,6 +108,7 @@
         Index.init();
     });
 </script>
+
 @stop
 @extends('admins.head')
 @extends('admins.header')

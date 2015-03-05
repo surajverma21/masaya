@@ -14,6 +14,13 @@
 
 Route::get('/events-activities','FrontController@index');
 Route::get('/getactivities','FrontController@getactivity');
+Route::get('/gettouristic','FrontController@gettouristic');
+
+//Language Switcher
+Route::get('/language', array(
+    'as'        => 'language-chooser',
+    'uses'      => 'LanguageController@chooser'
+));
 
 
 Route::get('admin/login','MembersController@login')->before('guest');
@@ -49,17 +56,42 @@ Route::post('admin/update_touristic','HostelsController@update_touristic')->befo
 Route::get('admin/delete_time_to_touristics','HostelsController@delete_touristic')->before('auth');
 
 //Travel Tips
-Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel');
-Route::post('admin/travel-tips-index','HostelsController@list_travel_tips');
-Route::get('admin/travel-tips-index','HostelsController@list_travel_tips');
-Route::get('admin/travel-tip-add','HostelsController@add_travel_tip');
-Route::post('admin/save_travel_tip','HostelsController@save_travel_tip');
-Route::post('admin/save_travel_tip','HostelsController@save_travel_tip');
+Route::get('admin/travel_tip','HostelsController@travel_tip_choose_hostel')->before('auth');
+Route::post('admin/travel-tips-index','HostelsController@list_travel_tips')->before('auth');
+Route::get('admin/travel-tips-index','HostelsController@list_travel_tips')->before('auth');
+Route::get('admin/travel-tip-add','HostelsController@add_travel_tip')->before('auth');
+Route::post('admin/save_travel_tip','HostelsController@save_travel_tip')->before('auth');
+Route::post('admin/save_travel_tip','HostelsController@save_travel_tip')->before('auth');
 Route::get('admin/delete_travel_tip','HostelsController@delete_travel_tip')->before('auth');
-Route::get('admin/edit-travel-tip/{id}','HostelsController@edit_travel_tip');
-Route::post('admin/update_travel_tip','HostelsController@update_travel_tip');
-Route::get('admin/travel-tips-index/{id}','HostelsController@list_travel_tips_for_hotel');
+Route::get('admin/edit-travel-tip/{id}','HostelsController@edit_travel_tip')->before('auth');
+Route::post('admin/update_travel_tip','HostelsController@update_travel_tip')->before('auth');
+Route::get('admin/travel-tips-index/{id}','HostelsController@list_travel_tips_for_hotel')->before('auth');
 
+//Promotional artists
+
+Route::get('admin/promotional_artists','HostelsController@promotional_artists_choose_hostel');
+Route::post('admin/promotional-artist-index','HostelsController@promotional_artist_index');
+Route::get('admin/promotional-artist-add','HostelsController@add_promotional_artist');
+Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
+Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
+Route::get('admin/edit-promotional-artist/{id}','HostelsController@edit_promotional_artist');
+Route::post('admin/update-promotional-artist','HostelsController@update_promotional_artist');
+Route::get('admin/delete-promotional-artist','HostelsController@delete_promotional_artist');
+
+
+
+	
+
+//City Guide image on Activities page
+
+Route::get('admin/city-guide','HostelsController@city_guide_choose_hostel')->before('auth');
+Route::post('admin/city-guide-index','HostelsController@city_guide_index')->before('auth');
+Route::get('admin/city-guide-add','HostelsController@city_guide_add')->before('auth');
+Route::post('admin/save-city-guide','HostelsController@save_city_guide')->before('auth');
+Route::get('admin/city-guide-index-all','HostelsController@city_guide_index_all')->before('auth');
+Route::get('admin/edit-city-guide/{id}','HostelsController@edit_city_guide');
+Route::post('admin/update-city-guide','HostelsController@update_city_guide');
+Route::get('admin/delete-city-guide','HostelsController@delete_city_guide');
 
 
 //Hostels
@@ -69,31 +101,46 @@ Route::post('admin/save_hostel','HostelsController@save_hostel')->before('auth')
 Route::get('admin/edit_hostel/{id}','HostelsController@edit_hostel')->before('auth');
 Route::post('admin/update_hostel','HostelsController@update_hostel')->before('auth');
 Route::get('admin/delete_hostel','HostelsController@delete_hostel')->before('auth');
-//Route::get('admin/');
+
 
 //Languages
-Route::get('admin/languages','LanguagesController@index');
-Route::get('admin/add_language','LanguagesController@add_language');
-Route::post('admin/save_language','LanguagesController@save_language');
-Route::get('admin/edit_language/{id}','LanguagesController@edit_language');
-Route::post('admin/update_language','LanguagesController@update_language');
-Route::get('admin/delete_language','LanguagesController@delete_language');
+Route::get('admin/languages','LanguagesController@index')->before('auth');
+Route::get('admin/add_language','LanguagesController@add_language')->before('auth');
+Route::post('admin/save_language','LanguagesController@save_language')->before('auth');
+Route::get('admin/edit_language/{id}','LanguagesController@edit_language')->before('auth');
+Route::post('admin/update_language','LanguagesController@update_language')->before('auth');
+Route::get('admin/delete_language','LanguagesController@delete_language')->before('auth');
 
 //Activities
-Route::get('admin/activities','ActivitiesController@index');
-Route::get('admin/add_activity','ActivitiesController@add_activity');
-Route::post('admin/save_activity','ActivitiesController@save_activity');
-Route::get('admin/edit_activity/{id}','ActivitiesController@edit_activity');
-Route::post('admin/update_activity','ActivitiesController@update_activity');
-Route::get('admin/delete_activity','ActivitiesController@delete_activity');
+Route::get('admin/activities','ActivitiesController@index')->before('auth');
+Route::get('admin/add_activity','ActivitiesController@add_activity')->before('auth');
+Route::post('admin/save_activity','ActivitiesController@save_activity')->before('auth');
+Route::get('admin/edit_activity/{id}','ActivitiesController@edit_activity')->before('auth');
+Route::post('admin/update_activity','ActivitiesController@update_activity')->before('auth');
+Route::get('admin/delete_activity','ActivitiesController@delete_activity')->before('auth');
 
-// Test
-//Mehar Singh
-Route::get('test',function(){
-	return View::make('testing');
-});
+//Excursion
+Route::get('admin/excursion','ExcursionController@excursion_choose_hostel')->before('auth');
+Route::post('admin/excursion-index','ExcursionController@list_excursion_hostel_previews')->before('auth');
+Route::get('admin/excursion-add','ExcursionController@excursion_add')->before('auth');
+Route::post('admin/excursion-save','ExcursionController@excursion_save')->before('auth');
+Route::any('admin/list-excursion-hostel-previews-all','ExcursionController@list_excursion_hostel_previews_all');
+Route::any('admin/edit-excursion/{id}','ExcursionController@edit_excursion');
+Route::post('admin/update-excursion','ExcursionController@update_excursion')->before('auth');
+Route::get('admin/delete_excursion','ExcursionController@delete_excursion')->before('auth');
 
-//testkljlklkjn
-//suraj verma
+
+
+
+
+
+
+Route::get('admin/hostel-room-preview-image','HostelRoomsController@hostel_preview_image');
+Route::any('admin/choose-hostel-preview-index','HostelRoomsController@choose_hostel_preview_index');
+Route::post('admin/save-hostel-room_preview','HostelRoomsController@save_hostel_room_preview');
 
 //Route::get('/admin',function)->before('auth');
+//Event::listen('illuminate.query', function($query)
+//{
+//    var_dump($query);
+//});

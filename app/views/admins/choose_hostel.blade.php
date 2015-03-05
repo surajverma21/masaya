@@ -13,7 +13,7 @@
             <div class="toolbar row">
                 <div class="col-sm-6 hidden-xs">
                     <div class="page-header">
-                        <h1>Dashboard <small>overview &amp; stats </small></h1>
+
                     </div>
                 </div>
 <!--                <div class="col-sm-6 col-xs-12">-->
@@ -102,7 +102,7 @@
     </div>
     <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
+
 <script>
 
     jQuery(document).ready(function() {

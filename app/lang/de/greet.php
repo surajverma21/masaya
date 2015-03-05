@@ -1,7 +1,9 @@
 <?php
 return array(
 
-    'hello' => 'Hallo'
+    "Experience_Masaya" => "Erleben Sie Spaß",
+    "Register"          => "Registrieren",
+    "Events & Cultural Activities" => "Events & Kulturelle Aktivitäten"
 
 );
 ?>

@@ -6,16 +6,17 @@
 
         $(document).ready( function() {
             $('#myCarousel').carousel({
-                interval:   400000,
+                interval:   400000
             });
 
             var clickEvent = false;
             $('#myCarousel').on('click', '.nav a', function() {
 
                 var value = $(this).attr('rel');
+
                 $.ajax(
                 {
-                    url: "http://localhost/lara/masaya/public/getactivities",
+                    url: "getactivities",
                     data:{month:value},
                     'action'    : 'POST',
                     success: function(data) {
@@ -43,11 +44,51 @@
                 }
                 clickEvent = false;
             });
+
+            $(".Contactus").on('click',function(){
+               //alert('test');
+                //$(".padding_none.contact_cities").trigger("click");
+                var path = window.location.href+'#bottom-tab3';
+                //$(".contact_cities a").trigger('click');
+               location.href=''+path;
+                //$(".foo3_contacts").slideDown();
+               // $(".foo3_contacts").animate({ scrollTop: $('#foo3_contacts').height()}, 1000);
+                location.reload();
+            });
+
+            $(".fo_close").on('click',function(){
+                $('#tab-bottom-container ul li a.active').trigger('click');
+            });
+
+
+
+
+
+
         });
 </script>
 
+<style>
+.fb_iframe_widget {
+    display: inline-block;
+    position: relative;
+}
+.fb-like {
+    cursor: pointer;
+    height: 53px;
+    opacity: 0;
+    position: absolute !important;
+    top: 28px;
+    visibility: hidden;
+    width: 60px;
+}
+</style>
+
 <!-- inner yellow section -->
 <div class="main_yellow_inner">
+
+
+<?php //echo '<pre>';print_r($fblikes); die;?>
     <div class="container">
 
         <!-- responsive drop down -->
@@ -66,17 +107,17 @@
 
         <!-- Top links start here -->
         <ul class="y_inner-topul text-center mobile_hidden">
-            <li><a href="#">Hébergement <br> à Santa Marta</a></li>
-            <li><a class="active" href="#">Événements &amp; <br> activités culturelles</a></li>
-            <li><a href="#">Équipements <br> &amp; services</a></li>
-            <li><a href="#">Excursions &amp; <br> voyages</a></li>
-            <li><a href="#">Comment <br> s’y rendre</a></li>
+            <li><a href="#">{{trans('greet.Accommodation in')}} Santa Marta</a></li>
+            <li><a class="active" href="#">{{ trans('greet.Events & Cultural Activities') }}</a></li>
+            <li><a href="#">{{ trans('greet.Equipment & Services') }}</a></li>
+            <li><a href="#">{{ trans('greet.Excursions & Trips') }}</a></li>
+            <li><a href="#">{{ trans('greet.How to get there') }}</a></li>
         </ul>
         <!-- Top links start here -->
 
         <!-- Top content -->
         <div class="row inner-y_conternt1">
-            <div class="col-md-12"><h1 class="title_yellow">Évènements &amp; Activités culturelles</h1></div>
+            <div class="col-md-12"><h1 class="title_yellow">{{ trans('greet.Events & Cultural Activities') }}</h1></div>
             <div class="col-md-9 col-sm-12">
                 <em>Plus qu’un simple hostel, Masaya se veut être un lieu de culture, de rencontres et d’échanges interculturels.
                     A Santa Marta, découvrez la gastronomie « costeña » : le riz coco, la banane plantain sous toutes ses coutures…  les sons et rythmes aux influences africaines ; les danses locales et colombiennes… De nombreux artistes vous proposent chaque semaine de découvrir leur culture, leurs origines…<br><br>
@@ -84,19 +125,20 @@
                     Notre but est de vous faire connaître le pays dans ce qu'il a de meilleur, c’est pour cela que nous vous proposons un guide culturel regroupant les activités phare de Santa Marta et de la région Magdalena. Consultez notre calendrier et faites place à la culture lors de votre voyage… </em>
                 <div class="row">
                     <div class="col-md-12 span10 mobile_center">
-                        <a href="#" class="btn btn-default" >Evénements autour de Santa Marta</a>
-                        <a href="#" class="btn btn-default" >L’agenda culturel de Masaya</a>
+                        <a href="#" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
+                        <a href="#" class="btn btn-default" >{{ trans('greet.The cultural program of Masaya') }}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 pull-right hidden-tablet">
-                <div class="les_jours">TOUS LES JOURS DES ACTIVITÉS <span> 100% GRATUITES </span> </div>
+                <div class="les_jours">{{ trans('greet.DAILY ACTIVITIES') }} <span> 100% {{ trans('greet.FREE') }} </span> </div>
             </div>
         </div>
         <!-- Top content -->
 
     </div>
 </div>
+
 <!-- inner yellow section -->
 
 <!-- activity_2 banner section -->
@@ -131,18 +173,18 @@ $i = 0; ?>
 <div class="container">
 <div class="exe_month_2con">
             <div class="row nav nav-pills nav-justified">
-                <div class="col-md-1 col-sm-1 text-center active" data-target="#myCarousel" data-slide-to="0"><a href="#" rel="3">Mars</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="1"><a href="#" rel="4">Avril</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="2"><a href="#" rel="5">Mai</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="3"><a href="#" rel="6">Juin</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="4"><a href="#" rel="7">Juillet</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="5"><a href="#" rel="8">Août</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="6"><a href="#" rel="9">Septembre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="7"><a href="#" rel="10">Octobre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="8"><a href="#" rel="11">Novembre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="9"><a href="#" rel="12">Décembre</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="10"><a href="#" rel="1">Janvier</a></div>
-                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="11"><a href="#" rel="2">Février</a></div>
+                <div class="col-md-1 col-sm-1 text-center active" data-target="#myCarousel" data-slide-to="0"><a href="#" rel="3">{{ trans('greet.March') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="1"><a href="#" rel="4">{{ trans('greet.April') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="2"><a href="#" rel="5">{{ trans('greet.May') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="3"><a href="#" rel="6">{{ trans('greet.June') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="4"><a href="#" rel="7">{{ trans('greet.July') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="5"><a href="#" rel="8">{{ trans('greet.August') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="6"><a href="#" rel="9">{{ trans('greet.September') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="7"><a href="#" rel="10">{{ trans('greet.October') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="8"><a href="#" rel="11">{{ trans('greet.November') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="9"><a href="#" rel="12">{{ trans('greet.December') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="10"><a href="#" rel="1">{{ trans('greet.January') }}</a></div>
+                <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="11"><a href="#" rel="2">{{ trans('greet.February') }}</a></div>
             </div>
 </div>
 </div>
@@ -156,7 +198,7 @@ $i = 0; ?>
 
 <div id="getcontentactivity">
     <?php
-if($monthly_activity != '')
+if(isset($monthly_activity) && $monthly_activity != '')
 {
     echo $monthly_activity;
 }
@@ -171,26 +213,27 @@ if($monthly_activity != '')
 <div class="activity_cultural_wrapper">
     <div class="container">
         <div class="heading_top text-center">
-            <h1>Nos activités culturelles</h1>
-            <h2>Notre programmation culturelle</h2>
-            <p>Tous les jours sur notre terrasse, des activités culturelles gratuites et garanties 100% caraïbes !</p>
+            <h1>{{ trans('greet.Our cultural activities')}}</h1>
+            <h2>{{ trans('greet.Our cultural program')}}</h2>
+            <p>{{ trans('greet.Every day on our terrace, free cultural activities and guarantees 100% Caribbean !')}}</p>
         </div>
 
         <!-- acts wrapper for dekstop -->
         <div class="act_wrapper tablet-hide">
             <ul class="act_head text-center">
                 <li class="table_title">&nbsp;</li>
-                <li class="table_title">Lundi</li>
-                <li class="table_title">Mardi</li>
-                <li class="table_title">Mercredi</li>
-                <li class="table_title">Jeudi</li>
-                <li class="table_title">Vendredi</li>
-                <li class="table_title">Samedi</li>
-                <li class="table_title">Dimanche</li>
+                <li class="table_title">{{ trans('greet.On Monday') }}</li>
+                <li class="table_title">{{ trans('greet.On Tuesday') }}</li>
+                <li class="table_title">{{ trans('greet.On Wednesday') }}</li>
+                <li class="table_title">{{ trans('greet.On Thursday') }}</li>
+                <li class="table_title">{{ trans('greet.On Friday') }}</li>
+                <li class="table_title">{{ trans('greet.On Saturday') }}</li>
+                <li class="table_title">{{ trans('greet.On Sunday') }}</li>
             </ul>
 
 
 
+<<<<<<< HEAD
 <?php 
 //echo "<pre>";print_r($activities);die;
  $check_array = array();
@@ -201,8 +244,18 @@ foreach($activities as $activitydata)
     /*if(in_array($activitydata->start_time,$check_array))
     {
         $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
+=======
+            <?php
 
+            $check_array = array();
+>>>>>>> fd28fc98214b5a9ed44ffc6cbf3d9c566f784af5
 
+            if(isset($activities))
+            {
+                    foreach($activities as $activitydata)
+                    {
+
+<<<<<<< HEAD
     }
     else
     {*/
@@ -216,18 +269,58 @@ foreach($activities as $activitydata)
 
 //echo '<pre>';print_r($check_array);die;
 //echo $check_array[0]
+=======
+                        $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
+
+                    }
+            }
+
+           ?>
+
+            <?php
+            if(count($check_array)>0)
+            {
+            $i = 1;
+            $j=0;
+             foreach($check_array as $key => $val)
+                {
+                   // echo count($check_array);
+                   // echo '<pre>';print_r($check_array);die;
+>>>>>>> fd28fc98214b5a9ed44ffc6cbf3d9c566f784af5
+
+                    $Get_time = explode(' ',$key);
+                    $hours = $Get_time[1];
+                    $time = $Get_time[2];
+                    $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
 
 
+            ?>
 
-
+<<<<<<< HEAD
 /*foreach($check_array as $key => $val )
 {
     echo "<pre>";print_r($val);die;
     
 }*/
+=======
+>>>>>>> fd28fc98214b5a9ed44ffc6cbf3d9c566f784af5
 
-?>
+                  <ul class="act_content_sec text-center carousel-indicators">
+                          <li <?php if($i==1){ echo 'class="active"'; }?>><span class="date_section"><?php echo $time_in_24_hour_format.'H'; ?></span></li>
+                          <li class="" <?php if(isset($val['1'])) { ?> data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic">
+                              <div class="inne_space <?php if(isset($val['1'])) { echo 'table_sec-yellow'; } ?>">
+                                  <span><?php if(isset($val['1'])) { echo $val['1']; } ?></span>
+                              </div>
+                          </li>
+                          <li class="" <?php if(isset($val['2'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['2'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['2'])) { echo $val['2']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['3'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['3'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['3'])) { echo $val['3']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['4'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['4'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['4'])) { echo $val['4']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['5'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['5'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['5'])) { echo $val['5']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['6'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['6'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['6'])) { echo $val['6']; } ?></span></div></li>
+                          <li class="" <?php if(isset($val['7'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['7'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['7'])) { echo $val['7']; } ?></span></div></li>
+                      </ul>
 
+<<<<<<< HEAD
             
             <?php foreach($check_array as $key => $val) {
             ?>
@@ -245,38 +338,15 @@ foreach($activities as $activitydata)
           
                  
             <?php } ?>
+=======
+>>>>>>> fd28fc98214b5a9ed44ffc6cbf3d9c566f784af5
 
-       <!--     <ul class="act_content_sec text-center">
-                <li><span class="date_section">17h</span></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocina</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Al Aire (Microfono Abierto)</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Campeonato de Rana</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Cine Club</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section">19h</span></li>
-                <li><div class="inne_space table_sec-default"><span>Juegos criollos</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li><span class="date_section">17h</span></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Musica en Vivo</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Karaoke</span></div></li>
-            </ul>-->
+            <?php
+            $i++;
+            }
+                }
 
+            ?>
 
 
         </div>
@@ -358,7 +428,7 @@ foreach($activities as $activitydata)
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
             </ul>
         </div>
-        <div class="slide_act_cul tablet_button_con hidden_mobile">
+        <div class="slide_act_cul desktop_none tablet_button_con hidden_mobile">
             <button class="exe_button">Découvrir toutes les activités de la semaine</button>
         </div>
         <!-- acts wrapper for tablet -->
@@ -401,43 +471,85 @@ foreach($activities as $activitydata)
         <!-- acts wrapper for mobile -->
 
 
+
+
+
     </div>
 </div>
 <!-- activity cultural -->
 
-<!-- activity_cul slider -->
+<<<<<<< HEAD
+
+
+<div class="activity_slide tablet-hide">
+   <div class="container">
+ <!-- Banner section   Activiites Slider Desktop   -->
+=======
 <div class="activity_slide tablet-hide">
     <div class="container">
-        <!-- Desktop -->
-        <div class="act_slide_inner">
-            <a class="slide_arrow_right" href="#"><img src="../assets/front/images/act_banner_Arrow_rgt.png" alt="" /></a>
-            <a class="slide_arrow_left" href="#"><img src="../assets/front/images/act_banner_Arrow.png" alt="" /></a>
-            <div class="row margin_none">
-                <div class="col-md-12 col-md-offset-1-padd">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="imgfull-width" src="../assets/front/images/act_slide_img.png" alt="" />
-                        </div>
-                        <div class="col-md-6">
-                            <div class="slide_main_con">
-                                <h1>Juegos criollos</h1>
-                                <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
-                                <em>Tous les lundi à 21h</em>
-                            </div>
-                        </div>
+<!-- Banner section   Activiites Slider Desktop   -->
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
+<div class="act_slide_inner">
+   <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
+    <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div role="listbox" class="carousel-inner">
+            <?php
+           if(isset($activities))
+              {
+                      $i = 1;
+                      foreach($activities as $activitydata)
+                      {
+                          //$check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
+
+              ?>
+                  <div class="row item margin_none <?php if($i==1){echo 'active'; }?>">
+                                 <div class="col-md-6 padding_none">
+                                      <img class="imgfull-width tour_sec-img_hgt" src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
+                                 </div>
+                                 <div class="col-md-6 padding_none">
+                                     <div class="slide_main_con">
+                                          <h1>{{$activitydata->name;}}</h1>
+                                          <p>{{$activitydata->description;}}</p>
+                                      </div>
+                                 </div>
                     </div>
+                    <?php
+                    $i++;
+                         }
+                 }
+                 ?>
+
                 </div>
             </div>
         </div>
-        <!-- Desktop -->
 
-        <div class="slide_act_cul">
-            <button class="exe_button">Découvrir toutes les activités de la semaine</button>
-        </div>
+        <a data-slide="prev" role="button" href="#carousel-example-generic" class="left carousel-control">
+          <span aria-hidden="true" class="banner_arroe_left"><img src="../assets/front/images/act_banner_Arrow.png" alt="" /></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a data-slide="next" role="button" href="#carousel-example-generic" class="right carousel-control">
+          <span aria-hidden="true" class="banner_arroe_right"><img src="../assets/front/images/act_banner_Arrow_rgt.png" alt="" /></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
 
-    </div>
+
 </div>
-<!-- activity_cul slider -->
+<!-- Banner section -->
+<<<<<<< HEAD
+</div>
+</div>
+
+=======
+<div class="slide_act_cul tablet_button_con hidden_mobile">
+    <button class="exe_button">Découvrir toutes les activités de la semaine</button>
+</div>
+</div>
+</div>
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
 
 
 <!-- Exe activity main con -->
@@ -455,12 +567,13 @@ foreach($activities as $activitydata)
                     </div>
 
                     <div class="col-md-7 col-sm-7">
-                        <h4>Masaya Hostel Santa Marta <br > pour suivre nos activités et la vie de l’hostel</h4>
+                        <h4>Masaya Hostel Santa Marta <br > {{ trans('greet.to follow our activities and the hostel life') }}</h4>
                     </div>
                     <div class="col-md-2 col-sm-2 padding_none">
                         <div class="social_likes text-center">
+                        <div class="fb-like" data-href="https://www.facebook.com/<?php echo $fblikes['hostel_name']; ?>" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
                             <img src="../assets/front/images/facebook_likes.png" alt="" />
-                            <h2>2 209</h2>
+                            <h2><?php echo $fblikes['fblikes']; ?></h2>
                         </div>
                     </div>
                 </div>
@@ -472,14 +585,36 @@ foreach($activities as $activitydata)
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
-            <div class="musicions_inner-con">
-                <h1>Artistes, musiciens...</h1>
-                <h2>Vos talents nous intéressent !</h2>
-                <p>Chez Masaya, nous soutenons quotidiennement la promotion d’artistes locaux et internationaux et créons ainsi un lieu d’échanges et de rencontres hors du commun, extra - ordinaire. <br><br>
 
-                    <strong>Si quelques nuits contre une de vos performances vous intéressent contactez-nous !</strong> </p>
-                <a class="btn btn-default btn-yellow" href="#">Contactez-nous !</a>
-            </div>
+         <?php  if(count($promotional_artist)>0)
+                   { ?>
+             <div class="slide_main_content">
+                <div class="musicions_inner-con">
+                  
+                    {{$promotional_artist[0]->title}}
+                    {{$promotional_artist[0]->sub_title}}
+                    {{$promotional_artist[0]->promotional_artist_text}}
+<<<<<<< HEAD
+
+
+
+
+=======
+                 
+
+
+
+>>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
+                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
+
+                </div>
+                <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
+             </div>
+               <?php
+
+                   }
+                   ?>
+
         </div>
     </div>
     <!-- musician section -->
@@ -490,22 +625,28 @@ foreach($activities as $activitydata)
         <div class="container">
             <div class="tour_wrapper text-center">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 padding_none">
-                        <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_santa_marta.png" class="imgfull-width">
-                            <div class="tour_content_top text-center les les_space">
-                                <h1>SANTA MARTA</h1>
-                                <h2>SUIVEZ LE GUIDE</h2>
-                            </div>
-                        </div>
-                    </div>
+
+                   <?php if(count($cityguide) > 0)
+                   { ?>
 
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width">
+                            <img alt="" src="../uploads/city_guide/{{$cityguide[0]->city_guide_image}}" class="imgfull-width tour_img_hgt">
+                            <div class="tour_content_top text-center les les_space">
+                                <h1>SANTA MARTA</h1>
+                                <h2>{{$cityguide[0]->city_guide_text}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <div class="col-md-6 col-sm-6 padding_none">
+                        <div class="tour_1con">
+                            <img alt="" src="../assets/front/images/exe_masaya.png" class="imgfull-width tour_img_hgt">
                             <div class="tour_content_top text-center les_space">
                                 <h1>MASAYA TRAVEL</h1>
-                                <h2>EXCURSIONS AU DÉPART DE SANTA MARTA</h2>
+                                <h2>{{ trans('greet.EXCURSIONS DEPARTURE')}} SANTA MARTA</h2>
                             </div>
                         </div>
                     </div>
@@ -521,11 +662,11 @@ foreach($activities as $activitydata)
                     <div class="col-lg-2 col-md-3 col-sm-6 padding_none">
                         <div class="instagram">
                             <img src="../assets/front/images/instagram.png" alt="" />
-                            <h5>Envoyez-nous un selfie ! Partagez les photos de votre voyage et découvrez les expériences Masaya de vos prédécesseurs
+                            <h5>{{ trans('greet.Instagram_Text') }}
                                 <span>@masayahostels</span>
                                 <span>#masayahostel</span>
                             </h5>
-                            <a href="#" class="btn btn-default btn-yellow span-top20">Toutes vos photos</a>
+                            <a href="#" class="btn btn-default btn-yellow span-top20">{{ trans('greet.All your photos') }}</a>
                         </div>
                     </div>
                     <!-- col2 end -->
@@ -563,10 +704,12 @@ foreach($activities as $activitydata)
                 <div class="row exe_1_bg1">
                     <div class="col-md-6 col-sm-6 padding_none">
                         <div class="tour_1con">
-                            <img alt="" src="../assets/front/images/exe_main2.png" class="imgfull-width">
+                            <?php if(count($hostelForActivity) > 0){?>
+                            <img alt="" src="../uploads/hostel_hotel_room_preview/<?php echo $hostelForActivity[0]->hostel_room_preview_image;?>" class="imgfull-width">
+                            <?php } ?>
                             <div class="tour_content_top text-center les les_space">
                                 <h1>SANTA MARTA</h1>
-                                <h2>SUIVEZ LE GUIDE</h2>
+                                <h2>{{ trans('greet.FOLLOW THE LEADER') }}</h2>
                             </div>
                         </div>
                     </div>
@@ -626,7 +769,7 @@ foreach($activities as $activitydata)
                         </h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -661,23 +804,22 @@ foreach($activities as $activitydata)
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
                                 <h3 class="foo_list_title">Temps à pied <br>des différents points d’intérêt</h3>
-                                <ul class="detail_listing2">
-                                    <li>
-                                        <p>Boire un café Juan Valdez</p>
-                                        <div class="list_month-detail text-center">2mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Visiter la Cathédrale</p>
-                                        <p>Voir la plage</p>
-                                        <p>Faire quelques courses</p>
-                                        <div class="list_month-detail text-center">3mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Aller au Musée de l’Or</p>
-                                        <p>Se faire une terrasse au Parque de los Novios</p>
-                                        <div class="list_month-detail text-center">5mn</div>
-                                    </li>
+                               <ul class="detail_listing2">
+
+                                        @foreach($touristic as $tours)
+                                   <li>
+                                       {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+                                   </li>
+                                        @endforeach
+
                                 </ul>
+                               @foreach($touristic as $tours)
+
+                                        {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+
+                                @endforeach
                             </div>
                         </div>
 
@@ -755,7 +897,7 @@ foreach($activities as $activitydata)
                         </h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -882,7 +1024,7 @@ foreach($activities as $activitydata)
                         <h3>&nbsp;</h3>
                     </div>
                     <div class="col-md-1 col-sm-1 col-xs-1 text-center">
-                        <a class="fo_close" href="#"><img src="../assets/front/images/footer_close.png" alt="" /></a>
+                        <a class="fo_close" href="javascript:void(0)"><img src="../assets/front/images/footer_close.png" alt="" /></a>
                     </div>
                 </div>
 
@@ -935,7 +1077,7 @@ foreach($activities as $activitydata)
                                 <div class="form-group">
                                     <textarea placeholder="Votre message, question, remarque..." class="textarea"></textarea>
                                 </div>
-                                <div class="form-group"><input type="submit" value="Envoyer votre demande" class="btn btn-default"></div>
+                                <div class="form-group"><input type="submit" value="{{ trans('greet.Send your request') }}" class="btn btn-default"></div>
                             </form>
 
                         </div>
@@ -982,16 +1124,25 @@ foreach($activities as $activitydata)
 </div>
 
 <ul class="contant_cities_foo">
-    <li id="the-first-tab" class="hidden_mobile">
-        <a href="#bottom-tab1">
+<?php
+$i=1;
+?>
+    @foreach($hostels as $hostel)
+    <li  <?php if($i==1){?>class="hidden_mobile contactclose" <?php }else{ ?> class="padding_none contactclose" <?php }  ?>>
+        <a href="#bottom-tab<?php echo $i;?>">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
                 <img class="rev_show" src="../assets/front/images/location_active.png" alt="" />
-                <h2>Bogota</h2>
+                <h2 <?php if($i==2){ ?> class="hidden_mobile" <?php }  ?>>{{$hostel->name}}</h2>
             </div>
         </a>
     </li>
-    <li class="padding_none">
+    <?php $i++; ?>
+    @endforeach
+
+    
+{{--
+    <li class="padding_none contactclose">
         <a href="#bottom-tab2">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/location.png" alt="" />
@@ -999,13 +1150,13 @@ foreach($activities as $activitydata)
                 <h2 class="hidden_mobile">Santa Marta</h2>
             </div>
         </a>
-    </li>
-    <li class="padding_none">
+    </li>--}}
+    <li class="padding_none contact_cities contactclose">
         <a href="#bottom-tab3">
             <div class="socail12">
                 <img class="rev_hide" src="../assets/front/images/contacts.png" alt="" />
                 <img class="rev_show" src="../assets/front/images/contacts_active.png" alt="" />
-                <h2 class="hidden_mobile">Contactez-nous</h2>
+                <h2 class="hidden_mobile">{{ trans('greet.Contact us !') }}</h2>
             </div>
         </a>
     </li>

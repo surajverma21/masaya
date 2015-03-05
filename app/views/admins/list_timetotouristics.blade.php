@@ -185,8 +185,7 @@
     <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
- 
-   
+
 <script>
 
     jQuery(document).ready(function() {
@@ -195,6 +194,7 @@
        
     });
 </script>
+
 @stop
 @extends('admins.head')
 @extends('admins.header')

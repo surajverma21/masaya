@@ -190,7 +190,7 @@
     </div>
     <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
+
 
 <script>
 jQuery.noConflict();
@@ -200,6 +200,7 @@ jQuery.noConflict();
        
     });
 </script>
+
 
 @stop
 @extends('admins.head')

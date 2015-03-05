@@ -134,7 +134,12 @@ function delete_activity(activity_id){
             }
         });
     }
+
  }
+
+
+
+
 
 
 function delete_time_to_touristics(touristic_id,hostel_id){
@@ -191,3 +196,32 @@ function delete_travel_tip(tip_id,hostel_id){
 
 
 }
+
+function common_delete(primary_id,url){
+
+
+    if(!primary_id){
+        alert('No Activity ID found');
+        return false;
+    }
+    var confirmme = confirm('Are you sure you want to delete this record');
+
+    if(confirmme){
+        var request_url = url;
+        $.ajax({
+
+            'url'       : request_url,
+            'action'    : 'POST',
+            'data'      : {primery_id:primary_id},
+            'success'   : function(result){
+
+                location.reload();
+            },
+            'error'     : function(){
+                console.log('Some error occurred');
+            }
+        });
+    }
+
+ }
+

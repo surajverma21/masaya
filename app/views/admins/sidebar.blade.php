@@ -50,6 +50,29 @@
                 <span class="title">Travel Tips</span>
             </a>
         </li>
+        <li>
+            <a href="promotional_artists">
+                <span class="title">Promotional Artist</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="city-guide">
+                <span class="title">City Guide</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="excursion">
+                <span class="title">Excursion</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="hostel-room-preview-image">
+                <span class="title">Hostel Room Image</span>
+            </a>
+        </li>
 
     </ul>
 </li>

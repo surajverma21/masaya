@@ -376,5 +376,338 @@ Class HostelsController extends BaseController{
         $travel_tips = TravelTip::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
 
         return View::make('admins.list_travel_tips')->with('travel_tips',$travel_tips);
+
     }
+
+    public function promotional_artists_choose_hostel(){
+
+        $hostels  = Hostel::all();
+
+        return View::make('admins.choose_hostel_promotional_artist')->with('hostels',$hostels);
+    }
+
+    public function promotional_artist_index(){
+
+            if(Input::get('hostel')){
+
+                $hostel_id = Input::get('hostel');
+                Session::forget('hostel_id');
+                Session::put('hostel_id',$hostel_id);
+            }else{
+                $hostel_id = Session::get('hostel_id');
+            }
+
+
+        $promotional_artists = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_promotional_artists')->with('promotional_artists',$promotional_artists);
+
+    }
+
+    public function promotional_artist_index_all(){
+
+
+        $hostel_id = Session::get('hostel_id');
+
+        $promotional_artists = PromotionalArtist::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_promotional_artists')->with('promotional_artists',$promotional_artists);
+
+    }
+
+
+
+    public function add_promotional_artist(){
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        return View::make('admins.add_promotional_artist')->with('languages',$languages);
+
+    }
+
+    public function save_promotional_artist(){
+
+        $language_id        = Input::get('language');
+        $hostel_id          = Session::get('hostel_id');
+        $title              = Input::get('title');
+        $sub_title          = Input::get('sub_title');
+        $description        = Input::get('promotional_artist_text');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $tableName = 'promotional_artists';
+
+        $fieldName = 'promotional_artist_image';
+
+
+        if(Input::hasFile('promotional_artist_image')){
+
+            $destinationPath = '../uploads/promotional_artist';
+
+            $promotionalArtistFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+
+            Input::file('promotional_artist_image')->move($destinationPath, $promotionalArtistFileName);
+
+        }else{
+
+            $promotionalArtistFileName = '';
+        }
+
+        $promotionalArtist                              = new PromotionalArtist;
+        $promotionalArtist->hostel_id                   = $hostel_id;
+        $promotionalArtist->title                       = $title;
+        $promotionalArtist->promotional_artist_text     = $description;
+        $promotionalArtist->language_id                 = $language_id;
+        $promotionalArtist->sub_title                   = $sub_title;
+        $promotionalArtist->promotional_artist_image    = $promotionalArtistFileName;
+
+        $promotionalArtist->save();
+
+        return Redirect::action('HostelsController@promotional_artist_index_all')->with('msg','Promotional artist added successfully');
+    }
+    public function edit_promotional_artist(){
+
+        $promotional_artists_id = Route::input('id');
+
+        $promotional_artists = PromotionalArtist::find($promotional_artists_id);
+        //echo "<pre>"
+        if(!$promotional_artists){
+               return Redirect::to('admin/promotional_artist_index_all');
+        }
+
+        return View::make('admins/edit_promotional_artist')->with('promotional_artist',$promotional_artists);
+    }
+    public function update_promotional_artist(){
+        //echo "hii";die;
+
+        $validation = Validator::make(Input::all(),['title' => 'required','sub_title' =>'required','promotional_artist_text' => 'required']);
+
+        if($validation->fails()){
+
+            return Redirect::back()->withInput()->withErrors($validation->messages());
+        }
+
+        $promotional_artist_id               = Input::get('promotional_artist_id');
+
+        $promotional_artist                  = PromotionalArtist::find($promotional_artist_id);
+        $promotional_artist_old_image               = $promotional_artist->promotional_artist_image;
+
+
+        $title                    = Input::get('title');
+        $sub_title                   = Input::get('sub_title');
+        $promotional_artist_text                 = Input::get('promotional_artist_text');
+
+        $tableName = 'promotional_artists';
+
+        $fieldName = 'promotional_artist_image';
+
+        if(Input::hasFile('promotional_artist_image')){
+
+            $destinationPath = '../uploads/promotional_artist';
+
+            $promotionalArtistFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+
+            Input::file('promotional_artist_image')->move($destinationPath, $promotionalArtistFileName);
+            @unlink('../uploads/promotional_artist/'.$promotional_artist_old_image);
+
+        }else{
+
+            $promotionalArtistFileName = $promotional_artist->promotional_artist_image;
+        }
+
+        $promotional_artist->title                       =   $title;
+        $promotional_artist->sub_title                      =   $sub_title;
+        $promotional_artist->promotional_artist_text  =   $promotional_artist_text;
+        $promotional_artist->promotional_artist_image  =   $promotionalArtistFileName;
+
+       
+
+        $promotional_artist->save();
+
+        return Redirect::to('admin/promotional-artist-index-all')->with('msg','Promotional Artist Updated successfully');
+    }
+    public function delete_promotional_artist(){
+
+
+        $promotional_artist_id = Input::get('primery_id');
+
+        $promotional_artist = PromotionalArtist::find($promotional_artist_id);
+
+        if($promotional_artist){
+            $promotional_artist->delete();
+
+            @unlink('../uploads/promotional_artist/'.$promotional_artist->promotional_artist_image);
+
+            return Redirect::to('admin/list-excursion-hostel-previews-all')->with('msg','Excursion removed successfully');
+        }
+
+    }
+
+
+    public function city_guide_choose_hostel(){
+
+        $hostels  = Hostel::all();
+
+        return View::make('admins.choose_hostel_city_guide')->with('hostels',$hostels);
+    }
+
+    public function city_guide_index(){
+
+        if(Input::get('hostel')){
+
+            $hostel_id = Input::get('hostel');
+            Session::forget('hostel_id');
+            Session::put('hostel_id',$hostel_id);
+        }else{
+            $hostel_id = Session::get('hostel_id');
+        }
+
+        $city_guide = CityGuide::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+        return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
+
+    }
+
+    public function city_guide_add(){
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        return View::make('admins.add_city_guide')->with('languages',$languages);
+
+    }
+
+    public function save_city_guide(){
+
+        $language_id        = Input::get('language');
+        $hostel_id          = Session::get('hostel_id');
+        $city_guide_text    = Input::get('city_guide_text');
+
+        if(empty($hostel_id)){
+
+            $hostel_id = Session::get('hostel_id');
+            $hostel_id = $hostel_id[0];
+        }
+
+        $tableName = 'city_guide';
+
+        $fieldName = 'city_guide_image';
+
+
+        if(Input::hasFile('city_guide_image')){
+
+            $destinationPath = '../uploads/city_guide';
+
+            $cityGuideFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+
+            Input::file('city_guide_image')->move($destinationPath, $cityGuideFileName);
+
+        }else{
+
+            $cityGuideFileName = '';
+        }
+
+        $cityGuide                              = new CityGuide;
+        $cityGuide->hostel_id                   = $hostel_id;
+        $cityGuide->city_guide_text             = $city_guide_text;
+        $cityGuide->language_id                 = $language_id;
+        $cityGuide->city_guide_image            = $cityGuideFileName;
+
+        $cityGuide->save();
+
+        return Redirect::action('HostelsController@city_guide_index_all')->with('msg','City guide artist added successfully');
+    }
+
+       public function city_guide_index_all(){
+
+
+           $hostel_id = Session::get('hostel_id');
+
+           $city_guide = CityGuide::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
+
+
+
+ //          return $city_guide; die;
+
+           return View::make('admins.list_city_guide')->with('city_guide',$city_guide);
+
+       }
+    public function edit_city_guide(){
+
+        $city_guide_id = Route::input('id');
+
+        $city_guide = CityGuide::find($city_guide_id);
+        if(!$city_guide){
+               return Redirect::to('admin/city_guide_index_all');
+        }
+
+        return View::make('admins/edit_city_guide')->with('city_guide',$city_guide);
+    }
+    public function update_city_guide(){
+        //echo "hii";die;
+
+        $validation = Validator::make(Input::all(),['city_guide_text' => 'required']);
+
+        if($validation->fails()){
+
+            return Redirect::back()->withInput()->withErrors($validation->messages());
+        }
+
+        $city_guide_id               = Input::get('city_guide_id');
+
+        $city_guide                  = CityGuide::find($city_guide_id);
+        $city_guide_old_image        = $city_guide->city_guide_image;
+
+
+        $city_guide_text             = Input::get('city_guide_text');
+        
+        $tableName = 'city_guide';
+
+        $fieldName = 'city_guide_image';
+
+        if(Input::hasFile('city_guide_image')){
+          //  echo "image";die;
+
+            $destinationPath = '../uploads/city_guide';
+
+            $cityGuideFileName = $this->generateRandomStringForImage($tableName,$fieldName);
+
+            Input::file('city_guide_image')->move($destinationPath, $cityGuideFileName);
+            @unlink('../uploads/city_guide/'.$city_guide_old_image);
+
+        }else{
+
+            $cityGuideFileName = $city_guide->city_guide_image;
+        }
+
+        $city_guide->city_guide_text                       =   $city_guide_text;
+        $city_guide->city_guide_image  =   $cityGuideFileName;
+
+       
+
+        $city_guide->save();
+
+        return Redirect::to('admin/city-guide-index-all')->with('msg','Promotional Artist Updated successfully');
+    }
+    public function delete_city_guide(){
+
+
+        $city_guide_id = Input::get('primery_id');
+
+        $city_guide = CityGuide::find($city_guide_id);
+
+        if($city_guide){
+            $city_guide->delete();
+
+            @unlink('../uploads/city_guide/'.$city_guide->city_guide_image);
+
+            return Redirect::to('admin/city-guide-index-all')->with('msg','Record successfully deleted');
+        }
+
+    }
+    
+
 }

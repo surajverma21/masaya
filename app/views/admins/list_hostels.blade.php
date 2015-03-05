@@ -160,7 +160,7 @@
     </div>
     <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
+
 <script>
     jQuery(document).ready(function() {
         Main.init();
@@ -168,6 +168,7 @@
         
     });
 </script>
+
 @stop
 @extends('admins.head')
 @extends('admins.header')

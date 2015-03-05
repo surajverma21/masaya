@@ -192,3 +192,10 @@ function delete_travel_tip(tip_id,hostel_id){
 
 }
 
+//Language Switcher
+function change_lang(code) {
+    alert(code);
+}
+
+/*
+{{ URL::to('/') }}/*/

@@ -64,6 +64,10 @@
         "All rights reserved"=>"All rights reserved",
         "FOLLOW THE LEADER"=>"FOLLOW THE LEADER",
         "Send your request"=>"Send your request",
+        "TRAVEL Tips"=>"TRAVEL Tips",
+        "How to get there"=>"How to get there",
+        "Walking time"=>"Walking time",
+        "different points of interest"=>"different points of interest",
 
 
 

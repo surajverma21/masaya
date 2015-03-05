@@ -100,6 +100,7 @@
     </div>
     <!-- end: PAGE -->
 </div>
+
 <script>
     jQuery(document).ready(function() {
         Main.init();
@@ -108,7 +109,6 @@
     });
 </script>
 
-<!-- end: MAIN CONTAINER -->
 @stop
 @extends('admins.head')
 @extends('admins.header')

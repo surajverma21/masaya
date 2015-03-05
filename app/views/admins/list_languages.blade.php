@@ -153,13 +153,14 @@
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+        
     });
 </script>
-<!-- end: MAIN CONTAINER -->
+
 @stop
 @extends('admins.head')
 @extends('admins.header')
 @extends('admins.sidebar')
 @extends('admins.footer')
+
 

@@ -48,6 +48,7 @@
                     </ol>
                 </div>
             </div>
+
             <!-- end: BREADCRUMB -->
             <!-- start: PAGE CONTENT -->
             <div class="row">
@@ -101,14 +102,16 @@
     </div>
     <!-- end: PAGE -->
 </div>
+
 <script>
+
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+        
     });
 </script>
-<!-- end: MAIN CONTAINER -->
+
 @stop
 @extends('admins.head')
 @extends('admins.header')

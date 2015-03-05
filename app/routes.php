@@ -78,9 +78,18 @@ Route::post('admin/promotional-artist-index','HostelsController@promotional_arti
 Route::get('admin/promotional-artist-add','HostelsController@add_promotional_artist');
 Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
 Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
+<<<<<<< HEAD
+Route::get('admin/edit-promotional-artist/{id}','HostelsController@edit_promotional_artist');
+Route::post('admin/update-promotional-artist','HostelsController@update_promotional_artist');
+Route::get('admin/delete-promotional-artist','HostelsController@delete_promotional_artist');
+=======
 Route::get('admin/edit-promotional-artist/{id}','HostelsController@promotional_artist_edit');
 Route::post('admin/promotional-artist-update','HostelsController@promotional_artist_update');
+>>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
 
+
+
+	
 
 //City Guide image on Activities page
 
@@ -89,6 +98,9 @@ Route::post('admin/city-guide-index','HostelsController@city_guide_index')->befo
 Route::get('admin/city-guide-add','HostelsController@city_guide_add')->before('auth');
 Route::post('admin/save-city-guide','HostelsController@save_city_guide')->before('auth');
 Route::get('admin/city-guide-index-all','HostelsController@city_guide_index_all')->before('auth');
+Route::get('admin/edit-city-guide/{id}','HostelsController@edit_city_guide');
+Route::post('admin/update-city-guide','HostelsController@update_city_guide');
+Route::get('admin/delete-city-guide','HostelsController@delete_city_guide');
 
 
 //Hostels
@@ -121,7 +133,11 @@ Route::get('admin/excursion','ExcursionController@excursion_choose_hostel')->bef
 Route::post('admin/excursion-index','ExcursionController@list_excursion_hostel_previews')->before('auth');
 Route::get('admin/excursion-add','ExcursionController@excursion_add')->before('auth');
 Route::post('admin/excursion-save','ExcursionController@excursion_save')->before('auth');
-Route::get('admin/list-excursion-hostel-previews-all','ExcursionController@list_excursion_hostel_previews_all');
+Route::any('admin/list-excursion-hostel-previews-all','ExcursionController@list_excursion_hostel_previews_all');
+Route::any('admin/edit-excursion/{id}','ExcursionController@edit_excursion');
+Route::post('admin/update-excursion','ExcursionController@update_excursion')->before('auth');
+Route::get('admin/delete_excursion','ExcursionController@delete_excursion')->before('auth');
+
 
 
 //How to get there..

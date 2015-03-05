@@ -78,14 +78,8 @@ Route::post('admin/promotional-artist-index','HostelsController@promotional_arti
 Route::get('admin/promotional-artist-add','HostelsController@add_promotional_artist');
 Route::post('admin/promotional-artist-save','HostelsController@save_promotional_artist');
 Route::get('admin/promotional-artist-index-all','HostelsController@promotional_artist_index_all');
-<<<<<<< HEAD
-Route::get('admin/edit-promotional-artist/{id}','HostelsController@edit_promotional_artist');
-Route::post('admin/update-promotional-artist','HostelsController@update_promotional_artist');
-Route::get('admin/delete-promotional-artist','HostelsController@delete_promotional_artist');
-=======
 Route::get('admin/edit-promotional-artist/{id}','HostelsController@promotional_artist_edit');
 Route::post('admin/promotional-artist-update','HostelsController@promotional_artist_update');
->>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
 
 
 

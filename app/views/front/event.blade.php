@@ -173,18 +173,18 @@
         <div class="container">
             <div class="exe_month_2con">
                 <div class="row nav nav-pills nav-justified">
-                    <div class="col-md-1 col-sm-1 text-center active" data-target="#myCarousel" data-slide-to="0"><a href="#" rel="3">{{ trans('greet.March') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="1"><a href="#" rel="4">{{ trans('greet.April') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="2"><a href="#" rel="5">{{ trans('greet.May') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="3"><a href="#" rel="6">{{ trans('greet.June') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="4"><a href="#" rel="7">{{ trans('greet.July') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="5"><a href="#" rel="8">{{ trans('greet.August') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="6"><a href="#" rel="9">{{ trans('greet.September') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="7"><a href="#" rel="10">{{ trans('greet.October') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="8"><a href="#" rel="11">{{ trans('greet.November') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="9"><a href="#" rel="12">{{ trans('greet.December') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="10"><a href="#" rel="1">{{ trans('greet.January') }}</a></div>
-                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="11"><a href="#" rel="2">{{ trans('greet.February') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center active" data-target="#myCarousel" data-slide-to="2"><a href="#" rel="3">{{ trans('greet.March') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="3"><a href="#" rel="4">{{ trans('greet.April') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="4"><a href="#" rel="5">{{ trans('greet.May') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="5"><a href="#" rel="6">{{ trans('greet.June') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="6"><a href="#" rel="7">{{ trans('greet.July') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="7"><a href="#" rel="8">{{ trans('greet.August') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="8"><a href="#" rel="9">{{ trans('greet.September') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="9"><a href="#" rel="10">{{ trans('greet.October') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="10"><a href="#" rel="11">{{ trans('greet.November') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="11"><a href="#" rel="12">{{ trans('greet.December') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="0"><a href="#" rel="1">{{ trans('greet.January') }}</a></div>
+                    <div class="col-md-1 col-sm-1 text-center" data-target="#myCarousel" data-slide-to="1"><a href="#" rel="2">{{ trans('greet.February') }}</a></div>
                 </div>
             </div>
         </div>
@@ -718,35 +718,29 @@
                     </div>
                 </div>
 
+
                 <!-- Foo list left -->
                 <div class="foo-listing_wrapper">
                     <div class="row">
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
-                                <h3 class="foo_list_title">Temps à pied <br>des différents points d’intérêt</h3>
+                                <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}</h3>
                                 <ul class="detail_listing2">
 
                                     @foreach($touristic as $tours)
                                     <li>
                                         {{ $tours->description}}
-                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}mn</div>
                                     </li>
                                     @endforeach
 
-                                </ul>
-                                @foreach($touristic as $tours)
-
-                                {{ $tours->description}}
-                                <div class="list_month-detail text-center">{{$tours->time_on_point}}</div>
-
-                                @endforeach
                             </div>
                         </div>
 
 
                         <div class="col-md-8 col-sm-7">
                             <div class="foo_right_side">
-                                <h3 class="foo_list_title"> <br>Comment arriver ?</h3>
+                                <h3 class="foo_list_title"> <br>{{ trans('greet.How to get there') }} ?</h3>
 
                                 <div class="foo_address">
                                     <div class="row">
@@ -767,7 +761,7 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <img class="mobile_tip" src="../assets/front/images/foo_tips.png" alt="" />
-                                            <h3>TRAVEL Tips</h3>
+                                            <h3>{{ trans('greet.TRAVEL Tips') }}</h3>
                                         </div>
                                         <div class="col-md-9">
                                             <h4>prendre le bus / taxi</h4>
@@ -851,7 +845,7 @@
                     <div class="row">
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
-                                <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}}}</h3>
+                                <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}</h3>
                                 <ul class="detail_listing2">
                                     <li>
                                         <p>Boire un café Juan Valdez</p>

@@ -68,6 +68,7 @@ return array(
     "How to get there"=>"Comment arriver",
     "Walking time"=>"Temps à pied",
     "different points of interest"=>"des différents points d’intérêt",
+    "TRAVEL Tips" => "Conseils de voyage",
 
 
 );

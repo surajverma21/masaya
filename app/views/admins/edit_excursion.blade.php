@@ -21,8 +21,8 @@
                         <ul class="nav navbar-right">
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
-                                <a href="{{ URL::to('/') }}/admin/add_language">
-                                    <i class="fa fa-plus"></i> Add Language
+                                <a href="{{ URL::to('/') }}/admin/addmember">
+                                    <i class="fa fa-plus"></i> Add Member
                                 </a>
                             </li>
                         </ul>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
-                        {{ Form::open(array('url' => 'admin/save_language','class' => 'form-horizontal','files' =>true)) }}
+                        {{ Form::open(array('url' => 'admin/update-excursion','class' => 'form-horizontal','files' =>true)) }}
 
                         @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -62,30 +62,47 @@
 
                         <fieldset>
 
+
+                            {{Form::hidden('excursion_id',$excursion->id) }}
+
                             <div class="form-group">
-                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('excursion_text','Excursion Text :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('name', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Language Name','required' => 'required']) }}
+                                    {{ Form::text('excursion_text', $excursion->excursion_text, $attributes = ['class' => 'form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    <div style="color:red"> {{ $errors->first('title') }} </div>
                                 </div>
                             </div>
 
+
+
                             <div class="form-group">
-                                {{ Form::label('lang_code','Language Code :', $attributes = ['class' => 'col-sm-3 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::text('lang_code', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Language Code','required' => 'required']) }}
+                                <div class="col-sm-12">
+
+                                    {{ Form::label('excursion_preview_image','Excursion Preview image : ', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                    <div class="fileupload fileupload-new col-sm-6" data-provides="fileupload">
+                                        <div class="fileupload-new thumbnail"><img src="{{ URL::to('/') }}/../uploads/excursion/{{$excursion->excursion_image}}" alt=""/>
+                                        </div>
+                                        <div class="fileupload-preview fileupload-exists thumbnail"></div>
+                                        <div style="margin-top:10px;">
+                                            <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture-o"></i> Select image</span><span class="fileupload-exists"><i class="fa fa-picture-o"></i> Change</span>
+
+                                                <input type="file" name="excursion_preview_image">
+                                            </span>
+                                            <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
+                                                <i class="fa fa-times"></i> Remove
+                                            </a>
+                                        </div>
+
+
+
+                                    </div>
+
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('icon','Icon', $attributes = ['class' => 'col-sm-3 control-label']) }}
-
-                                <div class="col-sm-9">
-                                    {{ Form::file('icon', '', $attributes = ['class' => 'form-control']) }}
-                                </div>
-                            </div>
 
                             <div class="form-actions">
-                                {{ Form::submit('Add', $attributes = ['class' => 'btn btn-green pull-right']) }}
+                                {{ Form::submit('Update', $attributes = ['class' => 'btn btn-green pull-right']) }}
                             </div>
                         </fieldset>
                         {{ Form::close() }}
@@ -108,7 +125,7 @@
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-       
+        
     });
 </script>
 @stop

@@ -1,5 +1,4 @@
 @extends('master')
-
 @section('content')
 <!-- start: MAIN CONTAINER -->
 <div class="main-container inner">
@@ -186,11 +185,13 @@
     <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
+
 <script>
+
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+       
     });
 </script>
 
@@ -199,4 +200,5 @@
 @extends('admins.header')
 @extends('admins.sidebar')
 @extends('admins.footer')
+
 

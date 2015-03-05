@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            Time To Touristics
+                            Excursion
                         </li>
                     </ol>
                 </div>
@@ -136,8 +136,8 @@
 
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <a href="edit_time_to_touristic/{{$excursion_hostel_one->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$excursion_hostel_one->id}},{{$excursion_hostel_one->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>
+                                            <a href="edit-excursion/{{$excursion_hostel_one->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return common_delete({{$excursion_hostel_one->id}},'delete_excursion')"><i class="fa fa-times fa fa-white"></i></a>
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
                                             <div class="btn-group">
@@ -178,16 +178,17 @@
     <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
+<script>
+    jQuery(document).ready(function() {
+        Main.init();
+        SVExamples.init();
+        
+    });
+</script>
 @stop
 @extends('admins.head')
 @extends('admins.header')
 @extends('admins.sidebar')
 @extends('admins.footer')
 
-<script>
-    jQuery(document).ready(function() {
-        Main.init();
-        SVExamples.init();
-        Index.init();
-    });
-</script>
+

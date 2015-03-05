@@ -21,8 +21,8 @@
                         <ul class="nav navbar-right">
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
-                                <a href="{{ URL::to('/') }}/admin/add_language">
-                                    <i class="fa fa-plus"></i> Add Language
+                                <a href="{{ URL::to('/') }}/admin/city-guide-add">
+                                    <i class="fa fa-plus"></i> Add Member
                                 </a>
                             </li>
                         </ul>
@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
-                        {{ Form::open(array('url' => 'admin/save_language','class' => 'form-horizontal','files' =>true)) }}
+                        {{ Form::open(array('url' => 'admin/update-city-guide','class' => 'form-horizontal','files' =>true)) }}
 
                         @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -62,25 +62,40 @@
 
                         <fieldset>
 
+                            {{Form::hidden('city_guide_id',$city_guide->id) }}
                             <div class="form-group">
-                                {{ Form::label('name','Name :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                {{ Form::label('city_guide_text','City Guide Text :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('name', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Language Name','required' => 'required']) }}
+                                    {{ Form::text('city_guide_text', $city_guide->city_guide_text, $attributes = ['class' => 'form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    <div style="color:red"> {{ $errors->first('city_guide_text') }} </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                {{ Form::label('lang_code','Language Code :', $attributes = ['class' => 'col-sm-3 control-label']) }}
-                                <div class="col-sm-9">
-                                    {{ Form::text('lang_code', '', $attributes = ['class' => 'form-control', 'placeholder' => 'Language Code','required' => 'required']) }}
-                                </div>
-                            </div>
+
+
 
                             <div class="form-group">
-                                {{ Form::label('icon','Icon', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-12">
 
-                                <div class="col-sm-9">
-                                    {{ Form::file('icon', '', $attributes = ['class' => 'form-control']) }}
+                                    {{ Form::label('city_guide_image','City Guide image : ', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                    <div class="fileupload fileupload-new col-sm-6" data-provides="fileupload">
+                                        <div class="fileupload-new thumbnail"><img src="{{ URL::to('/') }}/../uploads/city_guide/{{$city_guide->city_guide_image}}" alt=""/>
+                                        </div>
+                                        <div class="fileupload-preview fileupload-exists thumbnail"></div>
+                                        <div style="margin-top:10px;">
+                                            <span class="btn btn-light-grey btn-file"><span class="fileupload-new"><i class="fa fa-picture-o"></i> Select image</span><span class="fileupload-exists"><i class="fa fa-picture-o"></i> Change</span>
+
+                                                <input type="file" name="city_guide_image">
+                                            </span>
+                                            <a href="#" class="btn fileupload-exists btn-light-grey" data-dismiss="fileupload">
+                                                <i class="fa fa-times"></i> Remove
+                                            </a>
+                                        </div>
+
+
+
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -108,7 +123,7 @@
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-       
+        Index.init();
     });
 </script>
 @stop

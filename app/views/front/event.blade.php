@@ -219,31 +219,42 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
 
 
-            <?php
 
-            $check_array = array();
 
-            if(isset($activities))
-            {
-                    foreach($activities as $activitydata)
-                    {
+<?php 
+//echo "<pre>";print_r($activities);die;
+ $check_array = array();
 
-                        $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
+foreach($activities as $activitydata)
+{
 
-                    }
-            }
+    /*if(in_array($activitydata->start_time,$check_array))
+    {
+        $check_array[$i][$activitydata->start_time][$activitydata->day] = $activitydata->name;
+    }
+    else
+    {*/
+
+        $check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
+
+   /* }*/
+   // $check_array[$activitydata->start_time]['time'] = $activitydata->start_time;
+    //$activitydata->start_time[$activitydata->day] = $activitydata->name;
+}
 
            ?>
 
-            <?php
-            if(count($check_array)>0)
-            {
-            $i = 1;
-            $j=0;
-             foreach($check_array as $key => $val)
-                {
-                   // echo count($check_array);
-                   // echo '<pre>';print_r($check_array);die;
+
+    <?php
+    if(count($check_array)>0)
+    {
+        $i = 1;
+        $j=0;
+        foreach($check_array as $key => $val)
+        {
+            // echo count($check_array);
+            // echo '<pre>';print_r($check_array);die;
+
 
                     $Get_time = explode(' ',$key);
                     $hours = $Get_time[1];
@@ -252,7 +263,6 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
 
             ?>
-
 
                   <ul class="act_content_sec text-center carousel-indicators">
                           <li <?php if($i==1){ echo 'class="active"'; }?>><span class="date_section"><?php echo $time_in_24_hour_format.'H'; ?></span></li>
@@ -269,6 +279,24 @@ if(isset($monthly_activity) && $monthly_activity != '')
                           <li class="" <?php if(isset($val['7'])) { ?>data-slide-to="<?php echo $j++;?>" <?php } ?> data-target="#carousel-example-generic"><div class="inne_space <?php if(isset($val['7'])) { echo 'table_sec-yellow'; } ?>"><span><?php if(isset($val['7'])) { echo $val['7']; } ?></span></div></li>
                       </ul>
 
+
+            
+            <?php foreach($check_array as $key => $val) {
+            ?>
+            
+            <ul class="act_content_sec text-center">
+                <li><span class="date_section"></span><?php echo $key; ?></li>
+                <li><div class="inne_space <?php if(@$val['1']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['1']) { echo $val['1']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['2']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['2']) { echo $val['2']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['3']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['3']) { echo $val['3']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['4']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['4']) { echo $val['4']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['5']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['5']) { echo $val['5']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['6']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['6']) { echo $val['6']; } ?></span></div></li>
+                <li><div class="inne_space <?php if(@$val['7']) { echo 'table_sec-yellow'; } ?>"><span><?php if(@$val['7']) { echo $val['7']; } ?></span></div></li>
+            </ul>
+          
+                 
+            <?php } ?>
 
             <?php
             $i++;

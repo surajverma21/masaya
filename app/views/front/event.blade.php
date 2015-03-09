@@ -324,8 +324,6 @@
     }
 
     ?>
-
-
 </div>
 <!-- acts wrapper -->
 
@@ -425,6 +423,7 @@
     <button class="exe_button">Découvrir toutes les activités de la semaine</button>
 </div>
 <!-- acts wrapper for tablet -->
+>>>>>>> 35bb36cf4ee81348c4b7116a8f21f6fd4f1bb098
 
 
 <!-- acts wrapper for mobile -->
@@ -470,7 +469,6 @@
 </div>
 </div>
 <!-- activity cultural -->
-
 
 <div class="activity_slide tablet-hide">
     <div class="container">
@@ -532,6 +530,7 @@
 </div>
 
 
+
 <!-- Exe activity main con -->
 <div class="exe_main_wrapper">
     <!-- exe social -->
@@ -565,6 +564,7 @@
     <!-- musician section -->
     <div class="musicions_wrapper">
         <div class="container">
+
 
             <?php  if(count($promotional_artist)>0)
             { ?>

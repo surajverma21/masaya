@@ -67,6 +67,9 @@ class FrontController extends BaseController {
 
         $hostel_info    = DB::table('hotel_event_activities_info')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
 
+        $trip_adviser =  $getLikes->fetchTripAdviserData();
+
+
         $hostel    = DB::table('hostels')->where('id', '=', 1)->get();
         $hostel1    = DB::table('hostels')->where('id', '=', 2)->get();
         //return $hostels;

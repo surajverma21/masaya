@@ -68,6 +68,7 @@
         "How to get there"=>"How to get there",
         "Walking time"=>"Walking time",
         "different points of interest"=>"different points of interest",
+        "TRAVEL Tips" => "TRAVEL Tips",
 
 
 

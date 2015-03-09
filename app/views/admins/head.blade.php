@@ -19,9 +19,9 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- end: META -->
-<<<<<<< HEAD
+
     {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
-=======
+
 
     <!-- start: MAIN JS -->
     <!--[if gte IE 9]><!-->
@@ -30,11 +30,12 @@
     <!-- end: MAIN JS -->
 
 
+
 <<<<<<< HEAD
 =======
->>>>>>> 0f25a427de2aa0e3785b2464edd8b48baf2c21e1
     <!-- start: MAIN CSS -->
->>>>>>> b8fbaa19a36cc6b03683d4c9400b78c10ea28003
+
+>>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>
 
     {{ HTML::style('../assets/plugins/bootstrap/css/bootstrap.min.css') }}

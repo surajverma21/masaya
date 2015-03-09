@@ -135,24 +135,16 @@
                     <!-- start: USER DROPDOWN -->
                     <li class="dropdown current-user">
                         <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-                            {{ HTML::image('../assets/images/avatar-1-small.jpg', 'a picture', array('class' => 'img-circle')) }}<!-- class="img-circle" alt="">--> <span class="username hidden-xs">{{ Auth::user()->username }}</span> <i class="fa fa-caret-down "></i>
+                            <!-- class="img-circle" alt="">--> <span class="username hidden-xs">{{ Auth::user()->username }}</span> <i class="fa fa-caret-down "></i>
                         </a>
                         <ul class="dropdown-menu dropdown-dark">
                             <li>
-                                <a href="pages_user_profile.html">
+                                <a href="{{url('admin/edit/'.Auth::user()->id)}}">
                                     My Profile
                                 </a>
                             </li>
-                            <li>
-                                <a href="pages_calendar.html">
-                                    My Calendar
-                                </a>
-                            </li>
-                            <li>
-                                <a href="pages_messages.html">
-                                    My Messages (3)
-                                </a>
-                            </li>
+
+
                             <!--
                                                     <li>
                                                         <a href="login_lock_screen.html">

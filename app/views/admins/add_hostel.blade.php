@@ -110,6 +110,14 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                {{ Form::label('trip_adviser_id','Trip Adviser :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::text('trip_adviser_id', '', $attributes = ['class' => 'form-control','required' => 'required','placeholder' => 'Find the trip adviser hotel from the Trip Adviser link']) }}
+                                    <div style="color:red"> {{ $errors->first('name') }} </div>
+                                </div>
+                            </div>
+
 
 
                             <div class="form-group">
@@ -119,6 +127,8 @@
                                     {{ Form::file('hostel_image', '', $attributes = ['class' => 'form-control']) }}
                                 </div>
                             </div>
+
+
 
 
 
@@ -146,7 +156,7 @@
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+        
     });
 </script>
 @stop

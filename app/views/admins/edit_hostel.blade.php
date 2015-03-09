@@ -114,6 +114,15 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group">
+                                {{ Form::label('trip_adviser_id','Trip Adviser ID :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::input('number','trip_adviser_id', $hostel->trip_advisor_id, $attributes = ['class' => 'form-control','pattern' => '[4-9]' ]) }}
+                                </div>
+                            </div>
+
+
                             <div class="form-group">
                                 {{ Form::label('hostel_image','Hostel Image', $attributes = ['class' => 'col-sm-3 control-label']) }}
 
@@ -148,7 +157,7 @@
     jQuery(document).ready(function() {
         Main.init();
         SVExamples.init();
-        Index.init();
+        
     });
 </script>
 @stop

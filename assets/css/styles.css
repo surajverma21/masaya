@@ -6613,3 +6613,4 @@ body.error-full-page {
 .isMobile ul.main-navigation-menu li:not(.open) a:hover {
     background: inherit !important;
 }
+#sample-table-2 img{ width:50px !important; height: 50px !important;border-radius: 50px;}

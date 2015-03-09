@@ -137,13 +137,13 @@
                                     </td>
 
                                     <td>
-                                        <img src={{ asset($guide->city_guide_image) }}>
+                                        <img src="{{ URL::to('/') }}/../uploads/city_guide/{{$guide->city_guide_image}}">
                                     </td>
 
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                            <a href="edit_time_to_touristic/{{$guide->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$guide->id}},{{$guide->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>
+                                            <a href="edit-city-guide/{{$guide->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return common_delete({{$guide->id}},'delete-city-guide')"><i class="fa fa-times fa fa-white"></i></a>
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
                                             <div class="btn-group">

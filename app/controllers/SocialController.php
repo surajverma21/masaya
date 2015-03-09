@@ -74,7 +74,11 @@ Class SocialController extends BaseController{
 
         foreach ($arrayI['data'] as $keyI => $valueI) {
 
+            if($tCounter > 7){
+                break;
+            }
             $finalT[$tCounter]['photos']  = $valueI['images']['standard_resolution']['url'];
+            $finalT[$tCounter]['link']    = $valueI['link'];
 
             $tCounter++;
         }
@@ -82,66 +86,46 @@ Class SocialController extends BaseController{
         return $finalT;
     }
 
-    public function fetchTripAdviserData($hotel_id){
+    public function fetchTripAdviserData($hostel_id = 4813145){
 
         error_reporting(0);
 
-        $total_ratings='';
-        $rating_average='';
-        $reviews_list='';
-        $output='';
-        $rating_number=array();
-        $reviews=array();
-        $images=array();
 
-        $json = file_get_contents('http://api.tripadvisor.com/api/partner/2.0/location/'.$hotel_id.'?key=44d79cd5251f4e23b07f97536310033a');
-        $obj = json_decode($json);
+        $id = 4813145; //http://www.tripadvisor.in/Hotel_Review-g297484-d4813145-Reviews-Masaya_Hostel_Santa_Marta-Santa_Marta_Santa_Marta_District_Magdalena_Department.html
 
-        foreach($obj->reviews as $key=>$res){
 
-            $rating=$res->rating;
-            $total_ratings[]=$rating;
-            if($rating>4){
-                $rating_number[]=$rating;
-                $reviews[]=$res->text;
-                $images[]=$res->rating_image_url;
+        $json = file_get_contents('http://api.tripadvisor.com/api/partner/2.0/location/'.$id.'?key=44d79cd5251f4e23b07f97536310033a');
+
+        $result = json_decode($json);
+
+
+
+        $response['name'] = $result->name;
+        $response['rating'] = $result->rating;
+        //$response['image'] = $result->rating_image_url;
+        $response['percentage_recommended'] = $result->percent_recommended;
+        $response['total_reviews'] = $result->num_reviews;
+
+
+        $maxRatingUrl = '';
+        $maxRating = 0;
+        $i = 0;
+        foreach($result->reviews as $review){
+
+            if($review->rating > $maxRating){
+                $response[$i]['maxRating'] = $review->rating;
+                $response[$i]['url']    = $review->url;
+                $response[$i]['maxRatingImage'] = $review->rating_image_url;
             }
+
+            $response[$i]['text'] = $review->text;
+            $i++;
         }
 
-        if(!empty($rating_number)){
-            $rating_count=count($rating_number);
-            $rating_average=(array_sum($rating_number))/$rating_count;
-        }
-
-        $total_rating_number    =   count($total_ratings);
-        $prsn1                  =   ($rating_count/$total_rating_number);
-        $prsn                   =   $prsn1*100;
-        $maxrating              =   max($rating_number);
-
-        $index_of_max=array_search($maxrating,$rating_number);
-        $img_for_maxrating='<img src="'.$images[$index_of_max].'" />';
-
-        if(!empty($reviews)){
-
-            $reviews_list='<ul>';
-            $i=0;
-            while($i<3){
-                $reviews_list.='<li>'.$reviews[$i].'</li>';
-                $i++;
-            }
-            $reviews_list.='<ul>';
-        }
-
-
-        $response['total_reviews'] = $total_rating_number;
-        $response['reviews_greater_than_four'] = $rating_count;
-        $response['total_percentage_rated_above_four'] = $prsn;
-        $response['image_for_max_rating'] = $img_for_maxrating;
-        $response['reviews_list'] = $reviews_list;
-
-        return $response;
-
+         return $response;
     }
+
+
 }
 
 ?>

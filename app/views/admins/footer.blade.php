@@ -1,7 +1,22 @@
 @section('footer')
 <div id="readNote">
+
+           <div class="barTopSubview">
+<!--               <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>-->
+           </div>
+           <div class="noteWrap col-md-8 col-md-offset-2">
+               <div class="panel panel-note">
+                   <div class="e-slider owl-carousel owl-theme">
+                       <div class="item">
+
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
     <div class="barTopSubview">
-        <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>
+<!--        <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>-->
     </div>
     <div class="noteWrap col-md-8 col-md-offset-2">
         <div class="panel panel-note">
@@ -13,6 +28,7 @@
         </div>
     </div>
 </div>
+
 <!-- start: FOOTER -->
 <footer class="inner">
     <div class="footer-inner">
@@ -24,20 +40,24 @@
         </div>
     </div>
 </footer>
+
+
+
 <!-- start: MAIN JAVASCRIPTS -->
 
 <!--[if lt IE 9]>
-<<<<<<< HEAD
+
 {{ HTML::script('../assets/plugins/respond.min.js') }}
 {{ HTML::script('../assets/plugins/excanvas.min.js') }}
 {{ HTML::script('../assets/plugins/jQuery/jquery-1.11.1.min.js') }}
 <![endif]-->
-=======
+
 {{ HTML::script('assets/plugins/respond.min.js') }}
 {{ HTML::script('assets/plugins/excanvas.min.js') }}
 
 		<![endif]-->
->>>>>>> b8fbaa19a36cc6b03683d4c9400b78c10ea28003
+
+
 <!--[if gte IE 9]><!-->
 {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
 <!--<![endif]-->

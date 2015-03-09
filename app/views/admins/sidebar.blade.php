@@ -80,6 +80,12 @@
             </a>
         </li>
 
+        <li>
+            <a href="hotel-event-info">
+                <span class="title">Hotel Events page info</span>
+            </a>
+        </li>
+
     </ul>
 </li>
 

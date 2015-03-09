@@ -638,14 +638,16 @@
                         <div class="exe_inner_container">
                             <div class="trip_advisor-inner">
                                 <img src="../assets/front/images/trip_advisor.png">
-                                <em>“Nice hostel on a good location”</em>
-                                <em>“Well located, clean and friendly”</em>
-                                <em>“the best hostel in la Candelaria”</em>
+                                <br/>
+                                <img src="{{$trip_adviser[0]['maxRatingImage']}}">
+                                <em onclick="window.open('{{$trip_adviser[0]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[0]['text'],0,55)}}...”</em>
+                                <em onclick="window.open('{{$trip_adviser[1]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[1]['text'],0,55)}}...”</em>
+                                <em onclick="window.open('{{$trip_adviser[2]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[2]['text'],0,55)}}...”</em>
                             </div>
                             <div class="exe_votes text-center">
                                 <img alt="" src="../assets/front/images/bagota_icon.png" class="vote_img">
-                                <h2>86%</h2>
-                                <h2>251</h2>
+                                <h2>{{ $trip_adviser['percentage_recommended']}}%</h2>
+                                <h2>{{ $trip_adviser['total_reviews'] }}</h2>
                             </div>
 
                         </div>

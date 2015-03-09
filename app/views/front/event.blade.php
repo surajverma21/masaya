@@ -297,57 +297,94 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
         <!-- acts wrapper for tablet -->
         <div class="act_wrapper tablet-visible hidden_desktop hidden_mobile">
+        <?php
+
+                $check_day_array = array();
+
+                    if(isset($activities))
+                    {
+                            foreach($activities as $activitydata)
+                            {
+
+                                $check_day_array[$activitydata->day][$activitydata->start_time] = $activitydata->name;
+
+                            }
+                    }
+                   //echo "<pre>"; print_r($check_day_array);die;
+                   ?>
+        <?php
+                    if(count($check_day_array)>0)
+                    {
+
+                     $i = 1;
+                     $j=0;
+                     foreach($check_day_array[1] as $key => $val)
+                        {
+
+                            $Get_time = explode(' ',$key);
+                            $hours = $Get_time[1];
+                            $time = $Get_time[2];
+                            $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+                        }
+                    }
+
+                    ?>
             <ul class="act_head text-center">
                 <li class="tablet_head">&nbsp;</li>
-                <li class="tablet_head"><span class="date_section">17h</span></li>
-                <li class="tablet_head"><span class="date_section">18h</span></li>
-                <li class="tablet_head"><span class="date_section">19h</span></li>
-                <li class="tablet_head"><span class="date_section">20h</span></li>
+                <li class="tablet_head"><span class="date_section"> dfdf<?php // echo $time_in_24_hour_format.'H';?></span></li>
+                <li><div class="inne_space table_sec-default"><span> dfdf<?php // echo $val;?></span></div></li>
+                <li><div class="inne_space"><span>&nbsp;</span></div></li>
+                <li><div class="inne_space"><span>&nbsp;</span></div></li>
+
+
             </ul>
+            <?php // } ?>
+
+
+
+
+
             <ul class="act_content_sec text-center">
+
+
                 <li class="table_title">Lundi</li>
+
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space table_sec-default"><span>Clase de Costenol</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
 
 
-                <div class="tablet_slider_con text-left">
-                    <div class="row margin_none">
-                        <div class="col-sm-6 padding_none"><img class="imgfull-width" alt="" src="../assets/front/images/act_slide_img.png"></div>
-                        <div class="col-sm-6">
-                            <div class="slide_main_con">
-                                <h1>Juegos criollos</h1>
-                                <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
-                                <em>Tous les lundi à 21h</em>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
             </ul>
 
             <ul class="act_content_sec text-center">
                 <li class="table_title">Mardi</li>
+
                 <li><div class="inne_space table_sec-yellow"><span>Clase de Cocina</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space table_sec-yellow"><span>Al Aire (Microfono Abierto)</span></div></li>
                 <li><div class="inne_space table_sec-yellow"><span>Campeonato de Rana</span></div></li>
+
             </ul>
             <ul class="act_content_sec text-center">
                 <li class="table_title">Mercredi</li>
+
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
+
             </ul>
             <ul class="act_content_sec text-center">
                 <li class="table_title">Jeudi</li>
+
                 <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space"><span>&nbsp;</span></div></li>
                 <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
+
             </ul>
             <ul class="act_content_sec text-center">
                 <li class="table_title">Vendredi</li>
@@ -421,17 +458,13 @@ if(isset($monthly_activity) && $monthly_activity != '')
 </div>
 <!-- activity cultural -->
 
-<<<<<<< HEAD
+
 
 
 <div class="activity_slide tablet-hide">
    <div class="container">
  <!-- Banner section   Activiites Slider Desktop   -->
-=======
-<div class="activity_slide tablet-hide">
-    <div class="container">
-<!-- Banner section   Activiites Slider Desktop   -->
->>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
+
 <div class="act_slide_inner">
    <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
     <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
@@ -482,17 +515,13 @@ if(isset($monthly_activity) && $monthly_activity != '')
 
 </div>
 <!-- Banner section -->
-<<<<<<< HEAD
-</div>
-</div>
 
-=======
 <div class="slide_act_cul tablet_button_con hidden_mobile">
     <button class="exe_button">Découvrir toutes les activités de la semaine</button>
 </div>
 </div>
 </div>
->>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
+
 
 
 <!-- Exe activity main con -->
@@ -537,17 +566,7 @@ if(isset($monthly_activity) && $monthly_activity != '')
                     {{$promotional_artist[0]->title}}
                     {{$promotional_artist[0]->sub_title}}
                     {{$promotional_artist[0]->promotional_artist_text}}
-<<<<<<< HEAD
 
-
-
-
-=======
-                 
-
-
-
->>>>>>> 2be2a57c53a99b83a0918a3b511bb5c00ad34728
                     <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
 
                 </div>
@@ -874,7 +893,7 @@ if(isset($monthly_activity) && $monthly_activity != '')
                     <div class="row">
                         <div class="col-md-4  col-sm-5">
                             <div class="foo_left_side">
-                                <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}}}</h3>
+                                <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}</h3>
                                 <ul class="detail_listing2">
                                     <li>
                                         <p>Boire un café Juan Valdez</p>

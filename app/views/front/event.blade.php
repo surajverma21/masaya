@@ -60,6 +60,34 @@
             $('#tab-bottom-container ul li a.active').trigger('click');
         });
 
+        $('#carscroll').on('click', function(event) {
+
+            var target = $('#myCarousel');
+
+            if( target.length ) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 200
+                }, 1000);
+            }
+
+        });
+
+        $('#activity_scroll').on('click', function(event) {
+
+            var target = $('#getcontentactivity');
+
+            if( target.length ) {
+                event.preventDefault();
+                var topp = target.offset().top - 230
+                $('html, body').animate({
+                    scrollTop: topp
+                }, 1500);
+            }
+
+        });
+
+
 
 
 
@@ -125,8 +153,8 @@
                     Notre but est de vous faire connaître le pays dans ce qu'il a de meilleur, c’est pour cela que nous vous proposons un guide culturel regroupant les activités phare de Santa Marta et de la région Magdalena. Consultez notre calendrier et faites place à la culture lors de votre voyage… </em>
                 <div class="row">
                     <div class="col-md-12 span10 mobile_center">
-                        <a href="#" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
-                        <a href="#" class="btn btn-default" >{{ trans('greet.The cultural program of Masaya') }}</a>
+                        <a href="#myCarousel" id="carscroll" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
+                        <a href="#getcontentactivity" id="activity_scroll" class="btn btn-default" >{{ trans('greet.The cultural program of Masaya') }}</a>
                     </div>
                 </div>
             </div>
@@ -744,16 +772,12 @@
 
                                 <div class="foo_address">
                                     <div class="row">
+                                        @foreach($comments as $comment)
                                         <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
+                                            <strong>{{ $comment->title}}</strong>
+                                            {{ $comment->description }}
                                         </div>
-                                        <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -761,15 +785,13 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <img class="mobile_tip" src="../assets/front/images/foo_tips.png" alt="" />
-                                            <h3>TRAVEL Tips</h3>
+                                            <h3>{{ trans('greet.TRAVEL Tips')}}</h3>
                                         </div>
                                         <div class="col-md-9">
-                                            <h4>prendre le bus / taxi</h4>
-                                            <p>Il est facile de se repérer dans Santa Marta, la ville étant complétement quadrillée. Vous n’aurez pas de difficulté à arriver dans le centre-ville.
-                                                Après un long voyage, nous vous recommandons de prendre un taxi.
-                                                L’expérience du bus est à faire si vous voyagez léger et que vous n’êtes pas pressé. </p>
-                                            <p>Attention le dimanche et jours fériés: les prix des taxis peuvent être majorés
-                                                (environ $5000 de plus par course).</p>
+                                            @foreach($travel_tip as $travel)
+                                            <h4>{{ $travel->title }}</h4>
+                                            {{ $travel->description }}
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -847,21 +869,12 @@
                             <div class="foo_left_side">
                                 <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}</h3>
                                 <ul class="detail_listing2">
+                                    @foreach($touristic1 as $tours)
                                     <li>
-                                        <p>Boire un café Juan Valdez</p>
-                                        <div class="list_month-detail text-center">2mn</div>
+                                        {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}mn</div>
                                     </li>
-                                    <li>
-                                        <p>Visiter la Cathédrale</p>
-                                        <p>Voir la plage</p>
-                                        <p>Faire quelques courses</p>
-                                        <div class="list_month-detail text-center">3mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Aller au Musée de l’Or</p>
-                                        <p>Se faire une terrasse au Parque de los Novios</p>
-                                        <div class="list_month-detail text-center">5mn</div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -873,16 +886,12 @@
 
                                 <div class="foo_address">
                                     <div class="row">
+                                        @foreach($comments1 as $comment)
                                         <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
+                                            <strong>{{ $comment->title}}</strong>
+                                            {{ $comment->description }}
                                         </div>
-                                        <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -893,12 +902,10 @@
                                             <h3>{{ trans('greet.TRAVEL Tips')}}</h3>
                                         </div>
                                         <div class="col-md-9">
-                                            <h4>prendre le bus / taxi</h4>
-                                            <p>Il est facile de se repérer dans Santa Marta, la ville étant complétement quadrillée. Vous n’aurez pas de difficulté à arriver dans le centre-ville.
-                                                Après un long voyage, nous vous recommandons de prendre un taxi.
-                                                L’expérience du bus est à faire si vous voyagez léger et que vous n’êtes pas pressé. </p>
-                                            <p>Attention le dimanche et jours fériés: les prix des taxis peuvent être majorés
-                                                (environ $5000 de plus par course).</p>
+                                            @foreach($travel_tip1 as $travel)
+                                            <h4>{{ $travel->title }}</h4>
+                                            {{ $travel->description }}
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('description', $travel_tip->description, $attributes = ['class' => 'form-control', 'required' => 'required']) }}
+                                    {{ Form::text('description', $travel_tip->description, $attributes = ['class' => 'form-control ckeditor', 'required' => 'required']) }}
                                     <div style="color:red"> {{ $errors->first('description') }} </div>
                                 </div>
                             </div>

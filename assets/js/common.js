@@ -197,7 +197,7 @@ function delete_travel_tip(tip_id,hostel_id){
 
 }
 
-<<<<<<< HEAD
+
 function common_delete(primary_id,url){
 
 
@@ -226,12 +226,29 @@ function common_delete(primary_id,url){
 
  }
 
-=======
-//Language Switcher
-function change_lang(code) {
-    alert(code);
-}
+function delete_hostel_event_info(info_id){
 
-/*
-{{ URL::to('/') }}/*/
->>>>>>> 4cd9e2c640502e221610032065275e39b8173f38
+    if(!info_id){
+        alert('No Tip ID found');
+        return false;
+    }
+
+    var confirmme = confirm('Are you sure you want to delete this!');
+
+    if(confirmme){
+        $.ajax({
+
+            'url'       : 'delete-hostel-event-info',
+            'action'    : 'POST',
+            'data'      : {info_id:info_id},
+            'success'   : function(result){
+                //$('#msg').html(result);
+                location.reload();
+            },
+            'error'     : function(){
+                console.log('Some error occurred');
+            }
+        });
+    }
+
+}

@@ -2580,4 +2580,12 @@ button.exe_button:after{ position:absolute; content:url(../images/select_arrow_t
     .slide_main_content { padding-top: 92%;}
     .musicions_inner-con p strong {font-size: 12px;line-height: 17px; }
 }
+
+li.active.mob_activity_parent>div.row {
+    display: block;
+}
+
+li.mob_activity_parent>div.row {
+    display: none;
+}
 /* Responsive style */

@@ -15,13 +15,12 @@ class FrontController extends BaseController {
 
     public function index()
     {
+
         $laguages = $this->change_language();
         $lang_id =  Session::get('language_id');
 
-       // $events = HostelEvent::All();
-        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get();   // All events
-//        return $events;
 
+        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get();   // All events
 
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->Where('month_id', '=', 3)->Where('lang_id','=',$lang_id)->get(); // medium events
 
@@ -31,7 +30,15 @@ class FrontController extends BaseController {
 
         $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();    // Change this when get hostel in session.
 
-        $activities = Activity::All();
+
+        $activities[0] = Activity::where('day','=','0')->get()->toArray();
+        $activities[1] = Activity::where('day','=','1')->get()->toArray();
+        $activities[2] = Activity::where('day','=','2')->get()->toArray();
+        $activities[3] = Activity::where('day','=','3')->get()->toArray();
+        $activities[4] = Activity::where('day','=','4')->get()->toArray();
+        $activities[4] = Activity::where('day','=','5')->get()->toArray();
+        $activities[5] = Activity::where('day','=','6')->get()->toArray();
+
 
         $cityguide = DB::table('city_guide')->where('id', '=', 1)->Where('language_id','=',$lang_id)->get();
 

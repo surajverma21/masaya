@@ -250,22 +250,20 @@
     ?>
 
     <?php
-    if(count($check_array)>0)
-    {
+
+        if(count($check_array)>0)
+        {
         $i = 1;
         $j=0;
         foreach($check_array as $key => $val)
         {
-            // echo count($check_array);
-            // echo '<pre>';print_r($check_array);die;
 
             $Get_time = explode(' ',$key);
             $hours = $Get_time[1];
             $time = $Get_time[2];
             $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
 
-
-            ?>
+    ?>
 
 
             <ul class="act_content_sec text-center carousel-indicators">
@@ -380,35 +378,185 @@
 <!-- acts wrapper for mobile -->
 <div class="act_cul_mobile">
     <ul>
-        <li><a href="#">Lundi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+        <li class="active mob_activity_parent"><a href="javascript: void(0)">Lundi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[0])
+
+                @foreach($activities[0] as $key=>$val)
+
+                        <div class="row margin_none">
+
+                            <div class="col-xs-12 padding_none">
+                                <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                            </div>
+                            <div class="col-xs-12 padding_none">
+                                <div class="slide_main_con">
+                                    <h1>{{$val['name'] }}</h1>
+                                    <p>{{$val['description'] }}</p>
+                                    <em>Tous les lundi à 21h</em>
+                                </div>
+                            </div>
+                        </div>
+
+                @endforeach
+
+            @endif
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Mardi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[1])
+
+            @foreach($activities[1] as $key=>$val)
 
             <div class="row margin_none">
+
                 <div class="col-xs-12 padding_none">
-                    <div class="slide_main_con">
-                        <h1>Juegos criollos</h1>
-                        <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
-                        <em>Tous les lundi à 21h</em>
-                    </div>
-                </div>
-                <div class="col-xs-12 padding_none">
-                    <img class="imgfull-width" alt="" src="../assets/front/images/act_slide_img.png">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
                 </div>
                 <div class="col-xs-12 padding_none">
                     <div class="slide_main_con">
-                        <h1>Juegos criollos</h1>
-                        <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
                         <em>Tous les lundi à 21h</em>
                     </div>
                 </div>
             </div>
 
+            @endforeach
+
+            @endif
+
         </li>
-        <li><a href="#">Mardi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Mercredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Jeudi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Vendredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Samedi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Dimanche <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
+
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Mercredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+            @if($activities[2])
+
+            @foreach($activities[2] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Jeudi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+            @if($activities[3])
+
+            @foreach($activities[3] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Vendredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[4])
+
+            @foreach($activities[4] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Samedi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[5])
+
+            @foreach($activities[5] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
+
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Dimanche <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[6])
+
+            @foreach($activities[6] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
     </ul>
 </div>
 <!-- acts wrapper for mobile -->
@@ -638,8 +786,6 @@
                         <div class="exe_inner_container">
                             <div class="trip_advisor-inner">
                                 <img src="../assets/front/images/trip_advisor.png">
-                                <br/>
-                                <img src="{{$trip_adviser[0]['maxRatingImage']}}">
                                 <em onclick="window.open('{{$trip_adviser[0]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[0]['text'],0,55)}}...”</em>
                                 <em onclick="window.open('{{$trip_adviser[1]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[1]['text'],0,55)}}...”</em>
                                 <em onclick="window.open('{{$trip_adviser[2]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[2]['text'],0,55)}}...”</em>

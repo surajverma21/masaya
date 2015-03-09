@@ -61,7 +61,10 @@ Route::get('admin/delete_time_to_touristics','HostelsController@delete_touristic
 Route::get('admin/hotel-event-info','EventsController@hotel_event_info')->before('auth');
 Route::any('admin/hostel-event-info-index','EventsController@hostel_event_info_index')->before('auth');
 Route::get('admin/add-hostel-event-info','EventsController@add_hostel_event_info')->before('auth');
-Route::post('admin/save-hostel-event-info','EventsController@save_hostel_event_info');
+Route::post('admin/save-hostel-event-info','EventsController@save_hostel_event_info')->before('auth');
+Route::get('admin/edit-hostel-event-info/{id}','EventsController@edit_hostel_event_info')->before('auth');
+Route::post('admin/update-hostel-event-info','EventsController@update_hostel_event_info')->before('auth');
+Route::get('admin/delete-hostel-event-info','EventsController@delete_hostel_event_info')->before('auth');
 
 
 //Travel Tips

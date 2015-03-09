@@ -74,15 +74,8 @@ class EventsController extends \BaseController {
         $languages  = Language::All()->lists('name' ,'id');
 
         $event = HostelEvent::find($event_id);
+
         return View::make('admins.edit_event', array('hostels' => $hostels, 'languages' => $languages  ))->with('event', $event);
-        /*if(!$member){
-            return 'No member ID provided';
-        }
-        $memberObject = Member::find($member);
-
-        $memberObject->delete();
-
-        return 'Member removed successfully';*/
 
     }
 
@@ -231,5 +224,51 @@ class EventsController extends \BaseController {
         return Redirect::action('EventsController@hostel_event_info_index')->with('msg','City guide artist added successfully');
     }
 
+    public function edit_hostel_event_info(){
+
+        $hostel_event_info_id = Route::input('id');
+
+        $hostel_event_info = HostelEventInfo::find($hostel_event_info_id);
+
+        $languages = Language::All()->lists('name' ,'id');
+
+        if(!$hostel_event_info){
+            return Redirect::to('admin/excursion');
+        }
+
+        return View::make('admins/edit_hostel_event_info')->with('hostel_event_info',$hostel_event_info)->with('languages' , $languages);
+
+    }
+
+    public function update_hostel_event_info(){
+
+        $id                         =  Input::get('resource_id');
+        $language_id                =  Input::get('language');
+        $title                      =  Input::get('title');
+        $description                =  Input::get('description');
+        $extra_info                 =  Input::get('extra_info');
+
+        $hostel_event_info                       =  HostelEventInfo::find($id);
+        $hostel_event_info->language_id          = $language_id;
+        $hostel_event_info->title                = $title;
+        $hostel_event_info->description          = $description;
+        $hostel_event_info->extra_info           = $extra_info;
+        $hostel_event_info->save();
+
+        return Redirect::action('EventsController@hostel_event_info_index')->with('msg','Hostel event info updated successfully');
+
+    }
+
+    public function delete_hostel_event_info(){
+
+        $info_id = Input::get('info_id');
+
+        $hostel_info =  HostelEventInfo::find($info_id);
+        $hostel_info->delete();
+
+        return 'Hostel Info deleted successfully!';
+    }
+
 
 }
+?>

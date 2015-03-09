@@ -18,16 +18,16 @@
                 </div>
 <!--                <div class="col-sm-6 col-xs-12">-->
 <!--                    <div class="toolbar-tools pull-right">-->
-<!--                        <!-- start: TOP NAVIGATION MENU -->-->
+<!--                        <!-- start: TOP NAVIGATION MENU -->
 <!--                        <ul class="nav navbar-right">-->
-<!--                            <!-- start: TO-DO DROPDOWN -->-->
+<!--                            <!-- start: TO-DO DROPDOWN -->
 <!--                            <li class="dropdown">-->
 <!--                                <a href="{{ URL::to('/') }}/admin/add_hostel">-->
 <!--                                    <i class="fa fa-plus"></i> Add Hostel-->
 <!--                                </a>-->
 <!--                            </li>-->
 <!--                        </ul>-->
-<!--                        <!-- end: TOP NAVIGATION MENU -->-->
+<!--                        <!-- end: TOP NAVIGATION MENU -->
 <!--                    </div>-->
 <!--                </div>-->
             </div>

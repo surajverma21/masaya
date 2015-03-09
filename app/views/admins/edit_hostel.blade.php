@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 {{ Form::label('address','Address :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::textarea('address', $hostel->address, $attributes = ['class' => 'form-control', 'required' => 'required','rows' => 4]) }}
+                                    {{ Form::textarea('address', $hostel->address, $attributes = ['class' => 'form-control ckeditor', 'required' => 'required','rows' => 4]) }}
                                     <div style="color:red"> {{ $errors->first('address') }} </div>
                                 </div>
                             </div>
@@ -113,6 +113,15 @@
                                     {{ Form::input('text','contact_number3', $hostel->contact_number3, $attributes = ['class' => 'form-control']) }}
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                {{ Form::label('trip_adviser_id','Trip Adviser ID :', $attributes = ['class' => 'col-sm-3 control-label']) }}
+                                <div class="col-sm-9">
+                                    {{ Form::input('number','trip_adviser_id', $hostel->trip_advisor_id, $attributes = ['class' => 'form-control','pattern' => '[4-9]' ]) }}
+                                </div>
+                            </div>
+
 
                             <div class="form-group">
                                 {{ Form::label('hostel_image','Hostel Image', $attributes = ['class' => 'col-sm-3 control-label']) }}

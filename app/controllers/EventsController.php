@@ -12,6 +12,7 @@ class EventsController extends \BaseController {
 
         $hostels = Hostel::All()->lists('name' ,'id');
         $languages = Language::All()->lists('name' ,'id');
+
         return View::make('admins.event', array('hostels' => $hostels , 'languages' => $languages));
 	}
 
@@ -177,82 +178,59 @@ class EventsController extends \BaseController {
     }
 
 
+    public function hotel_event_info(){
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+        $hostels  = Hostel::all();
 
+        return View::make('admins.choose_hostel_event_info')->with('hostels',$hostels);
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+}
 
+    public function hostel_event_info_index(){
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+        if(Input::get('hostel')){
 
+            $hostel_id = Input::get('hostel');
+            Session::forget('hostel_id');
+            Session::put('hostel_id',$hostel_id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+        }else{
 
+            $hostel_id = Session::get('hostel_id');
+        }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+        $hostel_event_info = HostelEventInfo::with('language')->with('hostel')->where('hostel_id','=',$hostel_id)->get();
 
+        return View::make('admins.list_hostel_event_info_index')->with('hostel_event_info',$hostel_event_info);
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-    public function formElements()
-    {
-        return View::make('admins.form_elements');
-       // echo 'here';die;
     }
 
+    public function add_hostel_event_info(){
+
+        $languages = Language::All()->lists('name' ,'id');
+        $hostel_id = Session::get('hostel_id');
+
+        return View::make('admins.add_hostel_event_info')->with('languages',$languages)->with('hostel_id',$hostel_id);
+    }
+
+    public function save_hostel_event_info(){
+
+        $language_id                =  Input::get('language');
+        $hostel_id                  =  Session::get('hostel_id');
+        $title                      =  Input::get('title');
+        $description                =  Input::get('description');
+        $extra_info                 =  Input::get('extra_info');
+
+        $hostel_event_info                       =     new HostelEventInfo;
+        $hostel_event_info->hostel_id            = $hostel_id;
+        $hostel_event_info->language_id          = $language_id;
+        $hostel_event_info->title                = $title;
+        $hostel_event_info->description          = $description;
+        $hostel_event_info->extra_info           = $extra_info;
+        $hostel_event_info->save();
+
+        return Redirect::action('EventsController@hostel_event_info_index')->with('msg','City guide artist added successfully');
+    }
 
 
 }

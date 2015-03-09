@@ -103,13 +103,23 @@
     }
     .fb-like {
         cursor: pointer;
-        height: 53px;
+        height: 100%;
         opacity: 0;
         position: absolute !important;
-        top: 28px;
-        visibility: hidden;
-        width: 60px;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        z-index: 9999;
     }
+        /*.fb-like {
+            cursor: pointer;
+            height: 53px;
+            opacity: 0;
+            position: absolute !important;
+            top: 28px;
+            visibility: hidden;
+            width: 60px;
+        }*/
 </style>
 
 <!-- inner yellow section -->
@@ -146,11 +156,7 @@
         <!-- Top content -->
         <div class="row inner-y_conternt1">
             <div class="col-md-12"><h1 class="title_yellow">{{ trans('greet.Events & Cultural Activities') }}</h1></div>
-            <div class="col-md-9 col-sm-12">
-                <em>Plus qu’un simple hostel, Masaya se veut être un lieu de culture, de rencontres et d’échanges interculturels.
-                    A Santa Marta, découvrez la gastronomie « costeña » : le riz coco, la banane plantain sous toutes ses coutures…  les sons et rythmes aux influences africaines ; les danses locales et colombiennes… De nombreux artistes vous proposent chaque semaine de découvrir leur culture, leurs origines…<br><br>
-
-                    Notre but est de vous faire connaître le pays dans ce qu'il a de meilleur, c’est pour cela que nous vous proposons un guide culturel regroupant les activités phare de Santa Marta et de la région Magdalena. Consultez notre calendrier et faites place à la culture lors de votre voyage… </em>
+            <div class="col-md-9 col-sm-12">{{ $hostel_info[0]->description }}
                 <div class="row">
                     <div class="col-md-12 span10 mobile_center">
                         <a href="#myCarousel" id="carscroll" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
@@ -159,7 +165,7 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 pull-right hidden-tablet">
-                <div class="les_jours">{{ trans('greet.DAILY ACTIVITIES') }} <span> 100% {{ trans('greet.FREE') }} </span> </div>
+                <div class="les_jours">{{ $hostel_info[0]->extra_info }}</div>
             </div>
         </div>
         <!-- Top content -->
@@ -327,10 +333,26 @@
 <div class="act_wrapper tablet-visible hidden_desktop hidden_mobile">
     <ul class="act_head text-center">
         <li class="tablet_head"> </li>
-        <li class="tablet_head"><span class="date_section">17h</span></li>
-        <li class="tablet_head"><span class="date_section">18h</span></li>
-        <li class="tablet_head"><span class="date_section">19h</span></li>
-        <li class="tablet_head"><span class="date_section">20h</span></li>
+        <?php
+        if(count($check_array)>0) {
+            $i = 1;
+            $j=0;
+            foreach($check_array as $key => $val){
+
+                $Get_time = explode(' ',$key);
+                $hours = $Get_time[1];
+                $time = $Get_time[2];
+                $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+
+
+        ?>
+        <li class="tablet_head<?php if($i==1){ echo ' active'; }?>"><span class="date_section"><?php echo $time_in_24_hour_format.'H'; ?></span></li>
+                <?php
+                $i++;
+            }
+        }
+
+        ?>
     </ul>
     <ul class="act_content_sec text-center">
         <li class="table_title">Lundi</li>
@@ -666,14 +688,16 @@
                         <div class="exe_inner_container">
                             <div class="trip_advisor-inner">
                                 <img src="../assets/front/images/trip_advisor.png">
-                                <em>“Nice hostel on a good location”</em>
-                                <em>“Well located, clean and friendly”</em>
-                                <em>“the best hostel in la Candelaria”</em>
+                                <br/>
+                                <img src="{{$trip_adviser[0]['maxRatingImage']}}">
+                                <em onclick="window.open('{{$trip_adviser[0]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[0]['text'],0,55)}}...”</em>
+                                <em onclick="window.open('{{$trip_adviser[1]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[1]['text'],0,55)}}...”</em>
+                                <em onclick="window.open('{{$trip_adviser[2]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[2]['text'],0,55)}}...”</em>
                             </div>
                             <div class="exe_votes text-center">
                                 <img alt="" src="../assets/front/images/bagota_icon.png" class="vote_img">
-                                <h2>86%</h2>
-                                <h2>251</h2>
+                                <h2>{{ $trip_adviser['percentage_recommended']}}%</h2>
+                                <h2>{{ $trip_adviser['total_reviews'] }}</h2>
                             </div>
 
                         </div>
@@ -1008,27 +1032,32 @@
                     <div class="col-md-7 col-sm-7">
 
                         <div class="footer_addinner_wrapper">
+
+                            @foreach($hostel as $hostell)
                             <div class="footer_row">
                                 <div class="col-md-5 col-sm-5 padding_none">
                                     <img class="imgfull-width" src="../assets/front/images/foo_add_img.png" alt="" />
                                 </div>
                                 <div class="col-md-7 col-sm-7">
-                                    <h2>Santa Marta</h2>
-                                    <p>Calle 14 # 04-80 Centro historico, <br> Santa Marta, Colombia</p>
-                                    <p>Tel : +57 (5) 423 1770   +57 311 533 8348 <br> E-mail : santamarta@masaya-experience.com</p>
+                                    <h2>{{ $hostell->name }}</h2>
+                                    {{ $hostell->address }}
+                                    <p>Tel : {{ $hostell->contact_number1 }}   {{ $hostell->contact_number1 }} <br> E-mail : {{ $hostell->email }}</p>
                                 </div>
                             </div>
+                            @endforeach
 
+                            @foreach($hostel1 as $hostel)
                             <div class="footer_row">
                                 <div class="col-md-5 col-sm-5 padding_none">
-                                    <img class="imgfull-width" src="../assets/front/images/foo_add_img_2.png" alt="" />
+                                    <img class="imgfull-width" src="../assets/front/images/foo_add_img.png" alt="" />
                                 </div>
                                 <div class="col-md-7 col-sm-7">
-                                    <h2>Bogota</h2>
-                                    <p>Calle 14 # 04-80 Centro historico, <br> Santa Marta, Colombia</p>
-                                    <p>Tel : +57 (5) 423 1770   +57 311 533 8348 <br> E-mail : santamarta@masaya-experience.com</p>
+                                    <h2>{{ $hostel->name }}</h2>
+                                    {{ $hostel->address }}
+                                    <p>Tel : {{ $hostel->contact_number1 }}   {{ $hostel->contact_number1 }} <br> E-mail : {{ $hostel->email }}</p>
                                 </div>
                             </div>
+                            @endforeach
 
 
                         </div>

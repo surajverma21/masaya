@@ -27,6 +27,7 @@ Class HostelsController extends BaseController{
         $name                    = Input::get('name');
         $email                   = Input::get('email');
         $address                 = Input::get('address');
+        $trip_adviser_id         = (!empty(Input::get('trip_adviser_id'))) ? Input::get('trip_adviser_id') : '';
 
         $contact_number1         = (!empty(Input::get('contact_number1'))) ? Input::get('contact_number1') : '';
         $contact_number2         = (!empty(Input::get('contact_number2'))) ? Input::get('contact_number1') : '';
@@ -60,6 +61,7 @@ Class HostelsController extends BaseController{
         $hostel->contact_number2            =   $contact_number2;
         $hostel->contact_number3            =   $contact_number3;
         $hostel->image                      =   $hostelFileName;
+        $hostel->trip_advisor_id            =   $trip_adviser_id;
 
         $hostel->save();
 
@@ -95,6 +97,7 @@ Class HostelsController extends BaseController{
         $name                    = Input::get('name');
         $email                   = Input::get('email');
         $address                 = Input::get('address');
+        $trip_adviser_id         = (!empty(Input::get('trip_adviser_id'))) ? Input::get('trip_adviser_id') : '';
 
         $contact_number1         = (!empty(Input::get('contact_number1'))) ? Input::get('contact_number1') : '';
         $contact_number2         = (!empty(Input::get('contact_number2'))) ? Input::get('contact_number2') : '';
@@ -124,6 +127,7 @@ Class HostelsController extends BaseController{
         $hostel->contact_number1            =   $contact_number1;
         $hostel->contact_number2            =   $contact_number2;
         $hostel->contact_number3            =   $contact_number3;
+        $hostel->trip_advisor_id            =   $trip_adviser_id;
 
         $hostel->save();
 

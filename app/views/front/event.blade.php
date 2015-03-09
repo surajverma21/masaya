@@ -290,128 +290,6 @@
     ?>
 
 
-<<<<<<< HEAD
-        </div>
-        <!-- acts wrapper -->
-
-        <!-- acts wrapper for tablet -->
-        <div class="act_wrapper tablet-visible hidden_desktop hidden_mobile">
-        <?php
-
-                $check_day_array = array();
-
-                    if(isset($activities))
-                    {
-                            foreach($activities as $activitydata)
-                            {
-
-                                $check_day_array[$activitydata->day][$activitydata->start_time] = $activitydata->name;
-
-                            }
-                    }
-                   //echo "<pre>"; print_r($check_day_array);die;
-                   ?>
-        <?php
-                    if(count($check_day_array)>0)
-                    {
-
-                     $i = 1;
-                     $j=0;
-                     foreach($check_day_array[1] as $key => $val)
-                        {
-
-                            $Get_time = explode(' ',$key);
-                            $hours = $Get_time[1];
-                            $time = $Get_time[2];
-                            $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
-                        }
-                    }
-
-                    ?>
-            <ul class="act_head text-center">
-                <li class="tablet_head">&nbsp;</li>
-                <li class="tablet_head"><span class="date_section"> dfdf<?php // echo $time_in_24_hour_format.'H';?></span></li>
-                <li><div class="inne_space table_sec-default"><span> dfdf<?php // echo $val;?></span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-
-
-            </ul>
-            <?php // } ?>
-
-
-
-
-
-            <ul class="act_content_sec text-center">
-
-
-                <li class="table_title">Lundi</li>
-
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-default"><span>Clase de Costenol</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-
-
-
-
-            </ul>
-
-            <ul class="act_content_sec text-center">
-                <li class="table_title">Mardi</li>
-
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocina</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Al Aire (Microfono Abierto)</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Campeonato de Rana</span></div></li>
-
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li class="table_title">Mercredi</li>
-
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li class="table_title">Jeudi</li>
-
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li class="table_title">Vendredi</li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li class="table_title">Samedi</li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-            </ul>
-            <ul class="act_content_sec text-center">
-                <li class="table_title">Dimanche</li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-                <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
-                <li><div class="inne_space"><span>&nbsp;</span></div></li>
-            </ul>
-        </div>
-        <div class="slide_act_cul desktop_none tablet_button_con hidden_mobile">
-            <button class="exe_button">Découvrir toutes les activités de la semaine</button>
-        </div>
-        <!-- acts wrapper for tablet -->
-=======
 </div>
 <!-- acts wrapper -->
 
@@ -495,14 +373,13 @@
     <button class="exe_button">Découvrir toutes les activités de la semaine</button>
 </div>
 <!-- acts wrapper for tablet -->
->>>>>>> 35bb36cf4ee81348c4b7116a8f21f6fd4f1bb098
 
 
 <!-- acts wrapper for mobile -->
 <div class="act_cul_mobile">
     <ul>
         <li class="active mob_activity_parent"><a href="javascript: void(0)">Lundi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
-
+        
             @if($activities[0])
 
                 @foreach($activities[0] as $key=>$val)
@@ -516,7 +393,7 @@
                                 <div class="slide_main_con">
                                     <h1>{{$val['name'] }}</h1>
                                     <p>{{$val['description'] }}</p>
-                                    <em>Tous les lundi à 21h</em>
+                                    <em>Tous les lundi à {{ generateHoursForTime() }}h</em>
                                 </div>
                             </div>
                         </div>
@@ -692,47 +569,6 @@
 </div>
 <!-- activity cultural -->
 
-<<<<<<< HEAD
-
-
-
-<div class="activity_slide tablet-hide">
-   <div class="container">
- <!-- Banner section   Activiites Slider Desktop   -->
-
-<div class="act_slide_inner">
-   <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
-    <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
-
-        <div class="row">
-            <div class="col-md-12">
-                <div role="listbox" class="carousel-inner">
-            <?php
-           if(isset($activities))
-              {
-                      $i = 1;
-                      foreach($activities as $activitydata)
-                      {
-                          //$check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
-
-              ?>
-                  <div class="row item margin_none <?php if($i==1){echo 'active'; }?>">
-                                 <div class="col-md-6 padding_none">
-                                      <img class="imgfull-width tour_sec-img_hgt" src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
-                                 </div>
-                                 <div class="col-md-6 padding_none">
-                                     <div class="slide_main_con">
-                                          <h1>{{$activitydata->name;}}</h1>
-                                          <p>{{$activitydata->description;}}</p>
-                                      </div>
-                                 </div>
-                    </div>
-                    <?php
-                    $i++;
-                         }
-                 }
-                 ?>
-=======
 
 <div class="activity_slide tablet-hide">
     <div class="container">
@@ -769,7 +605,6 @@
                                 }
                             }
                             ?>
->>>>>>> 35bb36cf4ee81348c4b7116a8f21f6fd4f1bb098
 
                         </div>
                     </div>
@@ -793,17 +628,6 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-<!-- Banner section -->
-
-<div class="slide_act_cul tablet_button_con hidden_mobile">
-    <button class="exe_button">Découvrir toutes les activités de la semaine</button>
-</div>
-</div>
-</div>
-
-=======
->>>>>>> 35bb36cf4ee81348c4b7116a8f21f6fd4f1bb098
 
 
 <!-- Exe activity main con -->
@@ -840,19 +664,6 @@
     <div class="musicions_wrapper">
         <div class="container">
 
-<<<<<<< HEAD
-         <?php  if(count($promotional_artist)>0)
-                   { ?>
-             <div class="slide_main_content">
-                <div class="musicions_inner-con">
-                  
-                    {{$promotional_artist[0]->title}}
-                    {{$promotional_artist[0]->sub_title}}
-                    {{$promotional_artist[0]->promotional_artist_text}}
-
-                    <a class="btn btn-default btn-yellow Contactus" href="javascript:void(0)">{{ trans('greet.Contact us !')}}</a>
-
-=======
             <?php  if(count($promotional_artist)>0)
             { ?>
                 <div class="slide_main_content">
@@ -866,7 +677,6 @@
 
                     </div>
                     <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
->>>>>>> 35bb36cf4ee81348c4b7116a8f21f6fd4f1bb098
                 </div>
             <?php
 

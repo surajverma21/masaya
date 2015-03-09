@@ -37,4 +37,12 @@ class BaseController extends Controller {
 
     }
 
+    public function generateHoursForTime($key){
+
+            $Get_time = explode(' ',$key);
+            $hours = $Get_time[1];
+            $time = $Get_time[2];
+            $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+    }
 }
+?>

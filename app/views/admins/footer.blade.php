@@ -2,7 +2,7 @@
 <div id="readNote">
 
            <div class="barTopSubview">
-               <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>
+<!--               <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>-->
            </div>
            <div class="noteWrap col-md-8 col-md-offset-2">
                <div class="panel panel-note">
@@ -16,7 +16,7 @@
        </div>
 
     <div class="barTopSubview">
-        <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>
+<!--        <a href="#newNote" class="new-note button-sv"><i class="fa fa-plus"></i> Add new note</a>-->
     </div>
     <div class="noteWrap col-md-8 col-md-offset-2">
         <div class="panel panel-note">
@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
->>>>>>> fd28fc98214b5a9ed44ffc6cbf3d9c566f784af5
+
 <!-- start: FOOTER -->
 <footer class="inner">
     <div class="footer-inner">
@@ -40,9 +40,9 @@
         </div>
     </div>
 </footer>
-<<<<<<< HEAD
 
-=======
+
+
 <!-- start: MAIN JAVASCRIPTS -->
 
 <!--[if lt IE 9]>
@@ -57,7 +57,7 @@
 
 		<![endif]-->
 
->>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
+
 <!--[if gte IE 9]><!-->
 {{ HTML::script('../assets/plugins/jQuery/jquery-2.1.1.min.js') }}
 <!--<![endif]-->

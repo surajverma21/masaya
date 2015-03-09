@@ -146,11 +146,11 @@
                                     <td class="center">
                                         <div class="visible-md visible-lg hidden-sm hidden-xs">
                                             <a href="edit-promotional-artist/{{$promotional_artist->id}}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-<<<<<<< HEAD
+
                                             <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return common_delete({{$promotional_artist->id}},'delete-promotional-artist')"><i class="fa fa-times fa fa-white"></i></a>
-=======
+
 <!--                                            <a href="javascript:void(0)" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="Remove" onclick="return delete_time_to_touristics({{$promotional_artist->id}},{{$promotional_artist->hostel_id}})"><i class="fa fa-times fa fa-white"></i></a>-->
->>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
+
                                         </div>
                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
                                             <div class="btn-group">

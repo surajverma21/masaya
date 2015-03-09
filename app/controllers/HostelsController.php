@@ -686,9 +686,6 @@ Class HostelsController extends BaseController{
         $city_guide->city_guide_text                       =   $city_guide_text;
         $city_guide->city_guide_image  =   $cityGuideFileName;
 
-       
-
-<<<<<<< HEAD
         $city_guide->save();
 
         return Redirect::to('admin/city-guide-index-all')->with('msg','Promotional Artist Updated successfully');
@@ -710,9 +707,9 @@ Class HostelsController extends BaseController{
 
     }
     
-=======
+
     public function promotional_artist_edit(){
->>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
+
 
         $id = Route::input('id');
 

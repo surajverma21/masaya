@@ -22,11 +22,9 @@
                             <!-- start: TO-DO DROPDOWN -->
                             <li class="dropdown">
                                 <a href="{{ URL::to('/') }}/admin/addmember">
-<<<<<<< HEAD
-                                    <i class="fa fa-plus"></i> Add Member
-=======
+
                                     <i class="fa fa-plus"></i> Add New
->>>>>>> f3c91a5e2cf0788569761d1c10979bffa52435ea
+
                                 </a>
                             </li>
                         </ul>

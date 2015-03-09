@@ -55,6 +55,7 @@ class FrontController extends BaseController {
         $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();  // partial load later on bottom
 
         $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records santa marta & bogota
+//return $touristic;
         //echo '<pre>';print_r($hostels);die;
         //echo session::get('hostel_name'); die
 

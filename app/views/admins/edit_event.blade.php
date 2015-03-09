@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                             <br/>
-                            <img style="height:15%" src="{{URL::to('/')}}/../uploads/events/{{$event->event_image}}" alt="" width="200px"/>
+                            <img style="height:15%" src="{{URL::to('/')}}/../uploads/events/{{$event->event_image}}" alt="" class="pull-right"/>
                             <br/>
                             <br/>
                             <div class="form-group">

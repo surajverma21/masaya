@@ -64,6 +64,14 @@
         transitionInEasing: 'swing'
     });
 </script>
+
+
+
+<!-- Accordion -->
+<script>
+$( "#accordion" ).accordion();
+</script><strong></strong>
+<!-- Accordion -->
 </body>
 </html>
 

@@ -175,8 +175,9 @@ Class HostelsController extends BaseController{
     public function new_time_to_touristic(){
 
         $languages = Language::All()->lists('name' ,'id');
+        $hostel_id = Session::get('hostel_id');
 
-        return View::make('admins.add_timetotouristics')->with('languages',$languages);
+        return View::make('admins.add_timetotouristics', array('hostel_id' => $hostel_id , 'languages' => $languages));
 
     }
 
@@ -287,8 +288,9 @@ Class HostelsController extends BaseController{
         public function add_travel_tip(){
 
             $languages = Language::All()->lists('name' ,'id');
+            $hostel_id = Session::get('hostel_id');
 
-            return View::make('admins.add_travel_tips')->with('languages',$languages);
+            return View::make('admins.add_travel_tips')->with('languages',$languages)->with('hostel_id',$hostel_id);
 
         }
 
@@ -807,8 +809,9 @@ Class HostelsController extends BaseController{
     public function how_to_get_there_add(){
 
         $languages = Language::All()->lists('name' ,'id');
+        $hostel_id = Session::get('hostel_id');
 
-        return View::make('admins.add_how_to_get_there')->with('languages',$languages);
+        return View::make('admins.add_how_to_get_there')->with('languages',$languages)->with('hostel_id',$hostel_id);
     }
 
     public function how_to_get_there_save(){
@@ -827,7 +830,7 @@ Class HostelsController extends BaseController{
         $how_to_get_there                              = new HowToGetThere;
         $how_to_get_there->hostel_id                   = $hostel_id;
         $how_to_get_there->title                       = $how_to_get_there_title;
-        $how_to_get_there->language_id                 = $language_id;
+        $how_to_get_there->lang_id                 = $language_id;
         $how_to_get_there->description                 = $how_to_get_there_description;
 
         $how_to_get_there->save();

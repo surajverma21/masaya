@@ -62,6 +62,7 @@
 
                         <fieldset>
 
+                            {{Form::hidden('hostel_id',$hostel_id) }}
                             <div class="form-group">
                                 {{ Form::label('language','Language :', $attributes = ['class' => 'col-sm-3 control-label ']) }}
                                 <div class="col-sm-9">
@@ -74,7 +75,7 @@
                             <div class="form-group">
                                 {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::textarea('title', '', $attributes = ['class' => 'form-control ckeditor form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    {{ Form::text('title', '', $attributes = ['class' => 'form-control','required' => 'required', 'rows' => 4  ]) }}
                                     <div style="color:red"> {{ $errors->first('title') }} </div>
                                 </div>
                             </div>

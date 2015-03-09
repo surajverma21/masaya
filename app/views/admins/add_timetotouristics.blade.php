@@ -62,14 +62,14 @@
 
                         <fieldset>
 
+                            {{Form::hidden('hostel_id',$hostel_id) }}
                             <div class="form-group">
                                 {{ Form::label('language','Language :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::select('language', $languages) }}
-                                    <div style="color:red"> {{ $errors->first('name') }} </div>
+<!--                                    <div style="color:red"> {{ $errors->first('name') }} </div>-->
                                 </div>
                             </div>
-
 
                             <div class="form-group">
                                 {{ Form::label('time','Time(minutes) :', $attributes = ['class' => 'col-sm-3 control-label']) }}
@@ -83,7 +83,7 @@
                                 {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
                                     {{ Form::textarea('description', '', $attributes = ['class' => 'form-control ckeditor', 'required' => 'required','rows' => 4]) }}
-                                    <div style="color:red"> {{ $errors->first('address') }} </div>
+<!--                                    <div style="color:red"> {{ $errors->first('address') }} </div>-->
                                 </div>
                             </div>
 

@@ -201,8 +201,9 @@ class EventsController extends \BaseController {
     public function add_hostel_event_info(){
 
         $languages = Language::All()->lists('name' ,'id');
+        $hostel_id = Session::get('hostel_id');
 
-        return View::make('admins.add_hostel_event_info')->with('languages',$languages);
+        return View::make('admins.add_hostel_event_info')->with('languages',$languages)->with('hostel_id',$hostel_id);
     }
 
     public function save_hostel_event_info(){

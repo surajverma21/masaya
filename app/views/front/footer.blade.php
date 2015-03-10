@@ -1,5 +1,45 @@
 @section('footer')
 <!-- Footer start here -->
+<header class="main_h_footer" style="display:none;">
+    <div class="container">
+       
+        <div class="pull-right reserver_con_footer" ><a href="javascript:void(0)">{{ trans('greet.Book Now') }}</a></div>
+    </div>
+    <div class="reserver_top_form" style="display:none;" >
+        <div class="container">
+            <h3>Reserves votes a masaya Santa Marta</h3>
+            <form>
+                <div class="row margin_none">
+                    <div class="col-md-3 col-sm-3 col-xs-12 padding_none">
+                        <div class="select_1">
+                            <select class="custom-select">
+                                <option>Date d’arrivée</option><option>Date</option><option>d'arrivee</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 padding_none">
+                        <div class="select_1">
+                            <select class="custom-select">
+                                <option>Date d’arrivée</option><option>Date</option><option>d'arrivee</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 padding_none">
+                        <div class="select_1">
+                            <select class="custom-select">
+                                <option>Date d’arrivée</option><option>Date</option><option>d'arrivee</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 padding_none">
+                        <button value="rechercher" class="btn btn-reserver">Rechercher</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+
 <footer>
     <div class="container">
         <div class="row"><div class="col-md-12"><h5>{{ trans('greet.Follow us on social networks') }}</h5></div></div>

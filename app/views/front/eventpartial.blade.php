@@ -12,44 +12,47 @@ if(isset($medium) && !empty($medium)  || isset($small) && !empty($small))
         <div class="col-md-6 col-sm-6 padding_none">
             <div class="example js--hovercap04">
             <img class="imgfull-width" src="../uploads/events/<?php echo $medium[0]->event_image;?>" alt="" />
-            <div class="example__caption">
-            <?php echo $medium[0]->event_title;?><br>
-            <?php echo $medium[0]->event_text;?>
+            <div class="example__caption exe_yellow_wrapper">
+             <h2><?php echo $medium[0]->event_title;?></h2>
+            <p><?php echo $medium[0]->event_text;?></p>
             </div>
             </div>
         </div>
 
 
         <div class="col-md-3 col-sm-6 padding_none">
-            <div class="exe_yellow_wrapper">
+         <div class="example js--hovercap04">
+         <img class="imgfull-width" src="../uploads/events/<?php echo $small[0]->event_image;?>" alt="" />
+            <div class="example__caption exe_yellow_wrapper">
                 <h2><?php echo $small[0]->event_title; ?></h2>
                 <p><?php echo $small[0]->event_text; ?></p>
+            </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-4 padding_none rev_clr">
             <div class="example js--hovercap04">
             <img class="imgfull-width"  src="../uploads/events/<?php echo $small[1]->event_image; ?>" alt="<?php echo $small[1]->event_title; ?>" />
-            <div class="example__caption">
-                 <?php echo $small[1]->event_title;?><br>
-                  <?php echo $small[1]->event_text;?><br>
+            <div class="example__caption exe_yellow_wrapper">
+                  <h2><?php echo $small[1]->event_title;?></h2>
+                 <p> <?php echo $small[1]->event_text;?></p>
              </div>
              </div>
         </div>
         <div class="col-md-3 col-sm-4 padding_none">
             <div class="example js--hovercap04">
             <img class="imgfull-width"  src="../uploads/events/<?php echo $small[2]->event_image;?>" alt="<?php echo $small[2]->event_title; ?>" />
-            <div class="example__caption">
-                <?php echo $small[2]->event_title;?><br>
-                 <?php echo $small[2]->event_text;?><br>
+            <div class="example__caption exe_yellow_wrapper">
+               <h2> <?php echo $small[2]->event_title;?></h2>
+               <p> <?php echo $small[2]->event_text;?></p>
              </div>
              </div>
         </div>
         <div class="col-md-3 col-sm-4 padding_none">
              <div class="example js--hovercap04">
             <img class="imgfull-width"  src="../uploads/events/<?php echo $small[3]->event_image;?>" alt="<?php echo $small[3]->event_title; ?>" />
-            <div class="example__caption">
-               <?php echo $small[3]->event_title;?><br>
-                <?php echo $small[3]->event_text;?><br>
+            <div class="example__caption exe_yellow_wrapper">
+              <h2> <?php echo $small[3]->event_title;?></h2>
+                <p><?php echo $small[3]->event_text;?></p>
             </div>
             </div>
         </div>
@@ -125,43 +128,46 @@ if(isset($mediumevent) && !empty($mediumevent)  || isset($smallevent) && !empty(
     <div class="row margin_none">
         <div class="col-md-6 col-sm-6 padding_none">
             <div class="example js--hovercap04">
-            <img class="imgfull-width" src="../uploads/events/<?php echo $mediumevent[0]->event_image;?>" alt="" />
-            <div class="example__caption">
-            <?php echo $mediumevent[0]->event_title;?><br>
-            <?php echo $mediumevent[0]->event_text;?>
+            <img class="imgfull-width" src="../uploads/events/<?php echo $mediumevent[0]->event_image;?>" alt="<?php echo $mediumevent[0]->event_title; ?>" />
+            <div class="example__caption  exe_yellow_wrapper">
+            <h2><?php echo $mediumevent[0]->event_title;?></h2>
+            <p><?php echo $mediumevent[0]->event_text;?></p>
             </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 padding_none">
-            <div class="exe_yellow_wrapper">
+         <div class="example js--hovercap04">
+            <img class="imgfull-width" src="../uploads/events/<?php echo $smallevent[0]->event_image;?>" alt="<?php echo $smallevent[0]->event_title; ?>" />
+            <div class="example__caption  exe_yellow_wrapper">
                 <h2><?php echo $smallevent[0]->event_title; ?></h2>
                 <p><?php echo $smallevent[0]->event_text; ?></p>
+            </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-4 padding_none rev_clr">
             <div class="example js--hovercap04">
             <img class="imgfull-width"  src="../uploads/events/<?php echo $smallevent[1]->event_image; ?>" alt="<?php echo $smallevent[1]->event_title; ?>" />
-             <div class="example__caption">
-             <?php echo $smallevent[1]->event_title;?><br>
-             <?php echo $smallevent[1]->event_text;?><br>
+             <div class="example__caption  exe_yellow_wrapper">
+             <h2><?php echo $smallevent[1]->event_title;?></h2>
+            <p> <?php echo $smallevent[1]->event_text;?></p>
             </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-4 padding_none">
             <div class="example js--hovercap04">
             <img class="imgfull-width"  src="../uploads/events/<?php echo $smallevent[2]->event_image;?>" alt="<?php echo $smallevent[2]->event_title; ?>" />
-             <div class="example__caption">
-             <?php echo $smallevent[2]->event_title;?><br>
-             <?php echo $smallevent[2]->event_text;?><br>
+             <div class="example__caption  exe_yellow_wrapper">
+             <h2><?php echo $smallevent[2]->event_title;?></h2>
+             <p><?php echo $smallevent[2]->event_text;?></p>
             </div>
             </div>
         </div>
         <div class="col-md-3 col-sm-4 padding_none">
             <div class="example js--hovercap04">
             <img class="imgfull-width"  src="../uploads/events/<?php echo $smallevent[3]->event_image;?>" alt="<?php echo $smallevent[3]->event_title; ?>" />
-             <div class="example__caption">
-             <?php echo $smallevent[3]->event_title;?><br>
-             <?php echo $smallevent[3]->event_text;?><br>
+             <div class="example__caption  exe_yellow_wrapper">
+             <h2><?php echo $smallevent[3]->event_title;?></h2>
+            <p> <?php echo $smallevent[3]->event_text;?></p>
             </div>
             </div>
         </div>

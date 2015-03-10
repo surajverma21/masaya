@@ -1,3 +1,5 @@
+
+
 <?php
 
 class FrontController extends BaseController {
@@ -17,10 +19,10 @@ class FrontController extends BaseController {
     {
 
         $laguages = $this->change_language();
-        $lang_id =  Session::get('language_id');
+        $lang_id = Session::get('language_id');
 
 
-        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get();   // All events
+        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get(); // All events
 
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->Where('month_id', '=', 3)->Where('lang_id','=',$lang_id)->get(); // medium events
 
@@ -28,24 +30,26 @@ class FrontController extends BaseController {
 
         $data['monthly_activity'] = View::make('front.eventpartial')->with('medium',$medium)->with('small',$small);
 
-        $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();    // Change this when get hostel in session.
+        $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get(); // Change this when get hostel in session.
 
+        $activities = Activity::All(); //For desktop
 
-        $activities[0] = Activity::where('day','=','0')->get()->toArray();
-        $activities[1] = Activity::where('day','=','1')->get()->toArray();
-        $activities[2] = Activity::where('day','=','2')->get()->toArray();
-        $activities[3] = Activity::where('day','=','3')->get()->toArray();
-        $activities[4] = Activity::where('day','=','4')->get()->toArray();
-        $activities[4] = Activity::where('day','=','5')->get()->toArray();
-        $activities[5] = Activity::where('day','=','6')->get()->toArray();
+        // For Mobile Version
+        $activity[0] = Activity::where('day','=','0')->get()->toArray();
+        $activity[1] = Activity::where('day','=','1')->get()->toArray();
+        $activity[2] = Activity::where('day','=','2')->get()->toArray();
+        $activity[3] = Activity::where('day','=','3')->get()->toArray();
+        $activity[4] = Activity::where('day','=','4')->get()->toArray();
+        $activity[4] = Activity::where('day','=','5')->get()->toArray();
+        $activity[5] = Activity::where('day','=','6')->get()->toArray();
 
 
         $cityguide = DB::table('city_guide')->where('id', '=', 1)->Where('language_id','=',$lang_id)->get();
 
-        session::put('hostel_id',1);   //     Will be dynamic after getting hostel from session in homepage.
-        if(session::get("hostel_id") == 1)   // session::puts('varname','hostel-id');
+        session::put('hostel_id',1); // Will be dynamic after getting hostel from session in homepage.
+        if(session::get("hostel_id") == 1) // session::puts('varname','hostel-id');
         {
-            // $_SESSION['hostel-name'] = 'MasayaHostelSantaMarta';  // Condition based on $_SESSION['hostel-id']
+            // $_SESSION['hostel-name'] = 'MasayaHostelSantaMarta'; // Condition based on $_SESSION['hostel-id']
             session::put('hostel_name','MasayaHostelSantaMarta');
         }
 
@@ -59,38 +63,29 @@ class FrontController extends BaseController {
         $event_hostel = $getHostelActivities->event_activities_hostel();
 
         // Trip Advisor
-        $trip_adviser =  $getLikes->fetchTripAdviserData();
+        $trip_adviser = $getLikes->fetchTripAdviserData();
 
-        $touristic  = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
+        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
         $touristic1 = DB::table('time_to_touristic_points')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
 
-        $hostels    = DB::table('hostels')->take(2)->get();    // limit set for 2 records santa marta & bogota
+        $hostels = DB::table('hostels')->take(2)->get(); // limit set for 2 records santa marta & bogota
 
-        $comments   = DB::table('comments_arrive')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
-        $comments1  = DB::table('comments_arrive')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
+        $comments = DB::table('comments_arrive')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
+        $comments1 = DB::table('comments_arrive')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
 
-        $travel_tip   = DB::table('travel_tip')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
-        $travel_tip1    = DB::table('travel_tip')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
+        $travel_tip = DB::table('travel_tip')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
+        $travel_tip1 = DB::table('travel_tip')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
 
-<<<<<<< HEAD
-=======
-        $hostel_info    = DB::table('hotel_event_activities_info')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
->>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
+        $hostel_info = DB::table('hotel_event_activities_info')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
 
-        $trip_adviser =  $getLikes->fetchTripAdviserData();
-       
+        $trip_adviser = $getLikes->fetchTripAdviserData();
 
-<<<<<<< HEAD
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('hostelForActivity',$event_hostel)->with('trip_adviser',$trip_adviser);
 
-=======
->>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
-
-        $hostel    = DB::table('hostels')->where('id', '=', 1)->get();
-        $hostel1    = DB::table('hostels')->where('id', '=', 2)->get();
+        $hostel = DB::table('hostels')->where('id', '=', 1)->get();
+        $hostel1 = DB::table('hostels')->where('id', '=', 2)->get();
         //return $hostels;
 
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('touristic1',$touristic1)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('trip_adviser',$trip_adviser)->with('hostelForActivity',$event_hostel)->with('comments',$comments)->with('comments1',$comments1)->with('travel_tip',$travel_tip)->with('travel_tip1',$travel_tip1)->with('hostel_info',$hostel_info)->with('hostel',$hostel)->with('hostel1',$hostel1);
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('activity',$activity)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('touristic1',$touristic1)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('trip_adviser',$trip_adviser)->with('hostelForActivity',$event_hostel)->with('comments',$comments)->with('comments1',$comments1)->with('travel_tip',$travel_tip)->with('travel_tip1',$travel_tip1)->with('hostel_info',$hostel_info)->with('hostel',$hostel)->with('hostel1',$hostel1);
 
     }
 
@@ -98,7 +93,7 @@ class FrontController extends BaseController {
     //Small & medium images
     public function getactivity($month=null)
     {
-        $lang_id =  Session::get('language_id');
+        $lang_id = Session::get('language_id');
 
         $month=Input::get('month');
 
@@ -110,7 +105,7 @@ class FrontController extends BaseController {
     public function gettouristic()
     {
         $id=Input::get('hostelid');
-        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', $id)->get();  // partial load later
+        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', $id)->get(); // partial load later
         return View::make('front.touristicpartial')->with('touristic',$touristic);
         // echo "<pre>";print_r($touristic);die;
     }
@@ -142,7 +137,7 @@ class FrontController extends BaseController {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -154,7 +149,7 @@ class FrontController extends BaseController {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
@@ -166,7 +161,7 @@ class FrontController extends BaseController {
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function update($id)
@@ -178,7 +173,7 @@ class FrontController extends BaseController {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
@@ -191,4 +186,6 @@ class FrontController extends BaseController {
 
 
 }
+     
+     
 

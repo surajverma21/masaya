@@ -3,21 +3,14 @@
 <body>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-<<<<<<< HEAD
+
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-=======
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
->>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
+
 <div class="top_header">
    <div class="navbar-collapse collapse">
         <div class="pull-left left_exp">{{ trans('greet.Experience_Masaya') }}</div>

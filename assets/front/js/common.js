@@ -17,6 +17,10 @@ $(document).ready(function(){
             $(".reserver_top_form") .slideToggle("slow");
         });
 
+        $(".reserver_con_footer") .click(function(){
+            $(".reserver_top_form") .slideToggle("slow");
+        });
+
 
     $(window).scroll(function() {
 
@@ -26,6 +30,39 @@ $(document).ready(function(){
             $('.main_h').removeClass('sticky');
         }
     });
+
+
+    $(window).scroll(function() 
+    {
+
+        if($(window).width() >= 320)
+        {
+            if ($(window).scrollTop() > 120 && $(this).scrollTop() < 3999) 
+            {
+                $('.main_h').addClass('sticky');
+                $('.main_h').css("display","block");
+                $('.main_h_footer').css("display","none");
+            } 
+            else
+            if($(this).scrollTop() > 4000) 
+            {
+                $('.main_h').removeClass('sticky');  // for header
+                $('.main_h').css("display","none");  // for header
+
+                $('.main_h_footer').addClass('stickyfooter');   // for footer
+                $('.main_h_footer').css("display","block"); // for footer
+                
+            }
+            else
+            {
+                $('.main_h').removeClass('sticky');
+            }
+        }
+      
+    });
+
+
+
 
     // Mobile Navigation
     $('.mobile-toggle').click(function() {

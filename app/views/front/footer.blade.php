@@ -49,7 +49,7 @@
     </div>
 </footer>
 <!-- Footer start here -->
-
+ <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
 {{ HTML::script('../assets/front/js/bootstrap.min.js') }}
 {{ HTML::script('../assets/front/js/bootstrap-select.js') }}
 {{ HTML::script('../assets/front/js/jquery.selectbox-0.2.js') }}
@@ -64,6 +64,11 @@
         transitionInEasing: 'swing'
     });
 </script>
+
+
+
+
+
 
 
 

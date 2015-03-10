@@ -15,6 +15,7 @@ class FrontController extends BaseController {
 
     public function index()
     {
+
         $laguages = $this->change_language();
         $lang_id =  Session::get('language_id');
 
@@ -56,14 +57,12 @@ class FrontController extends BaseController {
 
         $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records santa marta & bogota
 
-<<<<<<< HEAD
 
-        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('hostelForActivity',$event_hostel);
-=======
         $trip_adviser =  $getLikes->fetchTripAdviserData();
+       
 
         return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('hostelForActivity',$event_hostel)->with('trip_adviser',$trip_adviser);
->>>>>>> 35bb36cf4ee81348c4b7116a8f21f6fd4f1bb098
+
 
 
     }

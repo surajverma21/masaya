@@ -11,7 +11,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+
 
     <!-- select box -->
     {{ HTML::script('../assets/front/js/common.js') }}

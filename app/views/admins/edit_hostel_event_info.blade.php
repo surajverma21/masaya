@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-6">
                     <div class="box-login">
-                        {{ Form::open(array('url' => 'admin/save-hostel-event-info','class' => 'form-horizontal','files' =>true)) }}
+                        {{ Form::open(array('url' => 'admin/update-hostel-event-info','class' => 'form-horizontal','files' =>true)) }}
 
                         @if(Session::has('message'))
                         <div class="alert alert-info">
@@ -62,7 +62,8 @@
 
                         <fieldset>
 
-                            {{Form::hidden('hostel_id',$hostel_id) }}
+                            {{Form::hidden('resource_id',$hostel_event_info->id)}}
+
                             <div class="form-group">
                                 {{ Form::label('language','Language :', $attributes = ['class' => 'col-sm-3 control-label ']) }}
                                 <div class="col-sm-9">
@@ -75,7 +76,7 @@
                             <div class="form-group">
                                 {{ Form::label('title','Title :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::text('title', '', $attributes = ['class' => 'form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    {{ Form::textarea('title', $hostel_event_info->title, $attributes = ['class' => 'form-control ckeditor form-control','required' => 'required', 'rows' => 4  ]) }}
                                     <div style="color:red"> {{ $errors->first('title') }} </div>
                                 </div>
                             </div>
@@ -84,7 +85,7 @@
                             <div class="form-group">
                                 {{ Form::label('description','Description :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::textarea('description', '', $attributes = ['class' => 'form-control ckeditor form-control','required' => 'required', 'rows' => 4  ]) }}
+                                    {{ Form::textarea('description', $hostel_event_info->description, $attributes = ['class' => 'form-control ckeditor form-control','required' => 'required', 'rows' => 4  ]) }}
                                     <div style="color:red"> {{ $errors->first('description') }} </div>
                                 </div>
                             </div>
@@ -93,7 +94,7 @@
                             <div class="form-group">
                                 {{ Form::label('extra_info','Extra info :', $attributes = ['class' => 'col-sm-3 control-label']) }}
                                 <div class="col-sm-9">
-                                    {{ Form::textarea('extra_info', '', $attributes = ['class' => 'form-control ckeditor form-control', 'required' => 'required','rows' => 4]) }}
+                                    {{ Form::textarea('extra_info', $hostel_event_info->extra_info, $attributes = ['class' => 'form-control ckeditor form-control', 'required' => 'required','rows' => 4]) }}
                                     <div style="color:red"> {{ $errors->first('extra_info') }} </div>
                                 </div>
                             </div>

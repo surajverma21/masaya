@@ -28,7 +28,7 @@ class HowToGetThere extends  Eloquent implements UserInterface, RemindableInterf
 
     public function language(){
 
-        return $this->belongsTo('Language','language_id','id');
+        return $this->belongsTo('Language','lang_id','id');
     }
 
     public function hostel(){

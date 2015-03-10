@@ -24,6 +24,7 @@ body{font-family: 'ProximaNova-Regular'; color:#2d1508;}
 a:hover, a:focus{text-decoration:none; outline:none;}
 
 .imgfull-width {width: 100%;}
+.act_slide_inner .imgfull-width {width: auto;}
 .padding_none {padding: 0;}
 .margin_none {margin: 0;}
 .btn.btn-yellow { background:#f9c300;}
@@ -1385,7 +1386,7 @@ button.exe_button:after{ position:absolute; content:url(../images/select_arrow_t
 }
 .exe_votes h2:last-child{ border-right:none;}
 .exe_inner_container .trip_advisor-inner {padding: 25px;}
-.exe_inner_container .trip_advisor-inner img {margin-bottom:29px;}
+.exe_inner_container .trip_advisor-inner img {margin-bottom:5px;}
 .exe_inner_container .trip_advisor-inner em {font-size: 16px;font-weight: bold;padding: 12px 0;line-height: 23px;}
 
 /* musician section */
@@ -2579,5 +2580,13 @@ button.exe_button:after{ position:absolute; content:url(../images/select_arrow_t
     .exp-masaya_inner h5 {font-size: 12px;line-height: 18px;}
     .slide_main_content { padding-top: 92%;}
     .musicions_inner-con p strong {font-size: 12px;line-height: 17px; }
+}
+
+li.active.mob_activity_parent>div.row {
+    display: block;
+}
+
+li.mob_activity_parent>div.row {
+    display: none;
 }
 /* Responsive style */

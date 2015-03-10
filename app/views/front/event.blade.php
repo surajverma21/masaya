@@ -61,6 +61,34 @@
             $('#tab-bottom-container ul li a.active').trigger('click');
         });
 
+        $('#carscroll').on('click', function(event) {
+
+            var target = $('#myCarousel');
+
+            if( target.length ) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 200
+                }, 1000);
+            }
+
+        });
+
+        $('#activity_scroll').on('click', function(event) {
+
+            var target = $('#getcontentactivity');
+
+            if( target.length ) {
+                event.preventDefault();
+                var topp = target.offset().top - 230
+                $('html, body').animate({
+                    scrollTop: topp
+                }, 1500);
+            }
+
+        });
+
+
 
 
 
@@ -76,13 +104,23 @@
     }
     .fb-like {
         cursor: pointer;
-        height: 53px;
+        height: 100%;
         opacity: 0;
         position: absolute !important;
-        top: 28px;
-        visibility: hidden;
-        width: 60px;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        z-index: 9999;
     }
+        /*.fb-like {
+            cursor: pointer;
+            height: 53px;
+            opacity: 0;
+            position: absolute !important;
+            top: 28px;
+            visibility: hidden;
+            width: 60px;
+        }*/
 </style>
 
 <!-- inner yellow section -->
@@ -120,20 +158,16 @@
         <!-- Top content -->
         <div class="row inner-y_conternt1">
             <div class="col-md-12"><h1 class="title_yellow">{{ trans('greet.Events & Cultural Activities') }}</h1></div>
-            <div class="col-md-9 col-sm-12">
-                <em>Plus qu’un simple hostel, Masaya se veut être un lieu de culture, de rencontres et d’échanges interculturels.
-                    A Santa Marta, découvrez la gastronomie « costeña » : le riz coco, la banane plantain sous toutes ses coutures…  les sons et rythmes aux influences africaines ; les danses locales et colombiennes… De nombreux artistes vous proposent chaque semaine de découvrir leur culture, leurs origines…<br><br>
-
-                    Notre but est de vous faire connaître le pays dans ce qu'il a de meilleur, c’est pour cela que nous vous proposons un guide culturel regroupant les activités phare de Santa Marta et de la région Magdalena. Consultez notre calendrier et faites place à la culture lors de votre voyage… </em>
+            <div class="col-md-9 col-sm-12">{{ $hostel_info[0]->description }}
                 <div class="row">
                     <div class="col-md-12 span10 mobile_center">
-                        <a href="#" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
-                        <a href="#" class="btn btn-default" >{{ trans('greet.The cultural program of Masaya') }}</a>
+                        <a href="#myCarousel" id="carscroll" class="btn btn-default" >{{ trans('greet.Events around') }} Santa Marta</a>
+                        <a href="#getcontentactivity" id="activity_scroll" class="btn btn-default" >{{ trans('greet.The cultural program of Masaya') }}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3 pull-right hidden-tablet">
-                <div class="les_jours">{{ trans('greet.DAILY ACTIVITIES') }} <span> 100% {{ trans('greet.FREE') }} </span> </div>
+                <div class="les_jours">{{ $hostel_info[0]->extra_info }}</div>
             </div>
         </div>
         <!-- Top content -->
@@ -141,6 +175,18 @@
     </div>
 </div>
 
+<?php
+
+ function generateHoursForTime($key){
+
+    $Get_time = explode(' ',$key);
+    $hours = $Get_time[1];
+    $time = $Get_time[2];
+    $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+    return $time_in_24_hour_format;
+}
+
+?>
 <!-- inner yellow section -->
 
 <!-- activity_2 banner section -->
@@ -252,22 +298,20 @@
     ?>
 
     <?php
-    if(count($check_array)>0)
-    {
+
+        if(count($check_array)>0)
+        {
         $i = 1;
         $j=0;
         foreach($check_array as $key => $val)
         {
-            // echo count($check_array);
-            // echo '<pre>';print_r($check_array);die;
 
             $Get_time = explode(' ',$key);
             $hours = $Get_time[1];
             $time = $Get_time[2];
             $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
 
-
-            ?>
+    ?>
 
 
             <ul class="act_content_sec text-center carousel-indicators">
@@ -293,6 +337,7 @@
 
     ?>
 
+<<<<<<< HEAD
 
 
         </div>
@@ -416,24 +461,47 @@
         </div>
         <!-- acts wrapper for tablet -->
 
+=======
+</div>
+<!-- acts wrapper -->
 
-<!-- acts wrapper for mobile -->
-<div class="act_cul_mobile">
-    <ul>
-        <li><a href="#">Lundi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+<!-- acts wrapper for tablet -->
+<div class="act_wrapper tablet-visible hidden_desktop hidden_mobile">
+    <ul class="act_head text-center">
+        <li class="tablet_head"> </li>
+        <?php
+        if(count($check_array)>0) {
+            $i = 1;
+            $j=0;
+            foreach($check_array as $key => $val){
 
+                $Get_time = explode(' ',$key);
+                $hours = $Get_time[1];
+                $time = $Get_time[2];
+                $time_in_24_hour_format  = date("H", strtotime($hours.' '.$time));
+
+
+        ?>
+        <li class="tablet_head<?php if($i==1){ echo ' active'; }?>"><span class="date_section"><?php echo $time_in_24_hour_format.'H'; ?></span></li>
+                <?php
+                $i++;
+            }
+        }
+
+        ?>
+    </ul>
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Lundi</li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-default"><span>Clase de Costenol</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+
+
+        <div class="tablet_slider_con text-left">
             <div class="row margin_none">
-                <div class="col-xs-12 padding_none">
-                    <div class="slide_main_con">
-                        <h1>Juegos criollos</h1>
-                        <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
-                        <em>Tous les lundi à 21h</em>
-                    </div>
-                </div>
-                <div class="col-xs-12 padding_none">
-                    <img class="imgfull-width" alt="" src="../assets/front/images/act_slide_img.png">
-                </div>
-                <div class="col-xs-12 padding_none">
+                <div class="col-sm-6 padding_none"><img class="imgfull-width" alt="" src="../assets/front/images/act_slide_img.png"></div>
+                <div class="col-sm-6">
                     <div class="slide_main_con">
                         <h1>Juegos criollos</h1>
                         <p>Pellentesque eget ipsum sit amet est pharetra dapibus nec dapibus lorem. Phasellus venenatis mi eget nisl fringilla condimentum. Etiam non tellus nisl. Cras vehicula, justo non pulvinar semper, ex eros sagittis ex, ac vestibulum odio odio sed risus. Pellentesque ipsum nisi, pulvinar ac rhoncus eget, tempus tempor mi.</p>
@@ -441,14 +509,252 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+
+    </ul>
+
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Mardi</li>
+        <li><div class="inne_space table_sec-yellow"><span>Clase de Cocina</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Al Aire (Microfono Abierto)</span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Campeonato de Rana</span></div></li>
+    </ul>
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Mercredi</li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+    </ul>
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Jeudi</li>
+        <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
+    </ul>
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Vendredi</li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Tour de Baile</span></div></li>
+    </ul>
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Samedi</li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+    </ul>
+    <ul class="act_content_sec text-center">
+        <li class="table_title">Dimanche</li>
+        <li><div class="inne_space table_sec-yellow"><span>Clase de Cocteleria</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+        <li><div class="inne_space table_sec-yellow"><span>Clase de Salsa</span></div></li>
+        <li><div class="inne_space"><span> </span></div></li>
+    </ul>
+</div>
+<div class="slide_act_cul desktop_none tablet_button_con hidden_mobile">
+    <button class="exe_button">Découvrir toutes les activités de la semaine</button>
+</div>
+<!-- acts wrapper for tablet -->
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
+
+<!-- acts wrapper for mobile -->
+<div class="act_cul_mobile">
+    <ul>
+        <li class="active mob_activity_parent"><a href="javascript: void(0)">Lundi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+        
+            @if($activities[0])
+
+                @foreach($activities[0] as $key=>$val)
+
+                        <div class="row margin_none">
+
+                            <div class="col-xs-12 padding_none">
+                                <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                            </div>
+                            <div class="col-xs-12 padding_none">
+                                <div class="slide_main_con">
+                                    <h1>{{$val['name'] }}</h1>
+                                    <p>{{$val['description'] }}</p>
+                                    <em>Tous les lundi à {{ generateHoursForTime($val['start_time']) }}h</em>
+                                </div>
+                            </div>
+                        </div>
+
+                @endforeach
+
+            @endif
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Mardi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[1])
+
+            @foreach($activities[1] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
 
         </li>
-        <li><a href="#">Mardi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Mercredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Jeudi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Vendredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Samedi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
-        <li><a href="#">Dimanche <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a></li>
+
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Mercredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+            @if($activities[2])
+
+            @foreach($activities[2] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Jeudi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+            @if($activities[3])
+
+            @foreach($activities[3] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+<<<<<<< HEAD
+=======
+        </li>
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Vendredi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[4])
+
+            @foreach($activities[4] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+<<<<<<< HEAD
+                    <?php
+                    $i++;
+                         }
+                 }
+                 ?>
+=======
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Samedi <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[5])
+
+            @foreach($activities[5] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
+
+
+        <li class="mob_activity_parent"><a href="javascript: void(0)" onclick="show_details(this)">Dimanche <span><img src="../assets/front/images/select_cul_drop.png" alt="" /></span></a>
+
+            @if($activities[6])
+
+            @foreach($activities[6] as $key=>$val)
+
+            <div class="row margin_none">
+
+                <div class="col-xs-12 padding_none">
+                    <img class="imgfull-width" alt="" src="../uploads/activities/{{$val['image']}}">
+                </div>
+                <div class="col-xs-12 padding_none">
+                    <div class="slide_main_con">
+                        <h1>{{$val['name'] }}</h1>
+                        <p>{{$val['description'] }}</p>
+                        <em>Tous les lundi à 21h</em>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+            @endif
+
+        </li>
     </ul>
 </div>
 <!-- acts wrapper for mobile -->
@@ -462,44 +768,42 @@
 <!-- activity cultural -->
 
 
-
-
 <div class="activity_slide tablet-hide">
-   <div class="container">
- <!-- Banner section   Activiites Slider Desktop   -->
+    <div class="container">
+        <!-- Banner section   Activiites Slider Desktop   -->
+        <div class="act_slide_inner">
+            <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
+            <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
 
-<div class="act_slide_inner">
-   <div class="shadow_full text-center bottom2"> <img class="imgfull-width" src="../../assets/front/images/shadow_bottom.png" alt="" /> </div>
-    <div data-ride="carousel" class="carousel slide" id="carousel-example-generic">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div role="listbox" class="carousel-inner">
+                            <?php
+                            if(isset($activities))
+                            {
+                                $i = 1;
+                                foreach($activities as $activitydata)
+                                {
+                                    //$check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
 
-        <div class="row">
-            <div class="col-md-12">
-                <div role="listbox" class="carousel-inner">
-            <?php
-           if(isset($activities))
-              {
-                      $i = 1;
-                      foreach($activities as $activitydata)
-                      {
-                          //$check_array[$activitydata->start_time][$activitydata->day] = $activitydata->name;
-
-              ?>
-                  <div class="row item margin_none <?php if($i==1){echo 'active'; }?>">
-                                 <div class="col-md-6 padding_none">
-                                      <img class="imgfull-width tour_sec-img_hgt" src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
-                                 </div>
-                                 <div class="col-md-6 padding_none">
-                                     <div class="slide_main_con">
-                                          <h1>{{$activitydata->name;}}</h1>
-                                          <p>{{$activitydata->description;}}</p>
-                                      </div>
-                                 </div>
-                    </div>
-                    <?php
-                    $i++;
-                         }
-                 }
-                 ?>
+                                    ?>
+                                    <div class="row item margin_none <?php if($i==1){echo 'active'; }?>">
+                                        <div class="col-md-6 padding_none">
+                                            <img class="imgfull-width tour_sec-img_hgt" src="../uploads/activities/{{$activitydata->image;}}" alt="{{$activitydata->name;}}" />
+                                        </div>
+                                        <div class="col-md-6 padding_none">
+                                            <div class="slide_main_con">
+                                                <h1>{{$activitydata->name;}}</h1>
+                                                <p>{{$activitydata->description;}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    $i++;
+                                }
+                            }
+                            ?>
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
 
                         </div>
                     </div>
@@ -523,12 +827,15 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 
 <!-- Banner section -->
 
 
 
 
+=======
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
 
 
 <!-- Exe activity main con -->
@@ -565,8 +872,11 @@
     <div class="musicions_wrapper">
         <div class="container">
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
             <?php  if(count($promotional_artist)>0)
             { ?>
                 <div class="slide_main_content">
@@ -580,7 +890,10 @@
 
                     </div>
                     <img class="imgfull-width" src="../uploads/promotional_artist/{{$promotional_artist[0]->promotional_artist_image}}"  />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
                 </div>
             <?php
 
@@ -690,8 +1003,6 @@
                         <div class="exe_inner_container">
                             <div class="trip_advisor-inner">
                                 <img src="../assets/front/images/trip_advisor.png">
-                                <br/>
-                                <img src="{{$trip_adviser[0]['maxRatingImage']}}">
                                 <em onclick="window.open('{{$trip_adviser[0]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[0]['text'],0,55)}}...”</em>
                                 <em onclick="window.open('{{$trip_adviser[1]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[1]['text'],0,55)}}...”</em>
                                 <em onclick="window.open('{{$trip_adviser[2]['url']}}','_blank')" style="cursor:pointer;">“{{substr($trip_adviser[2]['text'],0,55)}}...”</em>
@@ -798,16 +1109,12 @@
 
                                 <div class="foo_address">
                                     <div class="row">
+                                        @foreach($comments as $comment)
                                         <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
+                                            <strong>{{ $comment->title}}</strong>
+                                            {{ $comment->description }}
                                         </div>
-                                        <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -815,15 +1122,13 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <img class="mobile_tip" src="../assets/front/images/foo_tips.png" alt="" />
-                                            <h3>TRAVEL Tips</h3>
+                                            <h3>{{ trans('greet.TRAVEL Tips')}}</h3>
                                         </div>
                                         <div class="col-md-9">
-                                            <h4>prendre le bus / taxi</h4>
-                                            <p>Il est facile de se repérer dans Santa Marta, la ville étant complétement quadrillée. Vous n’aurez pas de difficulté à arriver dans le centre-ville.
-                                                Après un long voyage, nous vous recommandons de prendre un taxi.
-                                                L’expérience du bus est à faire si vous voyagez léger et que vous n’êtes pas pressé. </p>
-                                            <p>Attention le dimanche et jours fériés: les prix des taxis peuvent être majorés
-                                                (environ $5000 de plus par course).</p>
+                                            @foreach($travel_tip as $travel)
+                                            <h4>{{ $travel->title }}</h4>
+                                            {{ $travel->description }}
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -901,21 +1206,12 @@
                             <div class="foo_left_side">
                                 <h3 class="foo_list_title">{{ trans('greet.Walking time') }} <br>{{ trans('greet.different points of interest') }}</h3>
                                 <ul class="detail_listing2">
+                                    @foreach($touristic1 as $tours)
                                     <li>
-                                        <p>Boire un café Juan Valdez</p>
-                                        <div class="list_month-detail text-center">2mn</div>
+                                        {{ $tours->description}}
+                                        <div class="list_month-detail text-center">{{$tours->time_on_point}}mn</div>
                                     </li>
-                                    <li>
-                                        <p>Visiter la Cathédrale</p>
-                                        <p>Voir la plage</p>
-                                        <p>Faire quelques courses</p>
-                                        <div class="list_month-detail text-center">3mn</div>
-                                    </li>
-                                    <li>
-                                        <p>Aller au Musée de l’Or</p>
-                                        <p>Se faire une terrasse au Parque de los Novios</p>
-                                        <div class="list_month-detail text-center">5mn</div>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -927,16 +1223,12 @@
 
                                 <div class="foo_address">
                                     <div class="row">
+                                        @foreach($comments1 as $comment)
                                         <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
+                                            <strong>{{ $comment->title}}</strong>
+                                            {{ $comment->description }}
                                         </div>
-                                        <div class="col-md-6">
-                                            <strong>Depuis l’aéroport</strong>
-                                            <p>Environ 20 minutes en Taxi (environ $25.000)</p>
-                                            <p>Environ 30 minutes en bus (Direction : KRA 5 ou Centro historico – environ $1.500)</p>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -947,12 +1239,10 @@
                                             <h3>{{ trans('greet.TRAVEL Tips')}}</h3>
                                         </div>
                                         <div class="col-md-9">
-                                            <h4>prendre le bus / taxi</h4>
-                                            <p>Il est facile de se repérer dans Santa Marta, la ville étant complétement quadrillée. Vous n’aurez pas de difficulté à arriver dans le centre-ville.
-                                                Après un long voyage, nous vous recommandons de prendre un taxi.
-                                                L’expérience du bus est à faire si vous voyagez léger et que vous n’êtes pas pressé. </p>
-                                            <p>Attention le dimanche et jours fériés: les prix des taxis peuvent être majorés
-                                                (environ $5000 de plus par course).</p>
+                                            @foreach($travel_tip1 as $travel)
+                                            <h4>{{ $travel->title }}</h4>
+                                            {{ $travel->description }}
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -1055,27 +1345,32 @@
                     <div class="col-md-7 col-sm-7">
 
                         <div class="footer_addinner_wrapper">
+
+                            @foreach($hostel as $hostell)
                             <div class="footer_row">
                                 <div class="col-md-5 col-sm-5 padding_none">
                                     <img class="imgfull-width" src="../assets/front/images/foo_add_img.png" alt="" />
                                 </div>
                                 <div class="col-md-7 col-sm-7">
-                                    <h2>Santa Marta</h2>
-                                    <p>Calle 14 # 04-80 Centro historico, <br> Santa Marta, Colombia</p>
-                                    <p>Tel : +57 (5) 423 1770   +57 311 533 8348 <br> E-mail : santamarta@masaya-experience.com</p>
+                                    <h2>{{ $hostell->name }}</h2>
+                                    {{ $hostell->address }}
+                                    <p>Tel : {{ $hostell->contact_number1 }}   {{ $hostell->contact_number1 }} <br> E-mail : {{ $hostell->email }}</p>
                                 </div>
                             </div>
+                            @endforeach
 
+                            @foreach($hostel1 as $hostel)
                             <div class="footer_row">
                                 <div class="col-md-5 col-sm-5 padding_none">
-                                    <img class="imgfull-width" src="../assets/front/images/foo_add_img_2.png" alt="" />
+                                    <img class="imgfull-width" src="../assets/front/images/foo_add_img.png" alt="" />
                                 </div>
                                 <div class="col-md-7 col-sm-7">
-                                    <h2>Bogota</h2>
-                                    <p>Calle 14 # 04-80 Centro historico, <br> Santa Marta, Colombia</p>
-                                    <p>Tel : +57 (5) 423 1770   +57 311 533 8348 <br> E-mail : santamarta@masaya-experience.com</p>
+                                    <h2>{{ $hostel->name }}</h2>
+                                    {{ $hostel->address }}
+                                    <p>Tel : {{ $hostel->contact_number1 }}   {{ $hostel->contact_number1 }} <br> E-mail : {{ $hostel->email }}</p>
                                 </div>
                             </div>
+                            @endforeach
 
 
                         </div>
@@ -1134,4 +1429,8 @@
 @stop
 @extends('front.head')
 @extends('front.header')
+<<<<<<< HEAD
 @extends('front.footer')
+=======
+@extends('front.footer')
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157

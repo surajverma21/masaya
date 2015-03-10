@@ -19,10 +19,8 @@ class FrontController extends BaseController {
         $laguages = $this->change_language();
         $lang_id =  Session::get('language_id');
 
-       // $events = HostelEvent::All();
-        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get();   // All events
-//        return $events;
 
+        $events = DB::table('events')->where('event_legend_img', '=', 'yes')->Where('lang_id','=',$lang_id)->get();   // All events
 
         $medium = DB::table('events')->where('event_medium_img', '=', 'yes')->Where('month_id', '=', 3)->Where('lang_id','=',$lang_id)->get(); // medium events
 
@@ -32,7 +30,15 @@ class FrontController extends BaseController {
 
         $promotional_artist = DB::table('promotional_artists')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();    // Change this when get hostel in session.
 
-        $activities = Activity::All();
+
+        $activities[0] = Activity::where('day','=','0')->get()->toArray();
+        $activities[1] = Activity::where('day','=','1')->get()->toArray();
+        $activities[2] = Activity::where('day','=','2')->get()->toArray();
+        $activities[3] = Activity::where('day','=','3')->get()->toArray();
+        $activities[4] = Activity::where('day','=','4')->get()->toArray();
+        $activities[4] = Activity::where('day','=','5')->get()->toArray();
+        $activities[5] = Activity::where('day','=','6')->get()->toArray();
+
 
         $cityguide = DB::table('city_guide')->where('id', '=', 1)->Where('language_id','=',$lang_id)->get();
 
@@ -52,18 +58,39 @@ class FrontController extends BaseController {
         $getHostelActivities = new HostelRoomsController();
         $event_hostel = $getHostelActivities->event_activities_hostel();
 
+        // Trip Advisor
+        $trip_adviser =  $getLikes->fetchTripAdviserData();
 
-        $touristic = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();  // partial load later on bottom
+        $touristic  = DB::table('time_to_touristic_points')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
+        $touristic1 = DB::table('time_to_touristic_points')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
 
-        $hostels = DB::table('hostels')->take(2)->get();    // limit set for 2 records santa marta & bogota
+        $hostels    = DB::table('hostels')->take(2)->get();    // limit set for 2 records santa marta & bogota
 
+        $comments   = DB::table('comments_arrive')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
+        $comments1  = DB::table('comments_arrive')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
+
+        $travel_tip   = DB::table('travel_tip')->where('hostel_id', '=', 1)->Where('language_id','=',$lang_id)->get();
+        $travel_tip1    = DB::table('travel_tip')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
+
+<<<<<<< HEAD
+=======
+        $hostel_info    = DB::table('hotel_event_activities_info')->where('hostel_id', '=', 2)->Where('language_id','=',$lang_id)->get();
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
 
         $trip_adviser =  $getLikes->fetchTripAdviserData();
        
 
+<<<<<<< HEAD
         return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('hostelForActivity',$event_hostel)->with('trip_adviser',$trip_adviser);
 
+=======
+>>>>>>> 44f227b1126b59e32e95864eba9371ac0b0e3157
 
+        $hostel    = DB::table('hostels')->where('id', '=', 1)->get();
+        $hostel1    = DB::table('hostels')->where('id', '=', 2)->get();
+        //return $hostels;
+
+        return View::make('front.event',$data)->with('events',$events)->with('activities',$activities)->with('promotional_artist',$promotional_artist)->with('cityguide',$cityguide)->with('touristic',$touristic)->with('touristic1',$touristic1)->with('hostels',$hostels)->with('langs', $laguages)->with('fblikes',$data1)->with('trip_adviser',$trip_adviser)->with('hostelForActivity',$event_hostel)->with('comments',$comments)->with('comments1',$comments1)->with('travel_tip',$travel_tip)->with('travel_tip1',$travel_tip1)->with('hostel_info',$hostel_info)->with('hostel',$hostel)->with('hostel1',$hostel1);
 
     }
 
@@ -164,3 +191,4 @@ class FrontController extends BaseController {
 
 
 }
+
